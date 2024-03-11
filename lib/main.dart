@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/feature/auth/presentation/sign_in_screen.dart';
 import 'package:buy_and_dot/feature/splash/presentation/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
     
-      home: const SplashScreen(),
+      home: const SignInSceen(),
     );
   }
 }
