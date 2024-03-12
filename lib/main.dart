@@ -1,5 +1,5 @@
-import 'package:buy_and_dot/feature/auth/presentation/sign_in_screen.dart';
-import 'package:buy_and_dot/feature/splash/presentation/splash_screen.dart';
+import 'package:buy_and_dot/feature/auth/presentation/auth_screen.dart';
+import 'package:buy_and_dot/theme/themes/themeData.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-    
-      home: const SignInSceen(),
+      debugShowCheckedModeBanner: false,
+      title: 'Buy And Dot',
+      theme: themeData,
+      home: const AuthScreen(),
     );
   }
 }
-

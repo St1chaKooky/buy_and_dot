@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_svg: ^2.0.10+1
   flutter:
     sdk: flutter
 
@@ -59,7 +60,23 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/image/sign_in/logo.png
+    - assets/image/splash/logo.png
+    - assets/image/splash/2.0x/logo.png
+    - assets/image/splash/3.0x/logo.png
+    - assets/image/splash/4.0x/logo.png
+
+    - assets/svg/eye.svg
+    - assets/svg/eye_off.svg
+    - assets/svg/leading.svg
+    - assets/svg/lock.svg
+    - assets/svg/phone.svg
+    - assets/svg/trailing.svg
+    - assets/svg/arrow_back.svg
+
+
+
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
