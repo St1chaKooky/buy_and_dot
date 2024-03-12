@@ -1,8 +1,11 @@
 import 'package:buy_and_dot/core/presentation/widget/buttons/button_field.dart';
 import 'package:buy_and_dot/core/presentation/widget/checkbox/selected_checkbox.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/field.dart';
+import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -82,14 +85,22 @@ class _SignUpPageState extends State<SignUpPage> {
                         setState(() => isChecked = value),
                   ),
                 ),
-                const Flexible(
+                Flexible(
                   child: Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                        softWrap: true,
-                        maxLines: 3,
-                        'Я согласен с Правилами и условиями испfdsdsdsdsользования'),
-                  ),
+                      padding: EdgeInsets.all(10),
+                      child: RichText(
+                        text: TextSpan(
+                            style: DefaultTextStyle.of(context).style,
+                            children: <TextSpan>[
+                              TextSpan(text: 'Я согласен с '),
+                              TextSpan(
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => print('textBt'),
+                                  text: 'Правилами и условиями использования ',
+                                  style: TextStyle(
+                                      color: ColorCollection.primary)),
+                            ]),
+                      )),
                 )
               ],
             ),
