@@ -1,5 +1,6 @@
+// ignore_for_file: constant_identifier_names
+
 abstract class SvgCollection {
-  // ignore: constant_identifier_names
   static const phone = 'assets/svg/phone.svg';
   static const lock = 'assets/svg/lock.svg';
   static const eye = 'assets/svg/eye.svg';

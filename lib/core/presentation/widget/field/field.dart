@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
@@ -59,8 +60,9 @@ class _MyFieldState extends State<MyField> {
               const EdgeInsets.only(left: 48, top: 16, bottom: 16, right: 16),
           prefixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-            child: SvgPicture.asset(
-                width: 24, height: 24, widget.assetName, fit: BoxFit.scaleDown),
+            child: CustomIcon(
+              assetName: widget.assetName,
+            ),
           ),
           border: const OutlineInputBorder()),
     );

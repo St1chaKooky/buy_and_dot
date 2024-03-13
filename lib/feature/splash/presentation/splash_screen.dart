@@ -1,4 +1,5 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
+import 'package:buy_and_dot/theme/collections/png_collection/png_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Container(
           height: screenHeight / 2.51,
         ),
-        const Image(image: AssetImage('assets/image/splash/logo.png')),
+        const Image(image: AssetImage(PngCollection.logo)),
         Container(
           height: screenHeight / 3.53,
         ),

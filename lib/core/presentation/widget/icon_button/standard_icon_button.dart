@@ -20,7 +20,7 @@ class MyStandardIconButton extends StatefulWidget {
 class _MyStandardIconButtonState extends State<MyStandardIconButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 48,
       height: 48,
       child: IconButton(
@@ -28,7 +28,7 @@ class _MyStandardIconButtonState extends State<MyStandardIconButton> {
         icon: SvgPicture.asset(
           width: widget.widthIcon,
           height: widget.heightIcon,
-          fit: BoxFit.none,
+          fit: BoxFit.scaleDown,
           widget.iconFromCollection,
         ),
       ),
