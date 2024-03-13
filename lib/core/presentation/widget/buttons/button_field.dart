@@ -23,6 +23,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
         width: double.infinity,
         child: ElevatedButton(
             style: ElevatedButton.styleFrom(
+              shadowColor: Colors.amber.withOpacity(0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100.0),
               ),

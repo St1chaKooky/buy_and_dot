@@ -1,8 +1,8 @@
+import 'package:buy_and_dot/core/presentation/widget/icon_button/standard_icon_button.dart';
 import 'package:buy_and_dot/feature/auth/sign_in/presentation/sign_in_page.dart';
 import 'package:buy_and_dot/feature/auth/sign_up/presentation/sign_up_page.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -19,30 +19,18 @@ class _AuthScreenState extends State<AuthScreen> {
       child: Scaffold(
         appBar: AppBar(
           leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-            child: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                width: 24,
-                height: 24,
-                fit: BoxFit.scaleDown,
-                SvgCollection.arrow_back,
-              ),
-            ),
-          ),
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+              child: MyStandardIconButton(
+                iconFromCollection: SvgCollection.arrow_back,
+                onIconTap: () {},
+              )),
           actions: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-              child: IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(
-                  width: 24,
-                  height: 24,
-                  fit: BoxFit.scaleDown,
-                  SvgCollection.trailing,
-                ),
-              ),
-            ),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                child: MyStandardIconButton(
+                  iconFromCollection: SvgCollection.trailing,
+                  onIconTap: () {},
+                )),
           ],
           centerTitle: true,
           elevation: 0,

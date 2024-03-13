@@ -79,25 +79,25 @@ class _SignUpPageState extends State<SignUpPage> {
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 8, right: 12, bottom: 12, top: 12),
-                  child: CustomCheckbox(
+                  child: MySelectedCheckbox(
                     value: isChecked,
-                    onChanged: (bool? value) =>
+                    onTapCheckbox: (bool? value) =>
                         setState(() => isChecked = value),
                   ),
                 ),
                 Flexible(
                   child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: RichText(
                         text: TextSpan(
                             style: DefaultTextStyle.of(context).style,
                             children: <TextSpan>[
-                              TextSpan(text: 'Я согласен с '),
+                              const TextSpan(text: 'Я согласен с '),
                               TextSpan(
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () => print('textBt'),
                                   text: 'Правилами и условиями использования ',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: ColorCollection.primary)),
                             ]),
                       )),

@@ -1,5 +1,6 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -9,6 +10,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      context.go('/auth');
+    });
+  }
+
   double get screenHeight => MediaQuery.of(context).size.height;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Container(
           height: screenHeight / 2.51,
         ),
-        const Image(image: AssetImage('assets/image/sign_in/logo.png')),
+        const Image(image: AssetImage('assets/image/splash/logo.png')),
         Container(
           height: screenHeight / 3.53,
         ),
