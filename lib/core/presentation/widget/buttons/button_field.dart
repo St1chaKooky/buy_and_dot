@@ -1,16 +1,18 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
+// Для чего виджет описан как Stateful?
 class MyFilledButton extends StatefulWidget {
-  final bool isActiveButton;
-  final void Function() onTapButton;
-  final String textButton;
+  // Тк поля относятся к этой кнопке, приписка Button им ни к чему =)
+  final bool isActive;
+  final void Function() onTap;
+  final String text;
 
   const MyFilledButton(
       {super.key,
-      required this.onTapButton,
-      required this.textButton,
-      required this.isActiveButton});
+      required this.onTap,
+      required this.text,
+      required this.isActive});
 
   @override
   State<MyFilledButton> createState() => _MyFilledButtonState();
@@ -28,10 +30,10 @@ class _MyFilledButtonState extends State<MyFilledButton> {
                 borderRadius: BorderRadius.circular(100.0),
               ),
               elevation: 0.0,
-              foregroundColor: widget.isActiveButton
+              foregroundColor: widget.isActive
                   ? ColorCollection.onPrimary
                   : ColorCollection.onSurface.withOpacity(0.4),
-              backgroundColor: widget.isActiveButton
+              backgroundColor: widget.isActive
                   ? ColorCollection.primary
                   : ColorCollection.onSurface.withOpacity(0.12),
             ),
@@ -39,7 +41,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 18),
               child: Text(
-                widget.textButton,
+                widget.text,
               ),
             )));
   }

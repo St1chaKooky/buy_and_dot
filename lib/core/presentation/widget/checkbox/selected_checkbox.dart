@@ -1,6 +1,7 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
+// Для чего виджет описан как Stateful?
 class MySelectedCheckbox extends StatefulWidget {
   final bool? value;
   final void Function(bool?)? onTapCheckbox;

@@ -16,6 +16,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   double get screenHeight => MediaQuery.of(context).size.height;
+  // Если поля не будут менять свои значения, объяви их через final
   TextEditingController textEditingControllerPhone = TextEditingController();
   TextEditingController textEditingControllerLock = TextEditingController();
   TextEditingController textEditingControllerLockRepeat =
@@ -81,6 +82,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       left: 8, right: 12, bottom: 12, top: 12),
                   child: MySelectedCheckbox(
                     value: isChecked,
+                    // Вот тут верстка всей страницы рендерится по новой
+                    // не думаю, что это хорошо
                     onTapCheckbox: (bool? value) =>
                         setState(() => isChecked = value),
                   ),
@@ -98,7 +101,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                     ..onTap = () => print('textBt'),
                                   text: 'Правилами и условиями использования ',
                                   style: const TextStyle(
-                                      color: ColorCollection.primary)),
+                                    color: ColorCollection.primary,
+                                  )),
                             ]),
                       )),
                 )
@@ -106,9 +110,9 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             const SizedBox(height: 20.0),
             MyFilledButton(
-              isActiveButton: _isButtonActive,
-              onTapButton: () {},
-              textButton: 'Зарегистрироваться',
+              isActive: _isButtonActive,
+              onTap: () {},
+              text: 'Зарегистрироваться',
             ),
             const SizedBox(height: 20.0),
           ],

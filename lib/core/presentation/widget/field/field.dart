@@ -4,6 +4,8 @@ import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+// название файла и класса не соответствуют описанию класса
+// Тут лучше подойдет MyTextField & my_text_field.dart
 class MyField extends StatefulWidget {
   final String assetName;
   final bool isPassword;
@@ -58,6 +60,8 @@ class _MyFieldState extends State<MyField> {
           labelText: widget.labelText,
           contentPadding:
               const EdgeInsets.only(left: 48, top: 16, bottom: 16, right: 16),
+          // Используя такой подход твой виджет теряет в гибкости.
+          // Что если тебе в префикс нужно будет прокинуть иконку, а не Svg?
           prefixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
             child: CustomIcon(

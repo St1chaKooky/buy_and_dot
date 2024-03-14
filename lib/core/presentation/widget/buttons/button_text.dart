@@ -1,6 +1,8 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
+// Для чего виджет описан как Stateful?
+
 class MyTextButton extends StatefulWidget {
   final double verticalPadding;
   final void Function() onTapButton;
@@ -30,9 +32,9 @@ class _MyTextButtonState extends State<MyTextButton> {
                 ),
                 elevation: 0.0,
                 foregroundColor: ColorCollection.primary),
-            onPressed: () {},
+            onPressed: widget.onTapButton,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 18),
+              padding: EdgeInsets.symmetric(vertical: widget.verticalPadding),
               child: Text(
                 widget.textButton,
               ),

@@ -1,8 +1,10 @@
+import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/core/presentation/widget/buttons/button_field.dart';
 import 'package:buy_and_dot/core/presentation/widget/buttons/button_text.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/field.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -57,13 +59,15 @@ class _SignInPageState extends State<SignInPage> {
             ),
             const SizedBox(height: 20.0),
             MyFilledButton(
-              isActiveButton: _isButtonActive,
-              onTapButton: () {},
-              textButton: 'Войти',
+              isActive: _isButtonActive,
+              onTap: () {},
+              text: 'Войти',
             ),
             const SizedBox(height: 20.0),
             MyTextButton(
-              onTapButton: () {},
+              onTapButton: () {
+                context.go(RouteList.forgotPassword);
+              },
               textButton: 'Забыли пароль?',
             )
           ],
