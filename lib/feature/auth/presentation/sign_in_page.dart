@@ -1,8 +1,10 @@
+import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/core/presentation/widget/buttons/button_field.dart';
 import 'package:buy_and_dot/core/presentation/widget/buttons/button_text.dart';
-import 'package:buy_and_dot/core/presentation/widget/field/field.dart';
+import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -13,8 +15,10 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   double get screenHeight => MediaQuery.of(context).size.height;
-  TextEditingController textEditingControllerPhone = TextEditingController();
-  TextEditingController textEditingControllerLock = TextEditingController();
+  final TextEditingController textEditingControllerPhone =
+      TextEditingController();
+  final TextEditingController textEditingControllerLock =
+      TextEditingController();
   bool _isButtonActive = false;
 
   @override
@@ -43,13 +47,15 @@ class _SignInPageState extends State<SignInPage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            MyField(
+            MyTextField(
+              isSvgIcon: true,
               textEditingController: textEditingControllerPhone,
               labelText: 'Телефон',
               assetName: SvgCollection.phone,
             ),
             const SizedBox(height: 20.0),
-            MyField(
+            MyTextField(
+              isSvgIcon: true,
               textEditingController: textEditingControllerLock,
               labelText: 'Пароль',
               isPassword: true,
@@ -57,14 +63,16 @@ class _SignInPageState extends State<SignInPage> {
             ),
             const SizedBox(height: 20.0),
             MyFilledButton(
-              isActiveButton: _isButtonActive,
-              onTapButton: () {},
-              textButton: 'Войти',
+              isActive: _isButtonActive,
+              onTap: () {},
+              text: 'Войти',
             ),
             const SizedBox(height: 20.0),
             MyTextButton(
-              onTapButton: () {},
-              textButton: 'Забыли пароль?',
+              onTap: () {
+                context.go(RouteList.forgotPassword);
+              },
+              text: 'Забыли пароль?',
             )
           ],
         ),

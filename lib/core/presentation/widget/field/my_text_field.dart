@@ -1,26 +1,28 @@
-import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon.dart';
+import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon_png.dart';
+import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon_svg.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class MyField extends StatefulWidget {
+class MyTextField extends StatefulWidget {
+  final bool isSvgIcon;
   final String assetName;
   final bool isPassword;
   final TextEditingController textEditingController;
   final String labelText;
-  const MyField(
+  const MyTextField(
       {super.key,
       this.isPassword = false,
       required this.textEditingController,
       required this.labelText,
-      required this.assetName});
+      required this.assetName,
+      required this.isSvgIcon});
 
   @override
-  State<MyField> createState() => _MyFieldState();
+  State<MyTextField> createState() => _MyTextFieldState();
 }
 
-class _MyFieldState extends State<MyField> {
+class _MyTextFieldState extends State<MyTextField> {
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
@@ -30,12 +32,17 @@ class _MyFieldState extends State<MyField> {
       decoration: InputDecoration(
           suffixIcon: widget.isPassword
               ? IconButton(
-                  icon: SvgPicture.asset(
-                    width: 24,
-                    height: 24,
-                    fit: BoxFit.scaleDown,
-                    _obscureText ? SvgCollection.eye_off : SvgCollection.eye,
-                  ),
+                  icon: widget.isSvgIcon
+                      ? CustomIconSvg(
+                          assetName: _obscureText
+                              ? SvgCollection.eye_off
+                              : SvgCollection.eye,
+                        )
+                      : CustomIconPng(
+                          assetName: _obscureText
+                              ? SvgCollection.eye_off
+                              : SvgCollection.eye,
+                        ),
                   onPressed: () {
                     setState(() {
                       _obscureText = !_obscureText;
@@ -59,11 +66,14 @@ class _MyFieldState extends State<MyField> {
           contentPadding:
               const EdgeInsets.only(left: 48, top: 16, bottom: 16, right: 16),
           prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-            child: CustomIcon(
-              assetName: widget.assetName,
-            ),
-          ),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+              child: widget.isSvgIcon
+                  ? CustomIconSvg(
+                      assetName: widget.assetName,
+                    )
+                  : CustomIconSvg(
+                      assetName: widget.assetName,
+                    )),
           border: const OutlineInputBorder()),
     );
   }

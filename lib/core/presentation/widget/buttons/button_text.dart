@@ -1,23 +1,18 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
-class MyTextButton extends StatefulWidget {
+class MyTextButton extends StatelessWidget {
   final double verticalPadding;
-  final void Function() onTapButton;
-  final String textButton;
+  final void Function() onTap;
+  final String text;
 
   const MyTextButton({
     super.key,
     this.verticalPadding = 18,
-    required this.onTapButton,
-    required this.textButton,
+    required this.onTap,
+    required this.text,
   });
 
-  @override
-  State<MyTextButton> createState() => _MyTextButtonState();
-}
-
-class _MyTextButtonState extends State<MyTextButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -32,9 +27,9 @@ class _MyTextButtonState extends State<MyTextButton> {
                 foregroundColor: ColorCollection.primary),
             onPressed: () {},
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 18),
+              padding: EdgeInsets.symmetric(vertical: verticalPadding),
               child: Text(
-                widget.textButton,
+                text,
               ),
             )));
   }

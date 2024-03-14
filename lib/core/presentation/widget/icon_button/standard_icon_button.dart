@@ -1,37 +1,31 @@
+import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon_png.dart';
+import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon_svg.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class MyStandardIconButton extends StatefulWidget {
+class MyStandardIconButton extends StatelessWidget {
+  final bool isSvgIcon;
   final String iconFromCollection;
-  final double widthIcon;
-  final double heightIcon;
-  final void Function() onIconTap;
+  final void Function() onTap;
   const MyStandardIconButton(
       {super.key,
       required this.iconFromCollection,
-      this.widthIcon = 24,
-      this.heightIcon = 24,
-      required this.onIconTap});
+      required this.onTap,
+      required this.isSvgIcon});
 
-  @override
-  State<MyStandardIconButton> createState() => _MyStandardIconButtonState();
-}
-
-class _MyStandardIconButtonState extends State<MyStandardIconButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 48,
       height: 48,
       child: IconButton(
-        onPressed: () {},
-        icon: SvgPicture.asset(
-          width: widget.widthIcon,
-          height: widget.heightIcon,
-          fit: BoxFit.scaleDown,
-          widget.iconFromCollection,
-        ),
-      ),
+          onPressed: onTap,
+          icon: isSvgIcon
+              ? CustomIconSvg(
+                  assetName: iconFromCollection,
+                )
+              : CustomIconPng(
+                  assetName: iconFromCollection,
+                )),
     );
   }
 }

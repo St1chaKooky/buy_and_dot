@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomIcon extends StatelessWidget {
+class CustomIconPng extends StatelessWidget {
   final String assetName;
-  const CustomIcon({super.key, required this.assetName});
+  const CustomIconPng({super.key, required this.assetName});
 
   @override
   Widget build(BuildContext context) {

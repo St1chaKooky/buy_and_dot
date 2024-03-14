@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/png_collection/png_collection.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      context.go('/auth');
+      context.go(RouteList.auth);
     });
   }
 

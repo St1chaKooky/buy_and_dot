@@ -1,26 +1,21 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
-class MySelectedCheckbox extends StatefulWidget {
+class MySelectedCheckbox extends StatelessWidget {
   final bool? value;
-  final void Function(bool?)? onTapCheckbox;
+  final void Function(bool?)? onTap;
 
   const MySelectedCheckbox({
     super.key,
     required this.value,
-    required this.onTapCheckbox,
+    required this.onTap,
   });
 
   @override
-  State<MySelectedCheckbox> createState() => _MySelectedCheckboxState();
-}
-
-class _MySelectedCheckboxState extends State<MySelectedCheckbox> {
-  @override
   Widget build(BuildContext context) {
     return Checkbox(
-        value: widget.value,
-        onChanged: widget.onTapCheckbox,
+        value: value,
+        onChanged: onTap,
         activeColor: ColorCollection.primary,
         side: const BorderSide(width: 2, color: ColorCollection.outline)
         // Default to grey

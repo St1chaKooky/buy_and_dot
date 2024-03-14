@@ -3,20 +3,30 @@ import 'package:buy_and_dot/feature/forgot_password/presentation/forgot_password
 import 'package:buy_and_dot/feature/splash/presentation/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
+abstract class RouteList {
+  static const splash = '/';
+
+  static const _authPath = '/auth';
+  static const auth = _authPath;
+
+  static const _forgotPasswordPath = 'forgot-password';
+  static const forgotPassword = '$auth/$_forgotPasswordPath';
+}
+
 // GoRouter configuration
 final router = GoRouter(
-  initialLocation: '/',
+  initialLocation: RouteList.splash,
   routes: [
     GoRoute(
-      path: '/',
+      path: RouteList.splash,
       builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
-        path: '/auth',
+        path: RouteList._authPath,
         builder: (context, state) => const AuthScreen(),
         routes: [
           GoRoute(
-              path: 'forgotPassword',
+              path: RouteList._forgotPasswordPath,
               builder: (context, state) => const ForgotPasswordScreen()),
         ]),
   ],

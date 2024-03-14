@@ -1,6 +1,6 @@
 import 'package:buy_and_dot/core/presentation/widget/icon_button/standard_icon_button.dart';
-import 'package:buy_and_dot/feature/auth/sign_in/presentation/sign_in_page.dart';
-import 'package:buy_and_dot/feature/auth/sign_up/presentation/sign_up_page.dart';
+import 'package:buy_and_dot/feature/auth/presentation/sign_in_page.dart';
+import 'package:buy_and_dot/feature/auth/presentation/sign_up_page.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
 
@@ -22,14 +22,16 @@ class _AuthScreenState extends State<AuthScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
               child: MyStandardIconButton(
                 iconFromCollection: SvgCollection.arrow_back,
-                onIconTap: () {},
+                onTap: () {},
+                isSvgIcon: true,
               )),
           actions: [
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                 child: MyStandardIconButton(
                   iconFromCollection: SvgCollection.trailing,
-                  onIconTap: () {},
+                  onTap: () {},
+                  isSvgIcon: true,
                 )),
           ],
           centerTitle: true,

@@ -1,22 +1,17 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
-class MyFilledButton extends StatefulWidget {
-  final bool isActiveButton;
-  final void Function() onTapButton;
-  final String textButton;
+class MyFilledButton extends StatelessWidget {
+  final bool isActive;
+  final void Function() onTap;
+  final String text;
 
   const MyFilledButton(
       {super.key,
-      required this.onTapButton,
-      required this.textButton,
-      required this.isActiveButton});
+      required this.onTap,
+      required this.text,
+      required this.isActive});
 
-  @override
-  State<MyFilledButton> createState() => _MyFilledButtonState();
-}
-
-class _MyFilledButtonState extends State<MyFilledButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -28,10 +23,10 @@ class _MyFilledButtonState extends State<MyFilledButton> {
                 borderRadius: BorderRadius.circular(100.0),
               ),
               elevation: 0.0,
-              foregroundColor: widget.isActiveButton
+              foregroundColor: isActive
                   ? ColorCollection.onPrimary
                   : ColorCollection.onSurface.withOpacity(0.4),
-              backgroundColor: widget.isActiveButton
+              backgroundColor: isActive
                   ? ColorCollection.primary
                   : ColorCollection.onSurface.withOpacity(0.12),
             ),
@@ -39,7 +34,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 18),
               child: Text(
-                widget.textButton,
+                text,
               ),
             )));
   }

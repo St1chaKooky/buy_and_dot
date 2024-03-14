@@ -1,6 +1,6 @@
 import 'package:buy_and_dot/core/presentation/widget/buttons/button_field.dart';
 import 'package:buy_and_dot/core/presentation/widget/checkbox/selected_checkbox.dart';
-import 'package:buy_and_dot/core/presentation/widget/field/field.dart';
+import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/gestures.dart';
@@ -16,9 +16,11 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   double get screenHeight => MediaQuery.of(context).size.height;
-  TextEditingController textEditingControllerPhone = TextEditingController();
-  TextEditingController textEditingControllerLock = TextEditingController();
-  TextEditingController textEditingControllerLockRepeat =
+  final TextEditingController textEditingControllerPhone =
+      TextEditingController();
+  final TextEditingController textEditingControllerLock =
+      TextEditingController();
+  final TextEditingController textEditingControllerLockRepeat =
       TextEditingController();
   bool? isChecked = false;
   bool _isButtonActive = false;
@@ -54,20 +56,23 @@ class _SignUpPageState extends State<SignUpPage> {
             SizedBox(
               height: screenHeight / 8.44,
             ),
-            MyField(
+            MyTextField(
+              isSvgIcon: true,
               textEditingController: textEditingControllerPhone,
               labelText: 'Телефон',
               assetName: SvgCollection.phone,
             ),
             const SizedBox(height: 20.0),
-            MyField(
+            MyTextField(
+              isSvgIcon: true,
               textEditingController: textEditingControllerLock,
               labelText: 'Пароль',
               isPassword: true,
               assetName: SvgCollection.lock,
             ),
             const SizedBox(height: 20.0),
-            MyField(
+            MyTextField(
+              isSvgIcon: true,
               textEditingController: textEditingControllerLockRepeat,
               labelText: 'Повторите пароль',
               isPassword: true,
@@ -76,14 +81,18 @@ class _SignUpPageState extends State<SignUpPage> {
             const SizedBox(height: 20.0),
             Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 8, right: 12, bottom: 12, top: 12),
-                  child: MySelectedCheckbox(
-                    value: isChecked,
-                    onTapCheckbox: (bool? value) =>
-                        setState(() => isChecked = value),
-                  ),
+                StatefulBuilder(
+                  builder: (context, setState) {
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                          left: 8, right: 12, bottom: 12, top: 12),
+                      child: MySelectedCheckbox(
+                        value: isChecked,
+                        onTap: (bool? value) =>
+                            setState(() => isChecked = value),
+                      ),
+                    );
+                  },
                 ),
                 Flexible(
                   child: Padding(
@@ -106,9 +115,9 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             const SizedBox(height: 20.0),
             MyFilledButton(
-              isActiveButton: _isButtonActive,
-              onTapButton: () {},
-              textButton: 'Зарегистрироваться',
+              isActive: _isButtonActive,
+              onTap: () {},
+              text: 'Зарегистрироваться',
             ),
             const SizedBox(height: 20.0),
           ],
