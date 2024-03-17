@@ -1,7 +1,7 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
-class MyFilledButton extends StatefulWidget {
+class MyFilledButton extends StatelessWidget {
   final void Function()? onTap;
   final String text;
 
@@ -10,13 +10,6 @@ class MyFilledButton extends StatefulWidget {
     required this.onTap,
     required this.text,
   });
-
-  @override
-  State<MyFilledButton> createState() => _MyFilledButtonState();
-}
-
-class _MyFilledButtonState extends State<MyFilledButton> {
-  TextTheme get theme => Theme.of(context).textTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +25,11 @@ class _MyFilledButtonState extends State<MyFilledButton> {
               foregroundColor: ColorCollection.onPrimary,
               backgroundColor: ColorCollection.primary,
             ),
-            onPressed: widget.onTap,
+            onPressed: onTap,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 18),
               child: Text(
-                widget.text,
+                text,
                 style: const TextStyle(
                   fontFamily: 'Roboto-Medium',
                   fontWeight: FontWeight.w500,

@@ -1,7 +1,7 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
-class MyTextButton extends StatefulWidget {
+class MyTextButton extends StatelessWidget {
   final double verticalPadding;
   final void Function() onTap;
   final String text;
@@ -12,13 +12,6 @@ class MyTextButton extends StatefulWidget {
     required this.onTap,
     required this.text,
   });
-
-  @override
-  State<MyTextButton> createState() => _MyTextButtonState();
-}
-
-class _MyTextButtonState extends State<MyTextButton> {
-  TextTheme get theme => Theme.of(context).textTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +25,11 @@ class _MyTextButtonState extends State<MyTextButton> {
                 ),
                 elevation: 0.0,
                 foregroundColor: ColorCollection.primary),
-            onPressed: widget.onTap,
+            onPressed: onTap,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: widget.verticalPadding),
+              padding: EdgeInsets.symmetric(vertical: verticalPadding),
               child: Text(
-                widget.text,
+                text,
                 style: const TextStyle(
                   fontFamily: 'Roboto-Medium',
                   fontWeight: FontWeight.w500,
