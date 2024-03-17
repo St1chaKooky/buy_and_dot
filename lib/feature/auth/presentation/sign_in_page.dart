@@ -19,34 +19,43 @@ class _SignInPageState extends State<SignInPage> {
       TextEditingController();
   final TextEditingController textEditingControllerLock =
       TextEditingController();
-  bool _isButtonActive = false;
+  final isCorrectAuth = ValueNotifier(false);
 
   @override
   void initState() {
     super.initState();
-    textEditingControllerPhone.addListener(() {
-      _updateButtonState();
-    });
-    textEditingControllerLock.addListener(() {
-      _updateButtonState();
-    });
+    textEditingControllerPhone.addListener(_isCheckedListener);
+    textEditingControllerLock.addListener(_isCheckedListener);
   }
 
-  void _updateButtonState() {
-    setState(() {
-      _isButtonActive = textEditingControllerPhone.text.isNotEmpty ||
-          textEditingControllerLock.text.isNotEmpty;
-    });
+  @override
+  void dispose() {
+    super.dispose();
+    isCorrectAuth.removeListener(_isCheckedListener);
+    textEditingControllerPhone.removeListener(_isCheckedListener);
+    textEditingControllerLock.removeListener(_isCheckedListener);
+  }
+
+  void _isCheckedListener() {
+    if (textEditingControllerPhone.text.isEmpty ||
+        textEditingControllerLock.text.isEmpty) {
+      isCorrectAuth.value = false;
+      return;
+    }
+    isCorrectAuth.value = true;
+    return;
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: 16, vertical: screenHeight / 8.44),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: screenHeight / 8.44,
+            ),
             MyTextField(
               isSvgIcon: true,
               textEditingController: textEditingControllerPhone,
@@ -62,10 +71,12 @@ class _SignInPageState extends State<SignInPage> {
               assetName: SvgCollection.lock,
             ),
             const SizedBox(height: 20.0),
-            MyFilledButton(
-              isActive: _isButtonActive,
-              onTap: () {},
-              text: 'Войти',
+            ValueListenableBuilder(
+              valueListenable: isCorrectAuth,
+              builder: (context, value, child) => MyFilledButton(
+                onTap: isCorrectAuth.value ? () {} : null,
+                text: 'Войти',
+              ),
             ),
             const SizedBox(height: 20.0),
             MyTextButton(

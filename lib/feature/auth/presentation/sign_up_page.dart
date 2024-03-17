@@ -16,34 +16,48 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   double get screenHeight => MediaQuery.of(context).size.height;
+  TextTheme get theme => Theme.of(context).textTheme;
+
   final TextEditingController textEditingControllerPhone =
       TextEditingController();
   final TextEditingController textEditingControllerLock =
       TextEditingController();
   final TextEditingController textEditingControllerLockRepeat =
       TextEditingController();
-  bool? isChecked = false;
-  bool _isButtonActive = false;
+
+  final isChecked = ValueNotifier(false);
+  final isCorrectAuth = ValueNotifier(false);
   @override
   void initState() {
     super.initState();
-    textEditingControllerPhone.addListener(() {
-      _updateButtonState();
-    });
-    textEditingControllerLock.addListener(() {
-      _updateButtonState();
-    });
-    textEditingControllerLockRepeat.addListener(() {
-      _updateButtonState();
-    });
+    isChecked.addListener(_isCheckedListener);
+    textEditingControllerPhone.addListener(_isCheckedListener);
+    textEditingControllerLock.addListener(_isCheckedListener);
+    textEditingControllerLockRepeat.addListener(_isCheckedListener);
   }
 
-  void _updateButtonState() {
-    setState(() {
-      _isButtonActive = textEditingControllerPhone.text.isNotEmpty ||
-          textEditingControllerLock.text.isNotEmpty ||
-          textEditingControllerLockRepeat.text.isNotEmpty;
-    });
+  @override
+  void dispose() {
+    super.dispose();
+    isChecked.removeListener(_isCheckedListener);
+    textEditingControllerPhone.removeListener(_isCheckedListener);
+    textEditingControllerLock.removeListener(_isCheckedListener);
+    textEditingControllerLockRepeat.removeListener(_isCheckedListener);
+  }
+
+  void _isCheckedListener() {
+    if (!isChecked.value) {
+      isCorrectAuth.value = false;
+      return;
+    }
+    if (textEditingControllerPhone.text.isEmpty ||
+        textEditingControllerLock.text.isEmpty ||
+        textEditingControllerLockRepeat.text.isEmpty) {
+      isCorrectAuth.value = false;
+      return;
+    }
+    isCorrectAuth.value = true;
+    return;
   }
 
   @override
@@ -81,18 +95,16 @@ class _SignUpPageState extends State<SignUpPage> {
             const SizedBox(height: 20.0),
             Row(
               children: [
-                StatefulBuilder(
-                  builder: (context, setState) {
-                    return Padding(
-                      padding: const EdgeInsets.only(
-                          left: 8, right: 12, bottom: 12, top: 12),
-                      child: MySelectedCheckbox(
-                        value: isChecked,
-                        onTap: (bool? value) =>
-                            setState(() => isChecked = value),
-                      ),
-                    );
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 8, right: 12, bottom: 12, top: 12),
+                  child: ValueListenableBuilder(
+                    valueListenable: isChecked,
+                    builder: (context, value, child) => MySelectedCheckbox(
+                      value: isChecked.value,
+                      onTap: (value) => isChecked.value = value ?? false,
+                    ),
+                  ),
                 ),
                 Flexible(
                   child: Padding(
@@ -101,12 +113,15 @@ class _SignUpPageState extends State<SignUpPage> {
                         text: TextSpan(
                             style: DefaultTextStyle.of(context).style,
                             children: <TextSpan>[
-                              const TextSpan(text: 'Я согласен с '),
+                              TextSpan(
+                                  text: 'Я согласен с ',
+                                  style: theme.bodyLarge!.copyWith(
+                                      color: ColorCollection.onSurface)),
                               TextSpan(
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () => print('textBt'),
+                                    ..onTap = () {},
                                   text: 'Правилами и условиями использования ',
-                                  style: const TextStyle(
+                                  style: theme.bodyLarge!.copyWith(
                                       color: ColorCollection.primary)),
                             ]),
                       )),
@@ -114,10 +129,12 @@ class _SignUpPageState extends State<SignUpPage> {
               ],
             ),
             const SizedBox(height: 20.0),
-            MyFilledButton(
-              isActive: _isButtonActive,
-              onTap: () {},
-              text: 'Зарегистрироваться',
+            ValueListenableBuilder(
+              valueListenable: isCorrectAuth,
+              builder: (context, value, child) => MyFilledButton(
+                onTap: isCorrectAuth.value ? () {} : null,
+                text: 'Зарегистрироваться',
+              ),
             ),
             const SizedBox(height: 20.0),
           ],

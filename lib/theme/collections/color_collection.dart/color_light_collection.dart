@@ -61,4 +61,5 @@ class OtherColor {
   static const inversePrimary = Color(0xFFF9B1DB);
   static const scrim = Color(0xFF000000);
   static const shadow = Color(0xFF000000);
+  static const black = Color(0xFF000000);
 }

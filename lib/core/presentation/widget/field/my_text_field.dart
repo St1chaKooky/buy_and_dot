@@ -23,10 +23,12 @@ class MyTextField extends StatefulWidget {
 }
 
 class _MyTextFieldState extends State<MyTextField> {
+  TextTheme get theme => Theme.of(context).textTheme;
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: theme.bodyLarge,
       obscureText: widget.isPassword ? _obscureText : false,
       controller: widget.textEditingController,
       decoration: InputDecoration(
@@ -63,6 +65,11 @@ class _MyTextFieldState extends State<MyTextField> {
                 width: 1), // Убираем границу, оставляя только закругления
           ),
           labelText: widget.labelText,
+          labelStyle: const TextStyle(
+            fontFamily: 'Roboto-Regular',
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+          ),
           contentPadding:
               const EdgeInsets.only(left: 48, top: 16, bottom: 16, right: 16),
           prefixIcon: Padding(
