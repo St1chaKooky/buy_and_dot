@@ -1,7 +1,7 @@
 import 'package:buy_and_dot/core/domain/router/router.dart';
-import 'package:buy_and_dot/core/presentation/widget/buttons/button_field.dart';
+import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
-import 'package:buy_and_dot/core/presentation/widget/icon_button/standard_icon_button.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
@@ -47,68 +47,53 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Восстановление пароля',
-              style:
-                  theme.titleLarge!.copyWith(color: ColorCollection.onSurface),
-            )),
-        leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-            child: MyStandardIconButton(
-              iconFromCollection: SvgCollection.arrow_back,
-              onTap: () {
-                context.pop();
-              },
-              isSvgIcon: true,
-            )),
-        centerTitle: true,
-        elevation: 0,
+      appBar: CustomAppBar(
+        title: Text(
+          'Восстановление пароля',
+          style: theme.titleLarge!.copyWith(color: ColorCollection.onSurface),
+        ),
+        onTapTitle: () => context.pop(),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: screenHeight / 8.44,
+        child: Column(
+          children: [
+            SizedBox(
+              height: screenHeight / 8.44,
+            ),
+            Text(
+              'Введите номер телефона, на который будет отправлен код для сброса пароля',
+              style: theme.bodyMedium!
+                  .copyWith(color: ColorCollection.onSurfaceVar),
+              overflow: TextOverflow.fade,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            MyTextField(
+              isSvgIcon: true,
+              textEditingController: textEditingControllerPhone,
+              labelText: 'Телефон',
+              assetName: SvgCollection.phone,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ValueListenableBuilder(
+              valueListenable: isCorrectPhoneNumber,
+              builder: (context, value, child) => MyFilledButton(
+                onTap: isCorrectPhoneNumber.value
+                    ? () {
+                        context.go(RouteList.enterPassword);
+                      }
+                    : null,
+                text: 'Отправить',
               ),
-              Text(
-                'Введите номер телефона, на который будет отправлен код для сброса пароля',
-                style: theme.bodyMedium!
-                    .copyWith(color: ColorCollection.onSurfaceVar),
-                overflow: TextOverflow.fade,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              MyTextField(
-                isSvgIcon: true,
-                textEditingController: textEditingControllerPhone,
-                labelText: 'Телефон',
-                assetName: SvgCollection.phone,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ValueListenableBuilder(
-                valueListenable: isCorrectPhoneNumber,
-                builder: (context, value, child) => MyFilledButton(
-                  onTap: isCorrectPhoneNumber.value
-                      ? () {
-                          context.go(RouteList.enterPassword);
-                        }
-                      : null,
-                  text: 'Отправить',
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+          ],
         ),
       ),
     );

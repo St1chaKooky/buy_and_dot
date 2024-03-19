@@ -1,5 +1,6 @@
-import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon_png.dart';
-import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon_svg.dart';
+import 'package:buy_and_dot/core/presentation/widget/icon/png_custom_icon.dart';
+import 'package:buy_and_dot/core/presentation/widget/icon/svg_custom_icon.dart';
+import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class MyStandardIconButton extends StatelessWidget {
@@ -18,6 +19,7 @@ class MyStandardIconButton extends StatelessWidget {
       width: 48,
       height: 48,
       child: IconButton(
+          color: ColorCollection.outline,
           onPressed: onTap,
           icon: isSvgIcon
               ? CustomIconSvg(

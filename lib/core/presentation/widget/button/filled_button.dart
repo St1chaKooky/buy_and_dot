@@ -22,7 +22,8 @@ class MyFilledButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(100.0),
               ),
               elevation: 0.0,
-              foregroundColor: ColorCollection.onPrimary,
+              disabledBackgroundColor:
+                  ColorCollection.onSurface.withOpacity(0.12),
               backgroundColor: ColorCollection.primary,
             ),
             onPressed: onTap,
@@ -30,11 +31,11 @@ class MyFilledButton extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 18),
               child: Text(
                 text,
-                style: const TextStyle(
-                  fontFamily: 'Roboto-Medium',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                ),
+                style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: onTap != null
+                          ? ColorCollection.onPrimary
+                          : ColorCollection.onSurface.withOpacity(0.38),
+                    ),
               ),
             )));
   }

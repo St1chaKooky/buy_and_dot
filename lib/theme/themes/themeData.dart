@@ -4,6 +4,7 @@ import 'package:buy_and_dot/theme/themes/themeText.dart';
 import 'package:flutter/material.dart';
 
 final themeData = ThemeData(
+    focusColor: ColorCollection.primary,
     appBarTheme:
         const AppBarTheme(elevation: 0, color: ColorCollection.surface),
     colorScheme: themeColor,

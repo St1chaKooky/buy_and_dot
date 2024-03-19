@@ -1,7 +1,7 @@
 import 'package:buy_and_dot/core/domain/router/router.dart';
-import 'package:buy_and_dot/core/presentation/widget/buttons/button_field.dart';
+import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
-import 'package:buy_and_dot/core/presentation/widget/icon_button/standard_icon_button.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
@@ -51,77 +51,65 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: CustomAppBar(
         title: Align(
             alignment: Alignment.centerLeft,
             child: Text('Новый пароль',
                 style: theme.titleLarge!
                     .copyWith(color: ColorCollection.onSurface))),
-        leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-            child: MyStandardIconButton(
-              iconFromCollection: SvgCollection.arrow_back,
-              onTap: () {
-                context.pop();
-              },
-              isSvgIcon: true,
-            )),
-        centerTitle: true,
-        elevation: 0,
+        onTapTitle: () => context.pop(),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: screenHeight / 8.44,
+        child: Column(
+          children: [
+            SizedBox(
+              height: screenHeight / 8.44,
+            ),
+            Text(
+              'Задайте новый пароль и подтвердите его для завершения сброса.',
+              style: theme.bodyMedium!
+                  .copyWith(color: ColorCollection.onSurfaceVar),
+              overflow: TextOverflow.fade,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            MyTextField(
+              isPassword: true,
+              isSvgIcon: true,
+              textEditingController: textEditingControllerPassword,
+              labelText: 'Пароль',
+              assetName: SvgCollection.phone,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            MyTextField(
+              isPassword: true,
+              isSvgIcon: true,
+              textEditingController: textEditingControllerNewPassword,
+              labelText: 'Новый пароль',
+              assetName: SvgCollection.phone,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ValueListenableBuilder(
+              valueListenable: isCorrectPassword,
+              builder: (context, value, child) => MyFilledButton(
+                onTap: isCorrectPassword.value
+                    ? () {
+                        context.go(RouteList.auth);
+                      }
+                    : null,
+                text: 'Сохранить новый пароль',
               ),
-              Text(
-                'Задайте новый пароль и подтвердите его для завершения сброса.',
-                style: theme.bodyMedium!
-                    .copyWith(color: ColorCollection.onSurfaceVar),
-                overflow: TextOverflow.fade,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              MyTextField(
-                isPassword: true,
-                isSvgIcon: true,
-                textEditingController: textEditingControllerPassword,
-                labelText: 'Пароль',
-                assetName: SvgCollection.phone,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              MyTextField(
-                isPassword: true,
-                isSvgIcon: true,
-                textEditingController: textEditingControllerNewPassword,
-                labelText: 'Новый пароль',
-                assetName: SvgCollection.phone,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ValueListenableBuilder(
-                valueListenable: isCorrectPassword,
-                builder: (context, value, child) => MyFilledButton(
-                  onTap: isCorrectPassword.value
-                      ? () {
-                          context.go(RouteList.auth);
-                        }
-                      : null,
-                  text: 'Сохранить новый пароль',
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+          ],
         ),
       ),
     );

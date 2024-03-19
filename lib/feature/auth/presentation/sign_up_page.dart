@@ -1,4 +1,4 @@
-import 'package:buy_and_dot/core/presentation/widget/buttons/button_field.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/checkbox/selected_checkbox.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
@@ -62,83 +62,81 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: screenHeight / 8.44,
-            ),
-            MyTextField(
-              isSvgIcon: true,
-              textEditingController: textEditingControllerPhone,
-              labelText: 'Телефон',
-              assetName: SvgCollection.phone,
-            ),
-            const SizedBox(height: 20.0),
-            MyTextField(
-              isSvgIcon: true,
-              textEditingController: textEditingControllerLock,
-              labelText: 'Пароль',
-              isPassword: true,
-              assetName: SvgCollection.lock,
-            ),
-            const SizedBox(height: 20.0),
-            MyTextField(
-              isSvgIcon: true,
-              textEditingController: textEditingControllerLockRepeat,
-              labelText: 'Повторите пароль',
-              isPassword: true,
-              assetName: SvgCollection.lock,
-            ),
-            const SizedBox(height: 20.0),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 8, right: 12, bottom: 12, top: 12),
-                  child: ValueListenableBuilder(
-                    valueListenable: isChecked,
-                    builder: (context, value, child) => MySelectedCheckbox(
-                      value: isChecked.value,
-                      onTap: (value) => isChecked.value = value ?? false,
-                    ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: screenHeight / 8.44,
+          ),
+          MyTextField(
+            isSvgIcon: true,
+            textEditingController: textEditingControllerPhone,
+            labelText: 'Телефон',
+            assetName: SvgCollection.phone,
+          ),
+          const SizedBox(height: 20.0),
+          MyTextField(
+            isSvgIcon: true,
+            textEditingController: textEditingControllerLock,
+            labelText: 'Пароль',
+            isPassword: true,
+            assetName: SvgCollection.lock,
+          ),
+          const SizedBox(height: 20.0),
+          MyTextField(
+            isSvgIcon: true,
+            textEditingController: textEditingControllerLockRepeat,
+            labelText: 'Повторите пароль',
+            isPassword: true,
+            assetName: SvgCollection.lock,
+          ),
+          const SizedBox(height: 20.0),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 8, right: 12, bottom: 12, top: 12),
+                child: ValueListenableBuilder(
+                  valueListenable: isChecked,
+                  builder: (context, value, child) => MySelectedCheckbox(
+                    value: isChecked.value,
+                    onTap: (value) => isChecked.value = value ?? false,
                   ),
                 ),
-                Flexible(
-                  child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: RichText(
-                        text: TextSpan(
-                            style: DefaultTextStyle.of(context).style,
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: 'Я согласен с ',
-                                  style: theme.bodyLarge!.copyWith(
-                                      color: ColorCollection.onSurface)),
-                              TextSpan(
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {},
-                                  text: 'Правилами и условиями использования ',
-                                  style: theme.bodyLarge!.copyWith(
-                                      color: ColorCollection.primary)),
-                            ]),
-                      )),
-                )
-              ],
-            ),
-            const SizedBox(height: 20.0),
-            ValueListenableBuilder(
-              valueListenable: isCorrectAuth,
-              builder: (context, value, child) => MyFilledButton(
-                onTap: isCorrectAuth.value ? () {} : null,
-                text: 'Зарегистрироваться',
               ),
+              Flexible(
+                child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: RichText(
+                      text: TextSpan(
+                          style: DefaultTextStyle.of(context).style,
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'Я согласен с ',
+                                style: theme.bodyLarge!.copyWith(
+                                    color: ColorCollection.onSurface)),
+                            TextSpan(
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {},
+                                text: 'Правилами и условиями использования ',
+                                style: theme.bodyLarge!
+                                    .copyWith(color: ColorCollection.primary)),
+                          ]),
+                    )),
+              )
+            ],
+          ),
+          const SizedBox(height: 20.0),
+          ValueListenableBuilder(
+            valueListenable: isCorrectAuth,
+            builder: (context, value, child) => MyFilledButton(
+              onTap: isCorrectAuth.value ? () {} : null,
+              text: 'Зарегистрироваться',
             ),
-            const SizedBox(height: 20.0),
-          ],
-        ),
+          ),
+          const SizedBox(height: 20.0),
+        ],
       ),
     );
   }

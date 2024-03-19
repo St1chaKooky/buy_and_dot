@@ -1,6 +1,6 @@
 import 'package:buy_and_dot/core/domain/router/router.dart';
-import 'package:buy_and_dot/core/presentation/widget/buttons/button_field.dart';
-import 'package:buy_and_dot/core/presentation/widget/buttons/button_text.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/text_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
@@ -48,45 +48,43 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: screenHeight / 8.44,
+      child: Column(
+        children: [
+          SizedBox(
+            height: screenHeight / 8.44,
+          ),
+          MyTextField(
+            isSvgIcon: true,
+            textEditingController: textEditingControllerPhone,
+            labelText: 'Телефон',
+            assetName: SvgCollection.phone,
+          ),
+          const SizedBox(height: 20.0),
+          MyTextField(
+            isSvgIcon: true,
+            textEditingController: textEditingControllerLock,
+            labelText: 'Пароль',
+            isPassword: true,
+            assetName: SvgCollection.lock,
+          ),
+          const SizedBox(height: 20.0),
+          ValueListenableBuilder(
+            valueListenable: isCorrectAuth,
+            builder: (context, value, child) => MyFilledButton(
+              onTap: isCorrectAuth.value ? () {} : null,
+              text: 'Войти',
             ),
-            MyTextField(
-              isSvgIcon: true,
-              textEditingController: textEditingControllerPhone,
-              labelText: 'Телефон',
-              assetName: SvgCollection.phone,
-            ),
-            const SizedBox(height: 20.0),
-            MyTextField(
-              isSvgIcon: true,
-              textEditingController: textEditingControllerLock,
-              labelText: 'Пароль',
-              isPassword: true,
-              assetName: SvgCollection.lock,
-            ),
-            const SizedBox(height: 20.0),
-            ValueListenableBuilder(
-              valueListenable: isCorrectAuth,
-              builder: (context, value, child) => MyFilledButton(
-                onTap: isCorrectAuth.value ? () {} : null,
-                text: 'Войти',
-              ),
-            ),
-            const SizedBox(height: 20.0),
-            MyTextButton(
-              onTap: () {
-                context.go(RouteList.forgotPassword);
-              },
-              text: 'Забыли пароль?',
-            )
-          ],
-        ),
+          ),
+          const SizedBox(height: 20.0),
+          MyTextButton(
+            onTap: () {
+              context.go(RouteList.forgotPassword);
+            },
+            text: 'Забыли пароль?',
+          )
+        ],
       ),
     );
   }

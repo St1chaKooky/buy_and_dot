@@ -1,9 +1,8 @@
 import 'package:buy_and_dot/core/domain/router/router.dart';
-import 'package:buy_and_dot/core/presentation/widget/buttons/button_field.dart';
-import 'package:buy_and_dot/core/presentation/widget/buttons/button_text.dart';
-import 'package:buy_and_dot/core/presentation/widget/icon_button/standard_icon_button.dart';
+import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/text_button.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
-import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:buy_and_dot/theme/themes/themePininput.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -48,78 +47,67 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: CustomAppBar(
+        onTapTitle: () => context.pop(),
+        leading: null,
         title: const Align(
             alignment: Alignment.centerLeft, child: Text('Введите код')),
-        leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-            child: MyStandardIconButton(
-              iconFromCollection: SvgCollection.arrow_back,
-              onTap: () {
-                context.pop();
-              },
-              isSvgIcon: true,
-            )),
-        centerTitle: true,
-        elevation: 0,
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: screenHeight / 8.44,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: screenHeight / 8.44,
+            ),
+            Text(
+              'Введите код, отправленный на +373 777 88 999',
+              style: theme.bodyMedium!
+                  .copyWith(color: ColorCollection.onSurfaceVar),
+              overflow: TextOverflow.fade,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: double.infinity,
+              child: Pinput(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                controller: textEditingControllerCode,
+                onSubmitted: (pin) {
+                  print(pin);
+                },
+                length: 4,
+                defaultPinTheme: pinTheme,
+                focusedPinTheme: pinTheme.copyWith(
+                    decoration: pinTheme.decoration!.copyWith(
+                        border: Border.all(color: ColorCollection.primary))),
+                onCompleted: (pin) => debugPrint(pin),
               ),
-              Text(
-                'Введите код, отправленный на +373 777 88 999',
-                style: theme.bodyMedium!
-                    .copyWith(color: ColorCollection.onSurfaceVar),
-                overflow: TextOverflow.fade,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ValueListenableBuilder(
+              valueListenable: isCorrectPhoneNumber,
+              builder: (context, value, child) => MyFilledButton(
+                onTap: isCorrectPhoneNumber.value
+                    ? () {
+                        context.go(RouteList.newPassword);
+                      }
+                    : null,
+                text: 'Подтвердить',
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                width: double.infinity,
-                child: Pinput(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  controller: textEditingControllerCode,
-                  onSubmitted: (pin) {
-                    print(pin);
-                  },
-                  length: 4,
-                  defaultPinTheme: pinTheme,
-                  focusedPinTheme: pinTheme.copyWith(
-                      decoration: pinTheme.decoration!.copyWith(
-                          border: Border.all(color: ColorCollection.primary))),
-                  onCompleted: (pin) => debugPrint(pin),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ValueListenableBuilder(
-                valueListenable: isCorrectPhoneNumber,
-                builder: (context, value, child) => MyFilledButton(
-                  onTap: isCorrectPhoneNumber.value
-                      ? () {
-                          context.go(RouteList.newPassword);
-                        }
-                      : null,
-                  text: 'Подтвердить',
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              MyTextButton(
-                onTap: () {},
-                text: 'Отправить код повторно',
-              )
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            MyTextButton(
+              onTap: () {},
+              text: 'Отправить код повторно',
+            )
+          ],
         ),
       ),
     );
