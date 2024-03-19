@@ -4,6 +4,8 @@ import 'package:buy_and_dot/feature/auth/presentation/sign_up_page.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/domain/intl/generated/l10n.dart';
+
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
 
@@ -11,8 +13,7 @@ class AuthScreen extends StatefulWidget {
   State<AuthScreen> createState() => _AuthScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen>
-    with SingleTickerProviderStateMixin {
+class _AuthScreenState extends State<AuthScreen> {
   TextTheme get theme => Theme.of(context).textTheme;
 
   @override
@@ -27,12 +28,12 @@ class _AuthScreenState extends State<AuthScreen>
             labelColor: ColorCollection.primary,
             labelStyle: theme.titleSmall,
             unselectedLabelStyle: theme.titleSmall,
-            tabs: const [
+            tabs: [
               Tab(
-                text: 'Вход',
+                text: S.of(context).logIn,
               ),
               Tab(
-                text: 'Регистрация',
+                text: S.of(context).signUp,
               ),
             ],
           ),

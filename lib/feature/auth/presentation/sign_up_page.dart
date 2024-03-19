@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/checkbox/selected_checkbox.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
@@ -72,14 +73,14 @@ class _SignUpPageState extends State<SignUpPage> {
           MyTextField(
             isSvgIcon: true,
             textEditingController: textEditingControllerPhone,
-            labelText: 'Телефон',
+            labelText: S.of(context).phone,
             assetName: SvgCollection.phone,
           ),
           const SizedBox(height: 20.0),
           MyTextField(
             isSvgIcon: true,
             textEditingController: textEditingControllerLock,
-            labelText: 'Пароль',
+            labelText: S.of(context).password,
             isPassword: true,
             assetName: SvgCollection.lock,
           ),
@@ -87,7 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
           MyTextField(
             isSvgIcon: true,
             textEditingController: textEditingControllerLockRepeat,
-            labelText: 'Повторите пароль',
+            labelText: S.of(context).repeatPassword,
             isPassword: true,
             assetName: SvgCollection.lock,
           ),
@@ -113,13 +114,13 @@ class _SignUpPageState extends State<SignUpPage> {
                           style: DefaultTextStyle.of(context).style,
                           children: <TextSpan>[
                             TextSpan(
-                                text: 'Я согласен с ',
+                                text: S.of(context).iAgreeWith,
                                 style: theme.bodyLarge!.copyWith(
                                     color: ColorCollection.onSurface)),
                             TextSpan(
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {},
-                                text: 'Правилами и условиями использования ',
+                                text: ' ${S.of(context).termsOfUse}',
                                 style: theme.bodyLarge!
                                     .copyWith(color: ColorCollection.primary)),
                           ]),
@@ -132,7 +133,7 @@ class _SignUpPageState extends State<SignUpPage> {
             valueListenable: isCorrectAuth,
             builder: (context, value, child) => MyFilledButton(
               onTap: isCorrectAuth.value ? () {} : null,
-              text: 'Зарегистрироваться',
+              text: S.of(context).toComeUp,
             ),
           ),
           const SizedBox(height: 20.0),

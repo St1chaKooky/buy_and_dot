@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
@@ -49,7 +50,7 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: Text(
-          'Восстановление пароля',
+          S.of(context).passwordRecovery,
           style: theme.titleLarge!.copyWith(color: ColorCollection.onSurface),
         ),
         onTapTitle: () => context.pop(),
@@ -62,7 +63,7 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
               height: screenHeight / 8.44,
             ),
             Text(
-              'Введите номер телефона, на который будет отправлен код для сброса пароля',
+              S.of(context).enterThePhoneTo,
               style: theme.bodyMedium!
                   .copyWith(color: ColorCollection.onSurfaceVar),
               overflow: TextOverflow.fade,
@@ -73,7 +74,7 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
             MyTextField(
               isSvgIcon: true,
               textEditingController: textEditingControllerPhone,
-              labelText: 'Телефон',
+              labelText: S.of(context).phone,
               assetName: SvgCollection.phone,
             ),
             const SizedBox(
@@ -87,7 +88,7 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
                         context.go(RouteList.enterPassword);
                       }
                     : null,
-                text: 'Отправить',
+                text: S.of(context).send,
               ),
             ),
             const SizedBox(

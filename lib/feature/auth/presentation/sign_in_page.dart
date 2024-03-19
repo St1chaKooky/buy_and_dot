@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/text_button.dart';
@@ -58,14 +59,14 @@ class _SignInPageState extends State<SignInPage> {
           MyTextField(
             isSvgIcon: true,
             textEditingController: textEditingControllerPhone,
-            labelText: 'Телефон',
+            labelText: S.of(context).phone,
             assetName: SvgCollection.phone,
           ),
           const SizedBox(height: 20.0),
           MyTextField(
             isSvgIcon: true,
             textEditingController: textEditingControllerLock,
-            labelText: 'Пароль',
+            labelText: S.of(context).password,
             isPassword: true,
             assetName: SvgCollection.lock,
           ),
@@ -74,7 +75,7 @@ class _SignInPageState extends State<SignInPage> {
             valueListenable: isCorrectAuth,
             builder: (context, value, child) => MyFilledButton(
               onTap: isCorrectAuth.value ? () {} : null,
-              text: 'Войти',
+              text: S.of(context).toComeIn,
             ),
           ),
           const SizedBox(height: 20.0),
@@ -82,7 +83,7 @@ class _SignInPageState extends State<SignInPage> {
             onTap: () {
               context.go(RouteList.forgotPassword);
             },
-            text: 'Забыли пароль?',
+            text: S.of(context).forgotPassword,
           )
         ],
       ),

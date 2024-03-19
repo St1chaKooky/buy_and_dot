@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
@@ -54,7 +55,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
       appBar: CustomAppBar(
         title: Align(
             alignment: Alignment.centerLeft,
-            child: Text('Новый пароль',
+            child: Text(S.of(context).newPassword,
                 style: theme.titleLarge!
                     .copyWith(color: ColorCollection.onSurface))),
         onTapTitle: () => context.pop(),
@@ -62,12 +63,13 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: screenHeight / 8.44,
             ),
             Text(
-              'Задайте новый пароль и подтвердите его для завершения сброса.',
+              S.of(context).setANewPassword,
               style: theme.bodyMedium!
                   .copyWith(color: ColorCollection.onSurfaceVar),
               overflow: TextOverflow.fade,
@@ -79,7 +81,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               isPassword: true,
               isSvgIcon: true,
               textEditingController: textEditingControllerPassword,
-              labelText: 'Пароль',
+              labelText: S.of(context).password,
               assetName: SvgCollection.phone,
             ),
             const SizedBox(
@@ -89,7 +91,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               isPassword: true,
               isSvgIcon: true,
               textEditingController: textEditingControllerNewPassword,
-              labelText: 'Новый пароль',
+              labelText: S.of(context).newPassword,
               assetName: SvgCollection.phone,
             ),
             const SizedBox(
@@ -103,7 +105,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                         context.go(RouteList.auth);
                       }
                     : null,
-                text: 'Сохранить новый пароль',
+                text: S.of(context).saveNewPassword,
               ),
             ),
             const SizedBox(
