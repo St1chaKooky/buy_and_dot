@@ -2,15 +2,14 @@ import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manage
 import 'package:flutter/material.dart';
 
 class MyFilledButton extends StatelessWidget {
-  final bool isActive;
-  final void Function() onTap;
+  final void Function()? onTap;
   final String text;
 
-  const MyFilledButton(
-      {super.key,
-      required this.onTap,
-      required this.text,
-      required this.isActive});
+  const MyFilledButton({
+    super.key,
+    required this.onTap,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +22,20 @@ class MyFilledButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(100.0),
               ),
               elevation: 0.0,
-              foregroundColor: isActive
-                  ? ColorCollection.onPrimary
-                  : ColorCollection.onSurface.withOpacity(0.4),
-              backgroundColor: isActive
-                  ? ColorCollection.primary
-                  : ColorCollection.onSurface.withOpacity(0.12),
+              disabledBackgroundColor:
+                  ColorCollection.onSurface.withOpacity(0.12),
+              backgroundColor: ColorCollection.primary,
             ),
-            onPressed: () {},
+            onPressed: onTap,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 18),
               child: Text(
                 text,
+                style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: onTap != null
+                          ? ColorCollection.onPrimary
+                          : ColorCollection.onSurface.withOpacity(0.38),
+                    ),
               ),
             )));
   }

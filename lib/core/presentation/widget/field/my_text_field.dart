@@ -1,5 +1,5 @@
-import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon_png.dart';
-import 'package:buy_and_dot/core/presentation/widget/icon/custom_icon_svg.dart';
+import 'package:buy_and_dot/core/presentation/widget/icon/png_custom_icon.dart';
+import 'package:buy_and_dot/core/presentation/widget/icon/svg_custom_icon.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +23,12 @@ class MyTextField extends StatefulWidget {
 }
 
 class _MyTextFieldState extends State<MyTextField> {
+  TextTheme get theme => Theme.of(context).textTheme;
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: theme.bodyLarge,
       obscureText: widget.isPassword ? _obscureText : false,
       controller: widget.textEditingController,
       decoration: InputDecoration(
@@ -63,6 +65,9 @@ class _MyTextFieldState extends State<MyTextField> {
                 width: 1), // Убираем границу, оставляя только закругления
           ),
           labelText: widget.labelText,
+          labelStyle: Theme.of(context).textTheme.bodyLarge,
+          floatingLabelStyle:
+              theme.bodyLarge!.copyWith(color: ColorCollection.primary),
           contentPadding:
               const EdgeInsets.only(left: 48, top: 16, bottom: 16, right: 16),
           prefixIcon: Padding(

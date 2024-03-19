@@ -52,4 +52,5 @@ class ColorCollection {
   static const inversePrimary = OtherColor.inversePrimary;
   static const scrim = OtherColor.scrim;
   static const shadow = OtherColor.shadow;
+  static const black = OtherColor.black;
 }

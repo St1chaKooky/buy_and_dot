@@ -25,11 +25,16 @@ class MyTextButton extends StatelessWidget {
                 ),
                 elevation: 0.0,
                 foregroundColor: ColorCollection.primary),
-            onPressed: () {},
+            onPressed: onTap,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: verticalPadding),
               child: Text(
                 text,
+                style: const TextStyle(
+                  fontFamily: 'Roboto-Medium',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                ),
               ),
             )));
   }
