@@ -1,5 +1,6 @@
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
+import 'package:buy_and_dot/core/presentation/components/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
@@ -53,6 +54,14 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
+        onTapAction: () {
+          showModalBottomSheet(
+              backgroundColor: ColorCollection.surfaceContainerLow,
+              showDragHandle: true,
+              enableDrag: false,
+              context: context,
+              builder: (context) => const CustomBottomSheet());
+        },
         title: Align(
             alignment: Alignment.centerLeft,
             child: Text(S.of(context).newPassword,

@@ -1,5 +1,6 @@
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
+import 'package:buy_and_dot/core/presentation/components/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/text_button.dart';
@@ -49,6 +50,14 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
+        onTapAction: () {
+          showModalBottomSheet(
+              backgroundColor: ColorCollection.surfaceContainerLow,
+              showDragHandle: true,
+              enableDrag: false,
+              context: context,
+              builder: (context) => const CustomBottomSheet());
+        },
         onTapLeading: () => context.pop(),
         leading: null,
         title: Align(
