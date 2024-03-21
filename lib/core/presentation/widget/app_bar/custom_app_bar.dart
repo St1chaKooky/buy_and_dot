@@ -6,12 +6,12 @@ class CustomAppBar extends AppBar {
   final Widget? title;
   final Widget? leading;
   final void Function()? onTapAction;
-  final void Function()? onTapTitle;
+  final void Function()? onTapLeading;
   final PreferredSizeWidget? bottom;
 
   CustomAppBar({
     super.key,
-    this.onTapTitle,
+    this.onTapLeading,
     this.onTapAction,
     this.title,
     this.leading,
@@ -26,7 +26,7 @@ class CustomAppBar extends AppBar {
                     child: MyStandardIconButton(
                       iconFromCollection: SvgCollection.arrow_back,
                       onTap: () {
-                        onTapTitle;
+                        onTapLeading;
                       },
                       isSvgIcon: true,
                     )),
@@ -36,9 +36,7 @@ class CustomAppBar extends AppBar {
                       const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                   child: MyStandardIconButton(
                     iconFromCollection: SvgCollection.trailing,
-                    onTap: () {
-                      onTapAction;
-                    },
+                    onTap: onTapAction ?? () {},
                     isSvgIcon: true,
                   )),
             ]);

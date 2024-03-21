@@ -21,5 +21,37 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
+        "enterACode": MessageLookupByLibrary.simpleMessage("Введите код"),
+        "enterTheCodeSentTo": MessageLookupByLibrary.simpleMessage(
+            "Введите код, отправленный на"),
+        "enterThePhoneTo": MessageLookupByLibrary.simpleMessage(
+            "Введите почту, на которую будет отправлен код для сброса пароля"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
+        "iAgreeWith": MessageLookupByLibrary.simpleMessage("Я согласен с"),
+        "logIn": MessageLookupByLibrary.simpleMessage("Вход"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("Новый пароль"),
+        "password": MessageLookupByLibrary.simpleMessage("Пароль"),
+        "passwordRecovery":
+            MessageLookupByLibrary.simpleMessage("Восстановление пароля"),
+        "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
+        "ready": MessageLookupByLibrary.simpleMessage("Готово"),
+        "repeatPassword":
+            MessageLookupByLibrary.simpleMessage("Повторите пароль"),
+        "resendCode":
+            MessageLookupByLibrary.simpleMessage("Отправить код повторно"),
+        "saveNewPassword":
+            MessageLookupByLibrary.simpleMessage("Сохранить новый пароль"),
+        "send": MessageLookupByLibrary.simpleMessage("Отправить"),
+        "setANewPassword": MessageLookupByLibrary.simpleMessage(
+            "Задайте новый пароль и подтвердите его для завершения сброса."),
+        "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Регистрация"),
+        "termsOfUse": MessageLookupByLibrary.simpleMessage(
+            "Правилами и условиями использования"),
+        "toComeIn": MessageLookupByLibrary.simpleMessage("Войти"),
+        "toComeUp": MessageLookupByLibrary.simpleMessage("Зарегистрироваться")
+      };
 }

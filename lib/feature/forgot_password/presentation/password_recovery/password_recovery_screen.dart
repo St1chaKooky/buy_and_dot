@@ -53,7 +53,8 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
           S.of(context).passwordRecovery,
           style: theme.titleLarge!.copyWith(color: ColorCollection.onSurface),
         ),
-        onTapTitle: () => context.pop(),
+        onTapLeading: () => context.pop(),
+        onTapAction: () {},
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),

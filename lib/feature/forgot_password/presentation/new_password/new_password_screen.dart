@@ -58,7 +58,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
             child: Text(S.of(context).newPassword,
                 style: theme.titleLarge!
                     .copyWith(color: ColorCollection.onSurface))),
-        onTapTitle: () => context.pop(),
+        onTapLeading: () => context.pop(),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),

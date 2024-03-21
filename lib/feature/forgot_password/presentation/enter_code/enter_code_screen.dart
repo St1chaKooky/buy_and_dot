@@ -49,7 +49,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        onTapTitle: () => context.pop(),
+        onTapLeading: () => context.pop(),
         leading: null,
         title: Align(
             alignment: Alignment.centerLeft,

@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordRecovery":
             MessageLookupByLibrary.simpleMessage("Password recovery"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "ready": MessageLookupByLibrary.simpleMessage("Ready"),
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat password"),
         "resendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
@@ -45,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "setANewPassword": MessageLookupByLibrary.simpleMessage(
             "Set a new password and confirm it to complete the reset."),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "signUp": MessageLookupByLibrary.simpleMessage("Signup"),
         "termsOfUse":
             MessageLookupByLibrary.simpleMessage("Terms and Conditions of Use"),
