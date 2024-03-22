@@ -19,6 +19,7 @@
     "newPassword":"New Password",
     "setANewPassword":"Set a new password and confirm it to complete the reset.",
     "saveNewPassword": "Save new password",
-    "ready" : "Ready",
-    "settings" : "Settings"
+    "done" : "Done",
+    "settings" : "Settings",
+    "darkTheme" : "Dark theme"
 }

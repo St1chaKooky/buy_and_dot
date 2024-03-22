@@ -3,10 +3,13 @@ import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends AppBar {
+  @override
   final Widget? title;
+  @override
   final Widget? leading;
   final void Function()? onTapAction;
   final void Function()? onTapLeading;
+  @override
   final PreferredSizeWidget? bottom;
 
   CustomAppBar({

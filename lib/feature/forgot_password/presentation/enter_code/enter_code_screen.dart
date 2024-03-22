@@ -1,9 +1,9 @@
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
-import 'package:buy_and_dot/core/presentation/components/custom_bottom_sheet.dart';
+import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
-import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
-import 'package:buy_and_dot/core/presentation/widget/button/text_button.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/my_text_button.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/themes/themePininput.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +59,6 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
               builder: (context) => const CustomBottomSheet());
         },
         onTapLeading: () => context.pop(),
-        leading: null,
         title: Align(
             alignment: Alignment.centerLeft,
             child: Text(S.of(context).enterACode)),
@@ -86,9 +85,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
               child: Pinput(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 controller: textEditingControllerCode,
-                onSubmitted: (pin) {
-                  print(pin);
-                },
+                onSubmitted: (pin) {},
                 length: 4,
                 defaultPinTheme: pinTheme,
                 focusedPinTheme: pinTheme.copyWith(

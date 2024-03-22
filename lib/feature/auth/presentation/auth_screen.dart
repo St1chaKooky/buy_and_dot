@@ -1,4 +1,4 @@
-import 'package:buy_and_dot/core/presentation/components/custom_bottom_sheet.dart';
+import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 
 import 'package:buy_and_dot/feature/auth/presentation/sign_in_page.dart';

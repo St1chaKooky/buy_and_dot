@@ -250,11 +250,11 @@ class S {
     );
   }
 
-  /// `Ready`
-  String get ready {
+  /// `Done`
+  String get done {
     return Intl.message(
-      'Ready',
-      name: 'ready',
+      'Done',
+      name: 'done',
       desc: '',
       args: [],
     );
@@ -265,6 +265,16 @@ class S {
     return Intl.message(
       'Settings',
       name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark theme`
+  String get darkTheme {
+    return Intl.message(
+      'Dark theme',
+      name: 'darkTheme',
       desc: '',
       args: [],
     );

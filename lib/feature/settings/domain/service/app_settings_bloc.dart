@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:buy_and_dot/core/domain/app_settings_localization/app_locale.dart';
+import 'package:buy_and_dot/feature/settings/domain/entity/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 

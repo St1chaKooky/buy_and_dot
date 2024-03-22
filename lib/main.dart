@@ -1,4 +1,4 @@
-import 'package:buy_and_dot/core/domain/app_settings_localization/app_settings_bloc.dart';
+import 'package:buy_and_dot/feature/settings/domain/service/app_settings_bloc.dart';
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/theme/themes/themeData.dart';
