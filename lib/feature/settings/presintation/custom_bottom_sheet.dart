@@ -15,6 +15,7 @@ class CustomBottomSheet extends StatefulWidget {
 }
 
 class _CustomBottomSheetState extends State<CustomBottomSheet> {
+  //Был вариант сделать стейтлес виджетом, и прокидывать сюда блок, но это придется на каждом экране инициализировать AppSettingsBloc, где это не нужно. Не знаю как лучше.
   double get screenHeight => MediaQuery.of(context).size.height;
   double get screenWidth => MediaQuery.of(context).size.width;
   TextTheme get theme => Theme.of(context).textTheme;
