@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/container/app_container.dart';
 import 'package:buy_and_dot/feature/auth/presentation/auth_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/enter_code/enter_code_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/new_password/new_password_screen.dart';
@@ -32,19 +33,30 @@ final router = GoRouter(
     ),
     GoRoute(
         path: RouteList._authPath,
-        builder: (context, state) => const AuthScreen(),
+        builder: (context, state) => AuthScreen(
+              authRepo: AppContainer().repositoryScope.authRepository,
+            ),
         routes: [
           GoRoute(
               path: RouteList._forgotPasswordPath,
-              builder: (context, state) => const PasswordRecoveryScreen(),
+              builder: (context, state) => PasswordRecoveryScreen(
+                    forgotPasswordRepo:
+                        AppContainer().repositoryScope.forgotPasswordRepo,
+                  ),
               routes: [
                 GoRoute(
                     path: RouteList._enterPasswordPath,
-                    builder: (context, state) => const EnterCodeScreen(),
+                    builder: (context, state) => EnterCodeScreen(
+                          forgotPasswordRepo:
+                              AppContainer().repositoryScope.forgotPasswordRepo,
+                        ),
                     routes: [
                       GoRoute(
                         path: RouteList._newPasswordPath,
-                        builder: (context, state) => const NewPasswordScreen(),
+                        builder: (context, state) => NewPasswordScreen(
+                          forgotPasswordRepo:
+                              AppContainer().repositoryScope.forgotPasswordRepo,
+                        ),
                       ),
                     ]),
               ]),

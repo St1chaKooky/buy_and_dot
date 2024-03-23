@@ -1,5 +1,10 @@
+import 'dart:developer';
+
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
+import 'package:buy_and_dot/core/domain/use_case_result/use_case_result.dart';
+import 'package:buy_and_dot/feature/forgot_password/domain/entity/forgot_password_credentails.dart';
+import 'package:buy_and_dot/feature/forgot_password/domain/repo/forgot_password_repo.dart';
 import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
@@ -11,7 +16,9 @@ import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 
 class EnterCodeScreen extends StatefulWidget {
-  const EnterCodeScreen({super.key});
+  final ForgotPasswordRepo forgotPasswordRepo;
+
+  const EnterCodeScreen({super.key, required this.forgotPasswordRepo});
 
   @override
   State<EnterCodeScreen> createState() => _EnterCodeScreenState();
@@ -44,6 +51,22 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
     }
     isCorrectPhoneNumber.value = true;
     return;
+  }
+
+  Future<void> sendCode() async {
+    final result = await widget.forgotPasswordRepo
+        .sendCode(textEditingControllerCode.text);
+
+    switch (result) {
+      case GoodUseCaseResult<ForgotPasswordCredentials>(:final data):
+        log(data.jvtToken);
+        break;
+      case BadUseCaseResult<ForgotPasswordCredentials>(:final errorList):
+        for (final error in errorList) {
+          log(error.code);
+        }
+        break;
+    }
   }
 
   @override
@@ -101,7 +124,8 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
               valueListenable: isCorrectPhoneNumber,
               builder: (context, value, child) => MyFilledButton(
                 onTap: isCorrectPhoneNumber.value
-                    ? () {
+                    ? () async {
+                        await sendCode();
                         context.go(RouteList.newPassword);
                       }
                     : null,

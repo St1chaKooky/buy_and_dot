@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/container/app_container.dart';
 import 'package:buy_and_dot/feature/settings/domain/service/app_settings_bloc.dart';
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
+  AppContainer.init();
   runApp(MyApp(
     appSettingsBloc: AppSettingsBloc(const AppSettingsState(locale: 0)),
   ));

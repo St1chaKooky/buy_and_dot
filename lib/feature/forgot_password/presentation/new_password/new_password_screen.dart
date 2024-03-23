@@ -1,5 +1,10 @@
+import 'dart:developer';
+
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
+import 'package:buy_and_dot/core/domain/use_case_result/use_case_result.dart';
+import 'package:buy_and_dot/feature/forgot_password/domain/entity/forgot_password_credentails.dart';
+import 'package:buy_and_dot/feature/forgot_password/domain/repo/forgot_password_repo.dart';
 import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
@@ -10,7 +15,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class NewPasswordScreen extends StatefulWidget {
-  const NewPasswordScreen({super.key});
+  final ForgotPasswordRepo forgotPasswordRepo;
+
+  const NewPasswordScreen({super.key, required this.forgotPasswordRepo});
 
   @override
   State<NewPasswordScreen> createState() => _NewPasswordScreenState();
@@ -48,6 +55,23 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
     }
     isCorrectPassword.value = true;
     return;
+  }
+
+  Future<void> checkNewPassword() async {
+    final result = await widget.forgotPasswordRepo.checkNewPassword(
+        password: textEditingControllerPassword.text,
+        newPassword: textEditingControllerNewPassword.text);
+
+    switch (result) {
+      case GoodUseCaseResult<ForgotPasswordCredentials>(:final data):
+        log(data.jvtToken);
+        break;
+      case BadUseCaseResult<ForgotPasswordCredentials>(:final errorList):
+        for (final error in errorList) {
+          log(error.code);
+        }
+        break;
+    }
   }
 
   @override
@@ -110,7 +134,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               valueListenable: isCorrectPassword,
               builder: (context, value, child) => MyFilledButton(
                 onTap: isCorrectPassword.value
-                    ? () {
+                    ? () async {
+                        await checkNewPassword();
                         context.go(RouteList.auth);
                       }
                     : null,

@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/feature/auth/domain/repo/auth_repo.dart';
 import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 
@@ -9,7 +10,8 @@ import 'package:flutter/material.dart';
 import '../../../core/domain/intl/generated/l10n.dart';
 
 class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+  final AuthRepo authRepo;
+  const AuthScreen({super.key, required this.authRepo});
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -50,10 +52,14 @@ class _AuthScreenState extends State<AuthScreen> {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            SignInPage(),
-            SignUpPage(),
+            SignInPage(
+              authRepo: widget.authRepo,
+            ),
+            SignUpPage(
+              authRepo: widget.authRepo,
+            ),
           ],
         ),
       ),

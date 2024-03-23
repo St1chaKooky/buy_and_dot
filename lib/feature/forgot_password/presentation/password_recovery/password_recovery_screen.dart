@@ -1,16 +1,23 @@
+import 'dart:developer';
+
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
+import 'package:buy_and_dot/core/domain/use_case_result/use_case_result.dart';
+import 'package:buy_and_dot/feature/forgot_password/domain/entity/forgot_password_credentails.dart';
+import 'package:buy_and_dot/feature/forgot_password/domain/repo/forgot_password_repo.dart';
 import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class PasswordRecoveryScreen extends StatefulWidget {
-  const PasswordRecoveryScreen({super.key});
+  final ForgotPasswordRepo forgotPasswordRepo;
+  const PasswordRecoveryScreen({super.key, required this.forgotPasswordRepo});
 
   @override
   State<PasswordRecoveryScreen> createState() => _PasswordRecoveryScreenState();
@@ -44,6 +51,23 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
     }
     isCorrectPhoneNumber.value = true;
     return;
+  }
+
+  Future<void> sendPhoneNumber() async {
+    final result = await widget.forgotPasswordRepo.sendPhoneNumber(
+      textEditingControllerPhone.text,
+    );
+
+    switch (result) {
+      case GoodUseCaseResult<ForgotPasswordCredentials>(:final data):
+        log(data.jvtToken);
+        break;
+      case BadUseCaseResult<ForgotPasswordCredentials>(:final errorList):
+        for (final error in errorList) {
+          log(error.code);
+        }
+        break;
+    }
   }
 
   @override
@@ -93,7 +117,8 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
               valueListenable: isCorrectPhoneNumber,
               builder: (context, value, child) => MyFilledButton(
                 onTap: isCorrectPhoneNumber.value
-                    ? () {
+                    ? () async {
+                        await sendPhoneNumber();
                         context.go(RouteList.enterPassword);
                       }
                     : null,
