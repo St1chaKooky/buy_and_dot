@@ -14,9 +14,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class SignUpPage extends StatefulWidget {
-  final AuthRepo authRepo;
+  final AuthRepo _authRepo;
 
-  const SignUpPage({super.key, required this.authRepo});
+  const SignUpPage({super.key, required AuthRepo authRepo})
+      : _authRepo = authRepo;
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -69,7 +70,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Future<void> signUp() async {
-    final result = await widget.authRepo.signUp(
+    final result = await widget._authRepo.signUp(
       phone: textEditingControllerPhone.text,
       password: textEditingControllerLock.text,
     );

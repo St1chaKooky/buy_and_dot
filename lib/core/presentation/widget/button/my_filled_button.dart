@@ -18,7 +18,16 @@ class MyFilledButton extends StatefulWidget {
 }
 
 class _MyFilledButtonState extends State<MyFilledButton> {
+  double? _childHeight;
+
+  final _childBoxKey = GlobalKey();
   bool _isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) => setState(
+        () => _childHeight = _childBoxKey.currentContext?.size?.height));
+  }
 
   Future<void> onTap() async {
     if (_isLoading) return;
@@ -37,6 +46,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
         width: double.infinity,
         child: FilledButton(
             style: FilledButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 18),
               shadowColor: Colors.amber.withOpacity(0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100.0),
@@ -47,8 +57,9 @@ class _MyFilledButtonState extends State<MyFilledButton> {
               backgroundColor: ColorCollection.primary,
             ),
             onPressed: widget.onTap != null ? onTap : null,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18),
+            child: SizedBox(
+              key: _childBoxKey,
+              height: _childHeight,
               child: !_isLoading
                   ? Text(
                       widget.text,
@@ -58,9 +69,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
                                 : ColorCollection.onSurface.withOpacity(0.38),
                           ),
                     )
-                  : SizedBox(
-                      height: 24,
-                      width: 24,
+                  : const FittedBox(
                       child: CircularProgressIndicator(
                         color: ColorCollection.onPrimary,
                         strokeWidth: 2,

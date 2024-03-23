@@ -16,9 +16,10 @@ import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 
 class EnterCodeScreen extends StatefulWidget {
-  final ForgotPasswordRepo forgotPasswordRepo;
+  final ForgotPasswordRepo _forgotPasswordRepo;
 
-  const EnterCodeScreen({super.key, required this.forgotPasswordRepo});
+  EnterCodeScreen({required ForgotPasswordRepo forgotPasswordRepo})
+      : _forgotPasswordRepo = forgotPasswordRepo;
 
   @override
   State<EnterCodeScreen> createState() => _EnterCodeScreenState();
@@ -54,7 +55,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
   }
 
   Future<void> sendCode() async {
-    final result = await widget.forgotPasswordRepo
+    final result = await widget._forgotPasswordRepo
         .sendCode(textEditingControllerCode.text);
 
     switch (result) {

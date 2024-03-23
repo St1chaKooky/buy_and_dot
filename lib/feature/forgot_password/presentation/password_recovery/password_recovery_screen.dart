@@ -16,8 +16,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class PasswordRecoveryScreen extends StatefulWidget {
-  final ForgotPasswordRepo forgotPasswordRepo;
-  const PasswordRecoveryScreen({super.key, required this.forgotPasswordRepo});
+  final ForgotPasswordRepo _forgotPasswordRepo;
+  const PasswordRecoveryScreen(
+      {super.key, required ForgotPasswordRepo forgotPasswordRepo})
+      : _forgotPasswordRepo = forgotPasswordRepo;
 
   @override
   State<PasswordRecoveryScreen> createState() => _PasswordRecoveryScreenState();
@@ -54,7 +56,7 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
   }
 
   Future<void> sendPhoneNumber() async {
-    final result = await widget.forgotPasswordRepo.sendPhoneNumber(
+    final result = await widget._forgotPasswordRepo.sendPhoneNumber(
       textEditingControllerPhone.text,
     );
 

@@ -13,9 +13,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SignInPage extends StatefulWidget {
-  final AuthRepo authRepo;
+  final AuthRepo _authRepo;
 
-  const SignInPage({super.key, required this.authRepo});
+  const SignInPage({super.key, required AuthRepo authRepo})
+      : _authRepo = authRepo;
 
   @override
   State<SignInPage> createState() => _SignInPageState();
@@ -55,7 +56,7 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Future<void> signIn() async {
-    final result = await widget.authRepo.signIn(
+    final result = await widget._authRepo.signIn(
       phone: textEditingControllerPhone.text,
       password: textEditingControllerLock.text,
     );
