@@ -29,6 +29,10 @@ class _MyFilledButtonState extends State<MyFilledButton> {
         () => _childHeight = _childBoxKey.currentContext?.size?.height));
   }
 
+  double? _childHeight;
+
+  final _childBoxKey = GlobalKey();
+
   Future<void> onTap() async {
     if (_isLoading) return;
     try {
@@ -38,6 +42,13 @@ class _MyFilledButtonState extends State<MyFilledButton> {
     } finally {
       setState(() => _isLoading = false);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) => setState(
+        () => _childHeight = _childBoxKey.currentContext?.size?.height));
   }
 
   @override
@@ -72,7 +83,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
                   : const FittedBox(
                       child: CircularProgressIndicator(
                         color: ColorCollection.onPrimary,
-                        strokeWidth: 2,
+                        strokeWidth: 4,
                       ),
                     ),
             )));
