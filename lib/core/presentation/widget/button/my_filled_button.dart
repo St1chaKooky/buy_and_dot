@@ -1,8 +1,10 @@
+import 'dart:async';
+
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
-class MyFilledButton extends StatelessWidget {
-  final void Function()? onTap;
+class MyFilledButton extends StatefulWidget {
+  final FutureOr<void> Function()? onTap;
   final String text;
 
   const MyFilledButton({
@@ -12,11 +14,39 @@ class MyFilledButton extends StatelessWidget {
   });
 
   @override
+  State<MyFilledButton> createState() => _MyFilledButtonState();
+}
+
+class _MyFilledButtonState extends State<MyFilledButton> {
+  double? _childHeight;
+
+  final _childBoxKey = GlobalKey();
+  bool _isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) => setState(
+        () => _childHeight = _childBoxKey.currentContext?.size?.height));
+  }
+
+  Future<void> onTap() async {
+    if (_isLoading) return;
+    try {
+      setState(() => _isLoading = true);
+
+      await widget.onTap?.call();
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
         width: double.infinity,
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
+        child: FilledButton(
+            style: FilledButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 18),
               shadowColor: Colors.amber.withOpacity(0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100.0),
@@ -26,17 +56,25 @@ class MyFilledButton extends StatelessWidget {
                   ColorCollection.onSurface.withOpacity(0.12),
               backgroundColor: ColorCollection.primary,
             ),
-            onPressed: onTap,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18),
-              child: Text(
-                text,
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                      color: onTap != null
-                          ? ColorCollection.onPrimary
-                          : ColorCollection.onSurface.withOpacity(0.38),
+            onPressed: widget.onTap != null ? onTap : null,
+            child: SizedBox(
+              key: _childBoxKey,
+              height: _childHeight,
+              child: !_isLoading
+                  ? Text(
+                      widget.text,
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            color: widget.onTap != null
+                                ? ColorCollection.onPrimary
+                                : ColorCollection.onSurface.withOpacity(0.38),
+                          ),
+                    )
+                  : const FittedBox(
+                      child: CircularProgressIndicator(
+                        color: ColorCollection.onPrimary,
+                        strokeWidth: 4,
+                      ),
                     ),
-              ),
             )));
   }
 }

@@ -1,21 +1,29 @@
+import 'dart:developer';
+
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
+import 'package:buy_and_dot/core/domain/use_case_result/use_case_result.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/checkbox/selected_checkbox.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
+import 'package:buy_and_dot/feature/auth/domain/entity/auth_credentails.dart';
+import 'package:buy_and_dot/feature/auth/domain/repo/auth_repo.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignUpTab extends StatefulWidget {
+  final AuthRepo _authRepo;
+
+  const SignUpTab({super.key, required AuthRepo authRepo})
+      : _authRepo = authRepo;
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignUpTab> createState() => _SignUpTabState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpTabState extends State<SignUpTab> {
   double get screenHeight => MediaQuery.of(context).size.height;
   TextTheme get theme => Theme.of(context).textTheme;
 
@@ -59,6 +67,24 @@ class _SignUpPageState extends State<SignUpPage> {
     }
     isCorrectAuth.value = true;
     return;
+  }
+
+  Future<void> signUp() async {
+    final result = await widget._authRepo.signUp(
+      phone: textEditingControllerPhone.text,
+      password: textEditingControllerLock.text,
+    );
+
+    switch (result) {
+      case GoodUseCaseResult<AuthCredentials>(:final data):
+        log(data.jvtToken);
+        break;
+      case BadUseCaseResult<AuthCredentials>(:final errorList):
+        for (final error in errorList) {
+          log(error.code);
+        }
+        break;
+    }
   }
 
   @override
@@ -132,7 +158,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ValueListenableBuilder(
             valueListenable: isCorrectAuth,
             builder: (context, value, child) => MyFilledButton(
-              onTap: isCorrectAuth.value ? () {} : null,
+              onTap: isCorrectAuth.value ? signUp : null,
               text: S.of(context).toComeUp,
             ),
           ),

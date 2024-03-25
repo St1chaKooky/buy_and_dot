@@ -20,8 +20,9 @@ class MyTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         width: maxWidth ? double.infinity : null,
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
+        child: TextButton(
+            style: TextButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: verticalPadding),
                 shadowColor: Colors.amber.withOpacity(0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(100.0),
@@ -30,15 +31,12 @@ class MyTextButton extends StatelessWidget {
                 backgroundColor: Colors.amber.withOpacity(0),
                 foregroundColor: ColorCollection.primary),
             onPressed: onTap,
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: verticalPadding),
-              child: Text(
-                text,
-                style: const TextStyle(
-                  fontFamily: 'Roboto-Medium',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                ),
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontFamily: 'Roboto-Medium',
+                fontWeight: FontWeight.w500,
+                fontSize: 14,
               ),
             )));
   }
