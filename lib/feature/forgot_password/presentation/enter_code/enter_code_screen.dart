@@ -1,7 +1,9 @@
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
+import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
-import 'package:buy_and_dot/core/presentation/widget/button/filled_button.dart';
-import 'package:buy_and_dot/core/presentation/widget/button/text_button.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
+import 'package:buy_and_dot/core/presentation/widget/button/my_text_button.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/themes/themePininput.dart';
 import 'package:flutter/material.dart';
@@ -48,10 +50,18 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        onTapTitle: () => context.pop(),
-        leading: null,
-        title: const Align(
-            alignment: Alignment.centerLeft, child: Text('Введите код')),
+        onTapAction: () {
+          showModalBottomSheet(
+              backgroundColor: ColorCollection.surfaceContainerLow,
+              showDragHandle: true,
+              enableDrag: false,
+              context: context,
+              builder: (context) => const CustomBottomSheet());
+        },
+        onTapLeading: () => context.pop(),
+        title: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(S.of(context).enterACode)),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -62,7 +72,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
               height: screenHeight / 8.44,
             ),
             Text(
-              'Введите код, отправленный на +373 777 88 999',
+              '${S.of(context).enterTheCodeSentTo} +373 777 88 999',
               style: theme.bodyMedium!
                   .copyWith(color: ColorCollection.onSurfaceVar),
               overflow: TextOverflow.fade,
@@ -75,9 +85,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
               child: Pinput(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 controller: textEditingControllerCode,
-                onSubmitted: (pin) {
-                  print(pin);
-                },
+                onSubmitted: (pin) {},
                 length: 4,
                 defaultPinTheme: pinTheme,
                 focusedPinTheme: pinTheme.copyWith(
@@ -97,7 +105,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
                         context.go(RouteList.newPassword);
                       }
                     : null,
-                text: 'Подтвердить',
+                text: S.of(context).confirm,
               ),
             ),
             const SizedBox(
@@ -105,7 +113,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
             ),
             MyTextButton(
               onTap: () {},
-              text: 'Отправить код повторно',
+              text: S.of(context).resendCode,
             )
           ],
         ),

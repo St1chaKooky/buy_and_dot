@@ -3,15 +3,18 @@ import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends AppBar {
+  @override
   final Widget? title;
+  @override
   final Widget? leading;
   final void Function()? onTapAction;
-  final void Function()? onTapTitle;
+  final void Function()? onTapLeading;
+  @override
   final PreferredSizeWidget? bottom;
 
   CustomAppBar({
     super.key,
-    this.onTapTitle,
+    this.onTapLeading,
     this.onTapAction,
     this.title,
     this.leading,
@@ -26,7 +29,7 @@ class CustomAppBar extends AppBar {
                     child: MyStandardIconButton(
                       iconFromCollection: SvgCollection.arrow_back,
                       onTap: () {
-                        onTapTitle;
+                        onTapLeading;
                       },
                       isSvgIcon: true,
                     )),
@@ -36,9 +39,7 @@ class CustomAppBar extends AppBar {
                       const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                   child: MyStandardIconButton(
                     iconFromCollection: SvgCollection.trailing,
-                    onTap: () {
-                      onTapAction;
-                    },
+                    onTap: onTapAction ?? () {},
                     isSvgIcon: true,
                   )),
             ]);
