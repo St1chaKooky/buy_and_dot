@@ -10,8 +10,9 @@ import 'package:flutter/material.dart';
 import '../../../core/domain/intl/generated/l10n.dart';
 
 class AuthScreen extends StatefulWidget {
-  final AuthRepo authRepo;
-  const AuthScreen({super.key, required this.authRepo});
+  final AuthRepo _authRepo;
+  const AuthScreen({super.key, required AuthRepo authRepo})
+      : _authRepo = authRepo;
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -54,11 +55,11 @@ class _AuthScreenState extends State<AuthScreen> {
         ),
         body: TabBarView(
           children: [
-            SignInPage(
-              authRepo: widget.authRepo,
+            SignInTab(
+              authRepo: widget._authRepo,
             ),
-            SignUpPage(
-              authRepo: widget.authRepo,
+            SignUpTab(
+              authRepo: widget._authRepo,
             ),
           ],
         ),

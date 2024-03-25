@@ -12,17 +12,17 @@ import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SignInPage extends StatefulWidget {
+class SignInTab extends StatefulWidget {
   final AuthRepo _authRepo;
 
-  const SignInPage({super.key, required AuthRepo authRepo})
+  const SignInTab({super.key, required AuthRepo authRepo})
       : _authRepo = authRepo;
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<SignInTab> createState() => _SignInTabState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignInTabState extends State<SignInTab> {
   double get screenHeight => MediaQuery.of(context).size.height;
   final TextEditingController textEditingControllerPhone =
       TextEditingController();

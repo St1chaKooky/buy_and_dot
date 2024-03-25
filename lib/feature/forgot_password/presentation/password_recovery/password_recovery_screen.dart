@@ -121,6 +121,7 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
                 onTap: isCorrectPhoneNumber.value
                     ? () async {
                         await sendPhoneNumber();
+                        // ignore: use_build_context_synchronously
                         context.go(RouteList.enterPassword);
                       }
                     : null,

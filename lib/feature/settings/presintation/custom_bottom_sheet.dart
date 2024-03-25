@@ -51,7 +51,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                 theme.titleLarge!.copyWith(color: ColorCollection.onSurfaceVar),
           ),
           BottomSheetTextButton(
-            textName: S.of(context).done,
+            text: S.of(context).done,
           ),
         ],
       );

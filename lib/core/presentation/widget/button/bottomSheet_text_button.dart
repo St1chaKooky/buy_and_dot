@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BottomSheetTextButton extends StatelessWidget {
-  final String textName;
-  const BottomSheetTextButton({super.key, required this.textName});
+  final String text;
+  const BottomSheetTextButton({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: context.pop,
       child: Text(
-        textName,
+        text,
         style: Theme.of(context).textTheme.labelLarge?.copyWith(
               color: ColorCollection.primary,
             ),

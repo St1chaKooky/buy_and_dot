@@ -13,17 +13,17 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class SignUpPage extends StatefulWidget {
+class SignUpTab extends StatefulWidget {
   final AuthRepo _authRepo;
 
-  const SignUpPage({super.key, required AuthRepo authRepo})
+  const SignUpTab({super.key, required AuthRepo authRepo})
       : _authRepo = authRepo;
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignUpTab> createState() => _SignUpTabState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpTabState extends State<SignUpTab> {
   double get screenHeight => MediaQuery.of(context).size.height;
   TextTheme get theme => Theme.of(context).textTheme;
 

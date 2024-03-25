@@ -18,7 +18,7 @@ import 'package:pinput/pinput.dart';
 class EnterCodeScreen extends StatefulWidget {
   final ForgotPasswordRepo _forgotPasswordRepo;
 
-  EnterCodeScreen({required ForgotPasswordRepo forgotPasswordRepo})
+  const EnterCodeScreen({required ForgotPasswordRepo forgotPasswordRepo})
       : _forgotPasswordRepo = forgotPasswordRepo;
 
   @override
@@ -82,7 +82,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
               context: context,
               builder: (context) => const CustomBottomSheet());
         },
-        onTapLeading: () => context.pop(),
+        onTapLeading: () => context.pop,
         title: Align(
             alignment: Alignment.centerLeft,
             child: Text(S.of(context).enterACode)),
@@ -104,7 +104,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
             const SizedBox(
               height: 20,
             ),
-            Container(
+            SizedBox(
               width: double.infinity,
               child: Pinput(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
