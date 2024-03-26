@@ -46,7 +46,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
         width: double.infinity,
         child: FilledButton(
             style: FilledButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 18),
+              padding: const EdgeInsets.symmetric(vertical: 20),
               shadowColor: Colors.amber.withOpacity(0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100.0),

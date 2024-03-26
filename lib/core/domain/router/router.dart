@@ -19,8 +19,7 @@ abstract class RouteList {
   static const enterPassword = '$forgotPassword/$_enterPasswordPath';
 
   static const _newPasswordPath = 'new-password';
-  static const newPassword =
-      '$forgotPassword/$_enterPasswordPath/$_newPasswordPath';
+  static const newPassword = '$forgotPassword/$_newPasswordPath';
 }
 
 // GoRouter configuration
@@ -45,20 +44,19 @@ final router = GoRouter(
                   ),
               routes: [
                 GoRoute(
-                    path: RouteList._enterPasswordPath,
-                    builder: (context, state) => EnterCodeScreen(
-                          forgotPasswordRepo:
-                              AppContainer().repositoryScope.forgotPasswordRepo,
-                        ),
-                    routes: [
-                      GoRoute(
-                        path: RouteList._newPasswordPath,
-                        builder: (context, state) => NewPasswordScreen(
-                          forgotPasswordRepo:
-                              AppContainer().repositoryScope.forgotPasswordRepo,
-                        ),
-                      ),
-                    ]),
+                  path: RouteList._enterPasswordPath,
+                  builder: (context, state) => EnterCodeScreen(
+                    forgotPasswordRepo:
+                        AppContainer().repositoryScope.forgotPasswordRepo,
+                  ),
+                ),
+                GoRoute(
+                  path: RouteList._newPasswordPath,
+                  builder: (context, state) => NewPasswordScreen(
+                    forgotPasswordRepo:
+                        AppContainer().repositoryScope.forgotPasswordRepo,
+                  ),
+                ),
               ]),
         ]),
   ],
