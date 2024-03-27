@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc: ^8.1.4
   json_annotation: ^4.8.1
   get_it: ^7.6.7
+  like_button: ^2.0.5
   flutter_localizations:
     sdk: flutter
 
@@ -82,6 +83,8 @@ flutter:
     - assets/svg/phone.svg
     - assets/svg/trailing.svg
     - assets/svg/arrow_back.svg
+    - assets/svg/settings.svg
+
 
 
 

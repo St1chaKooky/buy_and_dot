@@ -7,4 +7,6 @@ abstract class SvgCollection {
   static const eye_off = 'assets/svg/eye_off.svg';
   static const arrow_back = 'assets/svg/arrow_back.svg';
   static const trailing = 'assets/svg/trailing.svg';
+  static const settings = 'assets/svg/settings.svg';
+
 }

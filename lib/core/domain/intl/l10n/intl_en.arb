@@ -21,5 +21,10 @@
     "saveNewPassword": "Save new password",
     "done" : "Done",
     "settings" : "Settings",
-    "darkTheme" : "Dark theme"
+    "darkTheme" : "Dark theme",
+    "tiraspol": "Tiraspol",
+    "rybnitsa": "Rybnitsa",
+    "all":"All",
+    "my":"My"
+
 }

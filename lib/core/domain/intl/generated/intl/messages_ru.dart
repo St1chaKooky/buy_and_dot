@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "all": MessageLookupByLibrary.simpleMessage("Все"),
         "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Темная тема"),
         "done": MessageLookupByLibrary.simpleMessage("Готово"),
@@ -34,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("Я согласен с"),
         "logIn": MessageLookupByLibrary.simpleMessage("Вход"),
+        "my": MessageLookupByLibrary.simpleMessage("Мои"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Новый пароль"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "passwordRecovery":
@@ -43,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Повторите пароль"),
         "resendCode":
             MessageLookupByLibrary.simpleMessage("Отправить код повторно"),
+        "rybnitsa": MessageLookupByLibrary.simpleMessage("Рыбница"),
         "saveNewPassword":
             MessageLookupByLibrary.simpleMessage("Сохранить новый пароль"),
         "send": MessageLookupByLibrary.simpleMessage("Отправить"),
@@ -52,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Регистрация"),
         "termsOfUse": MessageLookupByLibrary.simpleMessage(
             "Правилами и условиями использования"),
+        "tiraspol": MessageLookupByLibrary.simpleMessage("Тирасполь"),
         "toComeIn": MessageLookupByLibrary.simpleMessage("Войти"),
         "toComeUp": MessageLookupByLibrary.simpleMessage("Зарегистрироваться")
       };
