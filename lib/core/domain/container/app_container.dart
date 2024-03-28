@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:buy_and_dot/feature/advertisement/data/repository/advertisement_mocked_repository.dart';
+import 'package:buy_and_dot/feature/advertisement/domain/repository/advertisement_repository.dart';
 import 'package:buy_and_dot/feature/auth/data/source/auth_mocked_data.dart';
 import 'package:buy_and_dot/feature/auth/domain/repo/auth_mocked_repo.dart';
 import 'package:buy_and_dot/feature/forgot_password/data/source/forgot_password_mocked_data.dart';
@@ -26,9 +28,13 @@ class AppContainer {
       final forgotPasswordRepo =
           ForgotPasswordMockedRepo(ForgetPasswordMockedDataSource());
       final authRepo = AuthMockedRepo(AuthMockedDataSource());
+      final AdvertisementRepository advertisementRepository =
+          AdvertisementMockedRepository();
 
       repositoryScope = RepositoryScope(
-          authRepository: authRepo, forgotPasswordRepo: forgotPasswordRepo);
+          advertisementRepository: advertisementRepository,
+          authRepository: authRepo,
+          forgotPasswordRepo: forgotPasswordRepo);
 
       final settingsService =
           AppSettingsBloc(const AppSettingsState(locale: 0));
@@ -51,9 +57,11 @@ class ServiceScope {
 }
 
 class RepositoryScope {
+  final AdvertisementRepository advertisementRepository;
   final AuthMockedRepo authRepository;
   final ForgotPasswordRepo forgotPasswordRepo;
   RepositoryScope({
+    required this.advertisementRepository,
     required this.forgotPasswordRepo,
     required this.authRepository,
   });

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "all": MessageLookupByLibrary.simpleMessage("All"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
@@ -34,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot password"),
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("I agree with"),
         "logIn": MessageLookupByLibrary.simpleMessage("Login"),
+        "my": MessageLookupByLibrary.simpleMessage("My"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordRecovery":
@@ -42,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat password"),
         "resendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
+        "rybnitsa": MessageLookupByLibrary.simpleMessage("Rybnitsa"),
         "saveNewPassword":
             MessageLookupByLibrary.simpleMessage("Save new password"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
@@ -51,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Signup"),
         "termsOfUse":
             MessageLookupByLibrary.simpleMessage("Terms and Conditions of Use"),
+        "tiraspol": MessageLookupByLibrary.simpleMessage("Tiraspol"),
         "toComeIn": MessageLookupByLibrary.simpleMessage("Login"),
         "toComeUp": MessageLookupByLibrary.simpleMessage("Signup")
       };

@@ -52,7 +52,7 @@ class SurfacesColor {
   static const onSurface = Color(0xFF211A1D);
   static const onSurfaceVar = Color(0xFF4F4449);
   static const outline = Color(0xFF81737A);
-  static const outlineVariant = Color(0xFF81737A);
+  static const outlineVariant = Color(0xFFD3C2C9);
 }
 
 class OtherColor {

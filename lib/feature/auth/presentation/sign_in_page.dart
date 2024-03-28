@@ -1,28 +1,27 @@
-import 'dart:developer';
-
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
-import 'package:buy_and_dot/core/domain/use_case_result/use_case_result.dart';
+
 import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_text_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
-import 'package:buy_and_dot/feature/auth/domain/entity/auth_credentails.dart';
-import 'package:buy_and_dot/feature/auth/domain/repo/auth_repo.dart';
+
+import 'package:buy_and_dot/feature/auth/presentation/auth_view_model.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SignInTab extends StatefulWidget {
-  final AuthRepo _authRepo;
+  final AuthViewModel _viewModel;
 
-  const SignInTab({super.key, required AuthRepo authRepo})
-      : _authRepo = authRepo;
+  const SignInTab({super.key, required AuthViewModel viewModel})
+      : _viewModel = viewModel;
 
   @override
   State<SignInTab> createState() => _SignInTabState();
 }
 
 class _SignInTabState extends State<SignInTab> {
+  AuthViewModel get _viewModel => widget._viewModel;
   double get screenHeight => MediaQuery.of(context).size.height;
   final TextEditingController textEditingControllerPhone =
       TextEditingController();
@@ -55,24 +54,6 @@ class _SignInTabState extends State<SignInTab> {
     return;
   }
 
-  Future<void> signIn() async {
-    final result = await widget._authRepo.signIn(
-      phone: textEditingControllerPhone.text,
-      password: textEditingControllerLock.text,
-    );
-
-    switch (result) {
-      case GoodUseCaseResult<AuthCredentials>(:final data):
-        log(data.jvtToken);
-        break;
-      case BadUseCaseResult<AuthCredentials>(:final errorList):
-        for (final error in errorList) {
-          log(error.code);
-        }
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -100,7 +81,13 @@ class _SignInTabState extends State<SignInTab> {
           ValueListenableBuilder(
             valueListenable: isCorrectAuth,
             builder: (context, value, child) => MyFilledButton(
-              onTap: isCorrectAuth.value ? signIn : null,
+              onTap: isCorrectAuth.value
+                  ? () async {
+                      await _viewModel.signIn(textEditingControllerPhone.text,
+                          textEditingControllerLock.text);
+                      context.go(RouteList.advertisement);
+                    }
+                  : null,
               text: S.of(context).toComeIn,
             ),
           ),

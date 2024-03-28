@@ -21,5 +21,10 @@
     "saveNewPassword": "Сохранить новый пароль",
     "done" : "Готово",
     "settings" : "Настройки",
-    "darkTheme" : "Темная тема"
+    "darkTheme" : "Темная тема",
+    "tiraspol": "Тирасполь",
+    "rybnitsa": "Рыбница",
+    "all":"Все",
+    "my":"Мои"
+
 }
