@@ -84,6 +84,9 @@ flutter:
     - assets/svg/trailing.svg
     - assets/svg/arrow_back.svg
     - assets/svg/settings.svg
+    - assets/svg/search.svg
+    - assets/svg/unselected.svg
+
 
 
 

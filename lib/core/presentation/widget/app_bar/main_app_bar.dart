@@ -1,0 +1,53 @@
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
+import 'package:buy_and_dot/core/presentation/widget/field/app_bar_text_field.dart';
+import 'package:buy_and_dot/core/presentation/widget/icon_button/standard_icon_button.dart';
+import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
+import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
+import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
+import 'package:flutter/material.dart';
+
+class MainAppBar extends AppBar {
+  final TextEditingController textEditingController;
+
+  MainAppBar({
+    required this.textEditingController,
+    super.key,
+    required BuildContext context,
+  }) : super(
+            // toolbarHeight: 70,
+            bottom: TabBar(
+              dividerColor: ColorCollection.surfaceContainer,
+              unselectedLabelColor: ColorCollection.onSurfaceVar,
+              labelColor: ColorCollection.primary,
+              labelStyle: Theme.of(context).textTheme.titleSmall,
+              unselectedLabelStyle: Theme.of(context).textTheme.titleSmall,
+              tabs: [
+                Tab(
+                  text: S.of(context).all,
+                ),
+                Tab(
+                  text: S.of(context).my,
+                ),
+              ],
+            ),
+            title: Align(
+              alignment: Alignment.bottomLeft,
+              child: MyTextField(
+                textEditingController: textEditingController,
+              ),
+            ),
+            automaticallyImplyLeading: true,
+            actions: [
+              MyStandardIconButton(
+                backgroundColor: ColorCollection.surfaceContainerHight,
+                iconFromCollection: SvgCollection.settings,
+                onTap: () => showModalBottomSheet(
+                    backgroundColor: ColorCollection.surfaceContainerLow,
+                    showDragHandle: true,
+                    enableDrag: false,
+                    context: context,
+                    builder: (context) => const CustomBottomSheet()),
+                isSvgIcon: true,
+              ),
+            ]);
+}

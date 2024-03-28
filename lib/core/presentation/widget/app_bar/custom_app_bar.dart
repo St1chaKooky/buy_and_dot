@@ -31,18 +31,15 @@ class CustomAppBar extends AppBar {
                     : const SizedBox.shrink()),
             automaticallyImplyLeading: true,
             actions: [
-              Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                  child: MyStandardIconButton(
-                    iconFromCollection: SvgCollection.settings,
-                    onTap: () => showModalBottomSheet(
-                        backgroundColor: ColorCollection.surfaceContainerLow,
-                        showDragHandle: true,
-                        enableDrag: false,
-                        context: context,
-                        builder: (context) => const CustomBottomSheet()),
-                    isSvgIcon: true,
-                  )),
+              MyStandardIconButton(
+                iconFromCollection: SvgCollection.settings,
+                onTap: () => showModalBottomSheet(
+                    backgroundColor: ColorCollection.surfaceContainerLow,
+                    showDragHandle: true,
+                    enableDrag: false,
+                    context: context,
+                    builder: (context) => const CustomBottomSheet()),
+                isSvgIcon: true,
+              ),
             ]);
 }

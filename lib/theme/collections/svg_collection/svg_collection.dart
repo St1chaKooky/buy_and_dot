@@ -8,5 +8,6 @@ abstract class SvgCollection {
   static const arrow_back = 'assets/svg/arrow_back.svg';
   static const trailing = 'assets/svg/trailing.svg';
   static const settings = 'assets/svg/settings.svg';
-
+  static const search = 'assets/svg/search.svg';
+  static const unselected = 'assets/svg/unselected.svg';
 }
