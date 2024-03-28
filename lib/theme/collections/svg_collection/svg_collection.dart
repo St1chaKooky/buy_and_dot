@@ -10,4 +10,6 @@ abstract class SvgCollection {
   static const settings = 'assets/svg/settings.svg';
   static const search = 'assets/svg/search.svg';
   static const unselected = 'assets/svg/unselected.svg';
+  static const advertisement = 'assets/svg/advertisement.svg';
+  static const account = 'assets/svg/account.svg';
 }

@@ -1,13 +1,17 @@
 import 'package:buy_and_dot/core/domain/container/app_container.dart';
+import 'package:buy_and_dot/feature/account/presentation/account_screen.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_screen.dart';
 import 'package:buy_and_dot/feature/auth/presentation/auth_screen.dart';
 import 'package:buy_and_dot/feature/auth/presentation/auth_view_model.dart';
+import 'package:buy_and_dot/feature/favorites/presentation/favorites_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/enter_code/enter_code_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/forgot_password_view_model.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/new_password/new_password_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/password_recovery/password_recovery_screen.dart';
+import 'package:buy_and_dot/feature/nav_bar/presentation/nav_bar_screen.dart';
 import 'package:buy_and_dot/feature/splash/presentation/splash_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class RouteList {
@@ -18,6 +22,12 @@ abstract class RouteList {
 
   static const _advertisementPath = '/advertisement';
   static const advertisement = _advertisementPath;
+
+  static const _favoritePath = '/favorite';
+  static const favorite = _favoritePath;
+
+  static const _accountPath = '/account';
+  static const account = _accountPath;
 
   static const _forgotPasswordPath = 'forgot-password';
   static const forgotPassword = '$auth/$_forgotPasswordPath';
@@ -33,6 +43,46 @@ abstract class RouteList {
 final router = GoRouter(
   initialLocation: RouteList.splash,
   routes: [
+    StatefulShellRoute.indexedStack(
+      builder: (BuildContext context, GoRouterState state,
+          StatefulNavigationShell navigationShell) {
+        return ScaffoldWithNavBar(navigationShell: navigationShell);
+      },
+      branches: <StatefulShellBranch>[
+        StatefulShellBranch(
+          routes: <RouteBase>[
+            GoRoute(
+              path: RouteList.advertisement,
+              builder: (context, state) => AdvertisementScreen(
+                viewModel: AdvertisementListViewModel(
+                  advertisementRepository:
+                      AppContainer().repositoryScope.advertisementRepository,
+                ),
+              ),
+            ),
+          ],
+        ),
+
+        StatefulShellBranch(
+          routes: <RouteBase>[
+            GoRoute(
+              path: RouteList.favorite,
+              builder: (context, state) => const FavoritesScreen(),
+            ),
+          ],
+        ),
+
+        // The route branch for the third tab of the bottom navigation bar.
+        StatefulShellBranch(
+          routes: <RouteBase>[
+            GoRoute(
+              path: RouteList.account,
+              builder: (context, state) => const AccountScreen(),
+            ),
+          ],
+        ),
+      ],
+    ),
     GoRoute(
       path: RouteList.splash,
       builder: (context, state) => const SplashScreen(),
@@ -74,14 +124,5 @@ final router = GoRouter(
                 ),
               ]),
         ]),
-    GoRoute(
-      path: RouteList.advertisement,
-      builder: (context, state) => AdvertisementScreen(
-        viewModel: AdvertisementListViewModel(
-          advertisementRepository:
-              AppContainer().repositoryScope.advertisementRepository,
-        ),
-      ),
-    ),
   ],
 );

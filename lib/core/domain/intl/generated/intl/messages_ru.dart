@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "rybnitsa": MessageLookupByLibrary.simpleMessage("Рыбница"),
         "saveNewPassword":
             MessageLookupByLibrary.simpleMessage("Сохранить новый пароль"),
+        "searchPost": MessageLookupByLibrary.simpleMessage("Поиск объявлений"),
         "send": MessageLookupByLibrary.simpleMessage("Отправить"),
         "setANewPassword": MessageLookupByLibrary.simpleMessage(
             "Задайте новый пароль и подтвердите его для завершения сброса."),

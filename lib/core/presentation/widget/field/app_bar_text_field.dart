@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/presentation/widget/icon/svg_custom_icon.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
@@ -35,7 +36,7 @@ class _MyTextFieldState extends State<MyTextField> {
               borderRadius: BorderRadius.all(Radius.circular(28)),
               borderSide: BorderSide.none,
             ),
-            hintText: 'Поиск объявлений',
+            hintText: S.of(context).searchPost,
             hintStyle: Theme.of(context)
                 .textTheme
                 .bodyLarge

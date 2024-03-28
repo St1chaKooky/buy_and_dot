@@ -86,6 +86,11 @@ flutter:
     - assets/svg/settings.svg
     - assets/svg/search.svg
     - assets/svg/unselected.svg
+    - assets/svg/advertisement.svg
+    - assets/svg/account.svg
+
+
+
 
 
 

@@ -47,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "rybnitsa": MessageLookupByLibrary.simpleMessage("Rybnitsa"),
         "saveNewPassword":
             MessageLookupByLibrary.simpleMessage("Save new password"),
+        "searchPost":
+            MessageLookupByLibrary.simpleMessage("Search advertisements"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "setANewPassword": MessageLookupByLibrary.simpleMessage(
             "Set a new password and confirm it to complete the reset."),

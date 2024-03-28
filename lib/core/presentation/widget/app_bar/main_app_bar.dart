@@ -30,11 +30,8 @@ class MainAppBar extends AppBar {
                 ),
               ],
             ),
-            title: Align(
-              alignment: Alignment.bottomLeft,
-              child: MyTextField(
-                textEditingController: textEditingController,
-              ),
+            title: MyTextField(
+              textEditingController: textEditingController,
             ),
             automaticallyImplyLeading: true,
             actions: [
