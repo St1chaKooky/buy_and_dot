@@ -26,6 +26,9 @@
     "rybnitsa": "Рыбница",
     "all":"Все",
     "my":"Мои",
-    "searchPost":"Поиск объявлений"
+    "searchPost":"Поиск объявлений",
+    "advertisements":"Объявления",
+    "favorite": "Избранное",
+    "account": "Профиль"
 
 }

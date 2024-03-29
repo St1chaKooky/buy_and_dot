@@ -25,6 +25,10 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        floatingActionButton: FloatingActionButton.small(
+          child: const Icon(Icons.add),
+          onPressed: () {},
+        ),
         appBar: MainAppBar(
           textEditingController: textFieldEditingController,
           context: context,

@@ -4,7 +4,7 @@ import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_text_button.dart';
-import 'package:buy_and_dot/feature/forgot_password/presentation/forgot_password_view_model.dart';
+import 'package:buy_and_dot/feature/forgot_password/presentation/enter_code/enter_code_view_model.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/themes/themePininput.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +12,8 @@ import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 
 class EnterCodeScreen extends StatefulWidget {
-  final ForgotPasswordViewModel _viewModel;
-  const EnterCodeScreen({super.key, required ForgotPasswordViewModel viewModel})
+  final EnterCodeViewModel _viewModel;
+  const EnterCodeScreen({super.key, required EnterCodeViewModel viewModel})
       : _viewModel = viewModel;
 
   @override
@@ -21,7 +21,7 @@ class EnterCodeScreen extends StatefulWidget {
 }
 
 class _EnterCodeScreenState extends State<EnterCodeScreen> {
-  ForgotPasswordViewModel get _viewModel => widget._viewModel;
+  EnterCodeViewModel get _viewModel => widget._viewModel;
   double get screenHeight => MediaQuery.of(context).size.height;
   final TextEditingController textEditingControllerCode =
       TextEditingController();

@@ -34,6 +34,7 @@ class CustomAppBar extends AppBar {
               MyStandardIconButton(
                 iconFromCollection: SvgCollection.settings,
                 onTap: () => showModalBottomSheet(
+                  useRootNavigator: true,
                     backgroundColor: ColorCollection.surfaceContainerLow,
                     showDragHandle: true,
                     enableDrag: false,

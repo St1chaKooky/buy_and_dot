@@ -6,9 +6,11 @@ import 'package:buy_and_dot/feature/auth/presentation/auth_screen.dart';
 import 'package:buy_and_dot/feature/auth/presentation/auth_view_model.dart';
 import 'package:buy_and_dot/feature/favorites/presentation/favorites_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/enter_code/enter_code_screen.dart';
-import 'package:buy_and_dot/feature/forgot_password/presentation/forgot_password_view_model.dart';
+import 'package:buy_and_dot/feature/forgot_password/presentation/enter_code/enter_code_view_model.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/new_password/new_password_screen.dart';
+import 'package:buy_and_dot/feature/forgot_password/presentation/new_password/new_password_view_model.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/password_recovery/password_recovery_screen.dart';
+import 'package:buy_and_dot/feature/forgot_password/presentation/password_recovery/password_recovery_view_model.dart';
 import 'package:buy_and_dot/feature/nav_bar/presentation/nav_bar_screen.dart';
 import 'package:buy_and_dot/feature/splash/presentation/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +100,7 @@ final router = GoRouter(
           GoRoute(
               path: RouteList._forgotPasswordPath,
               builder: (context, state) => PasswordRecoveryScreen(
-                    viewModel: ForgotPasswordViewModel(
+                    viewModel: PasswordRecoveryViewModel(
                       forgotPasswordRepo:
                           AppContainer().repositoryScope.forgotPasswordRepo,
                     ),
@@ -107,7 +109,7 @@ final router = GoRouter(
                 GoRoute(
                   path: RouteList._enterPasswordPath,
                   builder: (context, state) => EnterCodeScreen(
-                    viewModel: ForgotPasswordViewModel(
+                    viewModel: EnterCodeViewModel(
                       forgotPasswordRepo:
                           AppContainer().repositoryScope.forgotPasswordRepo,
                     ),
@@ -116,7 +118,7 @@ final router = GoRouter(
                 GoRoute(
                   path: RouteList._newPasswordPath,
                   builder: (context, state) => NewPasswordScreen(
-                    viewModel: ForgotPasswordViewModel(
+                    viewModel: NewPasswordViewModel(
                       forgotPasswordRepo:
                           AppContainer().repositoryScope.forgotPasswordRepo,
                     ),

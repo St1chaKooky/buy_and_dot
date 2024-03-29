@@ -3,7 +3,7 @@ import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/my_text_field.dart';
-import 'package:buy_and_dot/feature/forgot_password/presentation/forgot_password_view_model.dart';
+import 'package:buy_and_dot/feature/forgot_password/presentation/password_recovery/password_recovery_view_model.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class PasswordRecoveryScreen extends StatefulWidget {
-  final ForgotPasswordViewModel _viewModel;
+  final PasswordRecoveryViewModel _viewModel;
   const PasswordRecoveryScreen(
-      {super.key, required ForgotPasswordViewModel viewModel})
+      {super.key, required PasswordRecoveryViewModel viewModel})
       : _viewModel = viewModel;
 
   @override
@@ -21,7 +21,7 @@ class PasswordRecoveryScreen extends StatefulWidget {
 }
 
 class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
-  ForgotPasswordViewModel get _viewModel => widget._viewModel;
+  PasswordRecoveryViewModel get _viewModel => widget._viewModel;
 
   double get screenHeight => MediaQuery.of(context).size.height;
   TextTheme get theme => Theme.of(context).textTheme;

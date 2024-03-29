@@ -26,7 +26,10 @@
     "rybnitsa": "Rybnitsa",
     "all":"All",
     "my":"My",
-    "searchPost":"Search advertisements"
+    "searchPost":"Search advertisements",
+    "advertisements":"Advertisements",
+    "favorite": "Favorite",
+    "account": "Account"
 
 
 }

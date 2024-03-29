@@ -88,6 +88,8 @@ flutter:
     - assets/svg/unselected.svg
     - assets/svg/advertisement.svg
     - assets/svg/account.svg
+    - assets/svg/like.svg
+
 
 
 
