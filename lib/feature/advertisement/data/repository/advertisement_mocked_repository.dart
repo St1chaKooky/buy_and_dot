@@ -4,7 +4,7 @@ import 'package:buy_and_dot/feature/advertisement/domain/entity/advertisement_cr
 import 'package:buy_and_dot/feature/advertisement/domain/entity/advertisement_list_filter.dart';
 import 'package:buy_and_dot/feature/advertisement/domain/entity/advertisement_list_item.dart';
 import 'package:buy_and_dot/feature/advertisement/domain/repository/advertisement_repository.dart';
-import 'package:buy_and_dot/feature/locality/domain/entity/locality.dart';
+import 'package:buy_and_dot/feature/filter/domain/entity/locality.dart';
 
 class AdvertisementMockedRepository implements AdvertisementRepository {
   final _mockedAdvList = List<AdvertisementListItem>.generate(

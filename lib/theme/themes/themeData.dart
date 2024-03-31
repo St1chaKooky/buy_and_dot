@@ -19,6 +19,8 @@ final themeData = ThemeData(
     textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
       padding: EdgeInsets.zero,
+      visualDensity: VisualDensity.compact,
+      minimumSize: Size.zero,
     )),
     dividerColor: ColorCollection.outlineVariant,
     focusColor: ColorCollection.primary,

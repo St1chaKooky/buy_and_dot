@@ -13,4 +13,13 @@ abstract class SvgCollection {
   static const advertisement = 'assets/svg/advertisement.svg';
   static const account = 'assets/svg/account.svg';
   static const like = 'assets/svg/like.svg';
+  static const advertisementSelect = 'assets/svg/advertisementSelect.svg';
+  static const accountSelect = 'assets/svg/accountSelect.svg';
+  static const likeSelect = 'assets/svg/likeSelect.svg';
+  static const add = 'assets/svg/add.svg';
+  static const menu = 'assets/svg/menu.svg';
+  static const headline = 'assets/svg/Headline.svg';
+  static const signal = 'assets/svg/signal.svg';
+  static const goOut = 'assets/svg/goOut.svg';
+  static const edit = 'assets/svg/edit.svg';
 }

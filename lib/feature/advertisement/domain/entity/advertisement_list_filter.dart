@@ -1,4 +1,4 @@
-import 'package:buy_and_dot/feature/locality/domain/entity/locality.dart';
+import 'package:buy_and_dot/feature/filter/domain/entity/locality.dart';
 
 class AdvertisementListFilter {
   final List<Locality> availableLocalityList;

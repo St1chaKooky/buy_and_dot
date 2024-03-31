@@ -23,9 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "adPrice": MessageLookupByLibrary.simpleMessage("Ad price"),
+        "addCity": MessageLookupByLibrary.simpleMessage("Add city"),
         "advertisements":
             MessageLookupByLibrary.simpleMessage("Advertisements"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
+        "apply": MessageLookupByLibrary.simpleMessage("Apply"),
+        "before": MessageLookupByLibrary.simpleMessage("Before"),
+        "city": MessageLookupByLibrary.simpleMessage("City"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
@@ -35,12 +40,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterThePhoneTo": MessageLookupByLibrary.simpleMessage(
             "Enter the phone to which the password reset code will be sent"),
         "favorite": MessageLookupByLibrary.simpleMessage("Favorite"),
+        "filters": MessageLookupByLibrary.simpleMessage("Filters"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password"),
+        "from": MessageLookupByLibrary.simpleMessage("From"),
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("I agree with"),
         "logIn": MessageLookupByLibrary.simpleMessage("Login"),
         "my": MessageLookupByLibrary.simpleMessage("My"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
+        "notHaveAnyAds":
+            MessageLookupByLibrary.simpleMessage("You don\'t have any ads yet"),
+        "notHaveAnyAdsText": MessageLookupByLibrary.simpleMessage(
+            "Don\'t miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordRecovery":
             MessageLookupByLibrary.simpleMessage("Password recovery"),

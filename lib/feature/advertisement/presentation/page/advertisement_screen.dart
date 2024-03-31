@@ -1,6 +1,8 @@
 import 'package:buy_and_dot/core/presentation/widget/app_bar/main_app_bar.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_list_page.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_list_view_model.dart';
+import 'package:buy_and_dot/feature/advertisement/presentation/page/my_advertisement_list_page.dart';
+import 'package:buy_and_dot/feature/advertisement/presentation/widget/navigation_drawer_widget.dart';
 
 import 'package:flutter/material.dart';
 
@@ -25,6 +27,7 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        drawer: NavigationDrawerWidget(),
         floatingActionButton: FloatingActionButton.small(
           child: const Icon(Icons.add),
           onPressed: () {},
@@ -38,10 +41,9 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
             AdvertisementListPage(
               viewModel: _viewModel,
             ),
-            Container(
-              width: 10,
-              height: 10,
-            )
+            MyAdvertisementListPage(
+              viewModel: _viewModel,
+            ),
           ],
         ),
       ),

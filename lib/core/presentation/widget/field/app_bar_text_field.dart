@@ -5,8 +5,13 @@ import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatefulWidget {
+  final void Function()? onPressed;
+  final bool isMainScreen;
+
   final TextEditingController textEditingController;
   const MyTextField({
+    this.onPressed,
+    this.isMainScreen = true,
     super.key,
     required this.textEditingController,
   });
@@ -43,10 +48,23 @@ class _MyTextFieldState extends State<MyTextField> {
                 ?.copyWith(color: ColorCollection.onSurfaceVar),
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-            prefixIcon: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                child: CustomIconSvg(
-                  assetName: SvgCollection.search,
+            prefixIcon: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                child: SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: widget.isMainScreen
+                      ? IconButton(
+                          padding: EdgeInsets.zero,
+                          icon: const CustomIconSvg(
+                            assetName: SvgCollection.menu,
+                          ),
+                          onPressed: () => Scaffold.of(context).openDrawer(),
+                        )
+                      : const CustomIconSvg(
+                          assetName: SvgCollection.search,
+                        ),
                 )),
             border: const OutlineInputBorder()),
       ),

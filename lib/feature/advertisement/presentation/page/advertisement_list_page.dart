@@ -28,8 +28,9 @@ class _AdvertisementListPageState extends State<AdvertisementListPage> {
       builder: (context, value, child) => ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 16),
         itemBuilder: (context, index) => AdvertisementListItemWidget(
-            advertisementListItem:
-                _viewModelMain.advertisementList.value[index]),
+          advertisementListItem: _viewModelMain.advertisementList.value[index],
+          isMineAdvertisement: false,
+        ),
         separatorBuilder: (context, index) => const SizedBox(height: 8),
         itemCount: _viewModelMain.advertisementList.value.length,
       ),

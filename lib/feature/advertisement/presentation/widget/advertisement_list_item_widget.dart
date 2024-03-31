@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 
 class AdvertisementListItemWidget extends StatelessWidget {
+  final bool isMineAdvertisement;
   final AdvertisementListItem advertisementListItem;
 
   const AdvertisementListItemWidget(
-      {super.key, required this.advertisementListItem});
+      {super.key,
+      required this.advertisementListItem,
+      required this.isMineAdvertisement});
 
   BoxDecoration _cardDecoration(BuildContext context) => BoxDecoration(
         color: ColorCollection.surface,
@@ -20,14 +23,17 @@ class AdvertisementListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: _cardDecoration(context),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _previewBuilder(),
-          _bodyAdvertisementItemBuilder(context),
-        ],
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        decoration: _cardDecoration(context),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _previewBuilder(),
+            _bodyAdvertisementItemBuilder(context),
+          ],
+        ),
       ),
     );
   }

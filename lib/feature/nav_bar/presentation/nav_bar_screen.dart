@@ -18,6 +18,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: ColorCollection.surfaceContainer,
         selectedItemColor: ColorCollection.onSurface,
         unselectedLabelStyle: Theme.of(context).textTheme.labelMedium!.copyWith(
               color: ColorCollection.onSurfaceVar,
@@ -28,12 +29,17 @@ class ScaffoldWithNavBar extends StatelessWidget {
             ),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+              activeIcon: const CustomIconSvg(
+                assetName: SvgCollection.advertisementSelect,
+              ),
               icon: CustomIconSvg(assetName: SvgCollection.advertisement),
               label: S.of(context).advertisements),
           BottomNavigationBarItem(
+              activeIcon: CustomIconSvg(assetName: SvgCollection.likeSelect),
               icon: CustomIconSvg(assetName: SvgCollection.like),
               label: S.of(context).favorite),
           BottomNavigationBarItem(
+            activeIcon: CustomIconSvg(assetName: SvgCollection.accountSelect),
             icon: CustomIconSvg(assetName: SvgCollection.account),
             label: S.of(context).account,
           ),
@@ -49,14 +55,5 @@ class ScaffoldWithNavBar extends StatelessWidget {
       index,
       initialLocation: index == navigationShell.currentIndex,
     );
-  }
-}
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

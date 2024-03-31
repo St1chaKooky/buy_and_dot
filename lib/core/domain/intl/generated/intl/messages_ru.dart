@@ -23,8 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Профиль"),
+        "adPrice": MessageLookupByLibrary.simpleMessage("Цена объявления"),
+        "addCity": MessageLookupByLibrary.simpleMessage("Добавить город"),
         "advertisements": MessageLookupByLibrary.simpleMessage("Объявления"),
         "all": MessageLookupByLibrary.simpleMessage("Все"),
+        "apply": MessageLookupByLibrary.simpleMessage("Применить"),
+        "before": MessageLookupByLibrary.simpleMessage("До"),
+        "city": MessageLookupByLibrary.simpleMessage("Город"),
         "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Темная тема"),
         "done": MessageLookupByLibrary.simpleMessage("Готово"),
@@ -34,12 +39,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterThePhoneTo": MessageLookupByLibrary.simpleMessage(
             "Введите почту, на которую будет отправлен код для сброса пароля"),
         "favorite": MessageLookupByLibrary.simpleMessage("Избранное"),
+        "filters": MessageLookupByLibrary.simpleMessage("Фильтры"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
+        "from": MessageLookupByLibrary.simpleMessage("От"),
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("Я согласен с"),
         "logIn": MessageLookupByLibrary.simpleMessage("Вход"),
         "my": MessageLookupByLibrary.simpleMessage("Мои"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Новый пароль"),
+        "notHaveAnyAds":
+            MessageLookupByLibrary.simpleMessage("У вас пока нет объявлений"),
+        "notHaveAnyAdsText": MessageLookupByLibrary.simpleMessage(
+            "Не упустите возможность! Создайте и опубликуйте своё объявление прямо сейчас, чтобы предложить товары или услуги широкой аудитории"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "passwordRecovery":
             MessageLookupByLibrary.simpleMessage("Восстановление пароля"),

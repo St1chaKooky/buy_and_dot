@@ -89,6 +89,21 @@ flutter:
     - assets/svg/advertisement.svg
     - assets/svg/account.svg
     - assets/svg/like.svg
+    - assets/svg/advertisementSelect.svg
+    - assets/svg/accountSelect.svg
+    - assets/svg/likeSelect.svg
+    - assets/svg/add.svg
+    - assets/svg/menu.svg
+    - assets/svg/Headline.svg
+    - assets/svg/signal.svg
+    - assets/svg/goOut.svg
+    - assets/svg/edit.svg
+
+
+
+
+
+
 
 
 

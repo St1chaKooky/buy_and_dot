@@ -359,6 +359,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Filters`
+  String get filters {
+    return Intl.message(
+      'Filters',
+      name: 'filters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message(
+      'City',
+      name: 'city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add city`
+  String get addCity {
+    return Intl.message(
+      'Add city',
+      name: 'addCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ad price`
+  String get adPrice {
+    return Intl.message(
+      'Ad price',
+      name: 'adPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `From`
+  String get from {
+    return Intl.message(
+      'From',
+      name: 'from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Before`
+  String get before {
+    return Intl.message(
+      'Before',
+      name: 'before',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have any ads yet`
+  String get notHaveAnyAds {
+    return Intl.message(
+      'You don\'t have any ads yet',
+      name: 'notHaveAnyAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience`
+  String get notHaveAnyAdsText {
+    return Intl.message(
+      'Don\'t miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience',
+      name: 'notHaveAnyAdsText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
