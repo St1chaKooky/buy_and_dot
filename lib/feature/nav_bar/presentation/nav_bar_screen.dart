@@ -32,15 +32,17 @@ class ScaffoldWithNavBar extends StatelessWidget {
               activeIcon: const CustomIconSvg(
                 assetName: SvgCollection.advertisementSelect,
               ),
-              icon: CustomIconSvg(assetName: SvgCollection.advertisement),
+              icon: const CustomIconSvg(assetName: SvgCollection.advertisement),
               label: S.of(context).advertisements),
           BottomNavigationBarItem(
-              activeIcon: CustomIconSvg(assetName: SvgCollection.likeSelect),
-              icon: CustomIconSvg(assetName: SvgCollection.like),
+              activeIcon:
+                  const CustomIconSvg(assetName: SvgCollection.likeSelect),
+              icon: const CustomIconSvg(assetName: SvgCollection.like),
               label: S.of(context).favorite),
           BottomNavigationBarItem(
-            activeIcon: CustomIconSvg(assetName: SvgCollection.accountSelect),
-            icon: CustomIconSvg(assetName: SvgCollection.account),
+            activeIcon:
+                const CustomIconSvg(assetName: SvgCollection.accountSelect),
+            icon: const CustomIconSvg(assetName: SvgCollection.account),
             label: S.of(context).account,
           ),
         ],

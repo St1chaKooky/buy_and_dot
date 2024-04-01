@@ -23,5 +23,5 @@ abstract class SvgCollection {
   static const goOut = 'assets/svg/goOut.svg';
   static const edit = 'assets/svg/edit.svg';
   static const bigLike = 'assets/svg/bigLike.svg';
-
+  static const check = 'assets/svg/check.svg';
 }

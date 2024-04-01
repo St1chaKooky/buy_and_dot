@@ -1,7 +1,8 @@
-
+import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/feature/advertisement/domain/entity/advertisement_list_item.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:like_button/like_button.dart';
 
 class AdvertisementListItemWidget extends StatelessWidget {
@@ -25,7 +26,8 @@ class AdvertisementListItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
-      // context.go('${RouteList.advertisementDetails}/${advertisementListItem}'),
+      // () => context
+      //     .go('${RouteList.advertisementDetails}/${advertisementListItem.id}'),
       child: Container(
         decoration: _cardDecoration(context),
         child: Column(

@@ -1,11 +1,13 @@
 import 'package:buy_and_dot/core/presentation/widget/button/bottomSheet_text_button.dart';
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
-import 'package:buy_and_dot/feature/main_filter/presentation/widget/bottom_sheet_text_field.dart';
-import 'package:buy_and_dot/feature/main_filter/presentation/widget/input_chip.dart';
+import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/list_city_bottom_sheet.dart';
+import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/widget/bottom_sheet_text_field.dart';
+import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/widget/input_chip.dart';
 
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class MainBottomSheet extends StatefulWidget {
   const MainBottomSheet({super.key});
@@ -56,6 +58,7 @@ class _MainBottomSheetState extends State<MainBottomSheet> {
           ),
           BottomSheetTextButton(
             text: S.of(context).apply,
+            onTap: context.pop,
           ),
         ],
       );
@@ -86,6 +89,13 @@ class _MainBottomSheetState extends State<MainBottomSheet> {
             height: 10,
           ),
           BottomSheetTextButton(
+            onTap: () => showModalBottomSheet(
+                useRootNavigator: true,
+                backgroundColor: ColorCollection.surfaceContainerLow,
+                showDragHandle: true,
+                enableDrag: false,
+                context: context,
+                builder: (context) => const ListCityBottomSheet()),
             text: S.of(context).addCity,
           ),
         ],
