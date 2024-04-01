@@ -1,14 +1,10 @@
-import 'dart:developer';
-
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/domain/router/router.dart';
-import 'package:buy_and_dot/core/domain/use_case_result/use_case_result.dart';
-import 'package:buy_and_dot/feature/forgot_password/domain/entity/forgot_password_credentails.dart';
-import 'package:buy_and_dot/feature/forgot_password/domain/repo/forgot_password_repo.dart';
-import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
+
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_filled_button.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/my_text_button.dart';
+import 'package:buy_and_dot/feature/forgot_password/presentation/enter_code/enter_code_view_model.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/themes/themePininput.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +12,16 @@ import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 
 class EnterCodeScreen extends StatefulWidget {
-  final ForgotPasswordRepo _forgotPasswordRepo;
-
-  const EnterCodeScreen({required ForgotPasswordRepo forgotPasswordRepo})
-      : _forgotPasswordRepo = forgotPasswordRepo;
+  final EnterCodeViewModel _viewModel;
+  const EnterCodeScreen({super.key, required EnterCodeViewModel viewModel})
+      : _viewModel = viewModel;
 
   @override
   State<EnterCodeScreen> createState() => _EnterCodeScreenState();
 }
 
 class _EnterCodeScreenState extends State<EnterCodeScreen> {
+  EnterCodeViewModel get _viewModel => widget._viewModel;
   double get screenHeight => MediaQuery.of(context).size.height;
   final TextEditingController textEditingControllerCode =
       TextEditingController();
@@ -54,39 +50,11 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
     return;
   }
 
-  Future<void> sendCode() async {
-    final result = await widget._forgotPasswordRepo
-        .sendCode(textEditingControllerCode.text);
-
-    switch (result) {
-      case GoodUseCaseResult<ForgotPasswordCredentials>(:final data):
-        log(data.jvtToken);
-        break;
-      case BadUseCaseResult<ForgotPasswordCredentials>(:final errorList):
-        for (final error in errorList) {
-          log(error.code);
-        }
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        onTapAction: () {
-          showModalBottomSheet(
-              backgroundColor: ColorCollection.surfaceContainerLow,
-              showDragHandle: true,
-              enableDrag: false,
-              context: context,
-              builder: (context) => const CustomBottomSheet());
-        },
-        onTapLeading: () => context.pop,
-        title: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(S.of(context).enterACode)),
-      ),
+      appBar:
+          CustomAppBar(context: context, title: Text(S.of(context).enterACode)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -126,7 +94,8 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
               builder: (context, value, child) => MyFilledButton(
                 onTap: isCorrectPhoneNumber.value
                     ? () async {
-                        await sendCode();
+                        await _viewModel
+                            .sendCode(textEditingControllerCode.text);
                         context.go(RouteList.newPassword);
                       }
                     : null,

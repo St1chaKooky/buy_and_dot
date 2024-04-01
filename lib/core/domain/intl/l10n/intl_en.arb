@@ -21,5 +21,28 @@
     "saveNewPassword": "Save new password",
     "done" : "Done",
     "settings" : "Settings",
-    "darkTheme" : "Dark theme"
+    "darkTheme" : "Dark theme",
+    "tiraspol": "Tiraspol",
+    "rybnitsa": "Rybnitsa",
+    "all":"All",
+    "my":"My",
+    "searchPost":"Search advertisements",
+    "advertisements":"Advertisements",
+    "favorite": "Favorite",
+    "account": "Account",
+    "filters": "Filters",
+    "apply":"Apply",
+    "city" : "City",
+    "addCity" : "Add city",
+    "adPrice" : "Ad price",
+    "from" : "From",
+    "before" : "Before",
+    "notHaveAnyAds":"You don't have any ads yet",
+    "notHaveAnyAdsText": "Don't miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience",
+    "addAdsToFav": "Add ads to favorites",
+    "YouCanComeBack":"You can come back to them later"
+
+
+
+
 }

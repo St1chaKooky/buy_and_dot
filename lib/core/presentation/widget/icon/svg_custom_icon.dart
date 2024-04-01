@@ -3,7 +3,9 @@ import 'package:flutter_svg/svg.dart';
 
 class CustomIconSvg extends StatelessWidget {
   final String assetName;
-  const CustomIconSvg({super.key, required this.assetName});
+  final Color? color;
+
+  const CustomIconSvg({super.key, required this.assetName, this.color});
 
   @override
   Widget build(BuildContext context) {

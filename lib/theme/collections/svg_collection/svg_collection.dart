@@ -7,4 +7,21 @@ abstract class SvgCollection {
   static const eye_off = 'assets/svg/eye_off.svg';
   static const arrow_back = 'assets/svg/arrow_back.svg';
   static const trailing = 'assets/svg/trailing.svg';
+  static const settings = 'assets/svg/settings.svg';
+  static const search = 'assets/svg/search.svg';
+  static const unselected = 'assets/svg/unselected.svg';
+  static const advertisement = 'assets/svg/advertisement.svg';
+  static const account = 'assets/svg/account.svg';
+  static const like = 'assets/svg/like.svg';
+  static const advertisementSelect = 'assets/svg/advertisementSelect.svg';
+  static const accountSelect = 'assets/svg/accountSelect.svg';
+  static const likeSelect = 'assets/svg/likeSelect.svg';
+  static const add = 'assets/svg/add.svg';
+  static const menu = 'assets/svg/menu.svg';
+  static const headline = 'assets/svg/Headline.svg';
+  static const signal = 'assets/svg/signal.svg';
+  static const goOut = 'assets/svg/goOut.svg';
+  static const edit = 'assets/svg/edit.svg';
+  static const bigLike = 'assets/svg/bigLike.svg';
+
 }

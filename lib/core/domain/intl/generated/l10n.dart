@@ -279,6 +279,196 @@ class S {
       args: [],
     );
   }
+
+  /// `Tiraspol`
+  String get tiraspol {
+    return Intl.message(
+      'Tiraspol',
+      name: 'tiraspol',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rybnitsa`
+  String get rybnitsa {
+    return Intl.message(
+      'Rybnitsa',
+      name: 'rybnitsa',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message(
+      'All',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My`
+  String get my {
+    return Intl.message(
+      'My',
+      name: 'my',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search advertisements`
+  String get searchPost {
+    return Intl.message(
+      'Search advertisements',
+      name: 'searchPost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advertisements`
+  String get advertisements {
+    return Intl.message(
+      'Advertisements',
+      name: 'advertisements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite`
+  String get favorite {
+    return Intl.message(
+      'Favorite',
+      name: 'favorite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message(
+      'Account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filters`
+  String get filters {
+    return Intl.message(
+      'Filters',
+      name: 'filters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message(
+      'City',
+      name: 'city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add city`
+  String get addCity {
+    return Intl.message(
+      'Add city',
+      name: 'addCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ad price`
+  String get adPrice {
+    return Intl.message(
+      'Ad price',
+      name: 'adPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `From`
+  String get from {
+    return Intl.message(
+      'From',
+      name: 'from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Before`
+  String get before {
+    return Intl.message(
+      'Before',
+      name: 'before',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have any ads yet`
+  String get notHaveAnyAds {
+    return Intl.message(
+      'You don\'t have any ads yet',
+      name: 'notHaveAnyAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience`
+  String get notHaveAnyAdsText {
+    return Intl.message(
+      'Don\'t miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience',
+      name: 'notHaveAnyAdsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add ads to favorites`
+  String get addAdsToFav {
+    return Intl.message(
+      'Add ads to favorites',
+      name: 'addAdsToFav',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can come back to them later`
+  String get YouCanComeBack {
+    return Intl.message(
+      'You can come back to them later',
+      name: 'YouCanComeBack',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
