@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "repeatPassword":
             MessageLookupByLibrary.simpleMessage("Repeat password"),
         "resendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
+        "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "rybnitsa": MessageLookupByLibrary.simpleMessage("Rybnitsa"),
         "saveNewPassword":
             MessageLookupByLibrary.simpleMessage("Save new password"),

@@ -1,5 +1,6 @@
 import 'package:buy_and_dot/core/domain/container/app_container.dart';
 import 'package:buy_and_dot/feature/account/presentation/account_screen.dart';
+import 'package:buy_and_dot/feature/add_advertisement/presentation/page/add_advertisement_scree.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_screen.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/feature/advertisement_details/presentation/page/advertisement_details_screen.dart';
@@ -42,6 +43,9 @@ abstract class RouteList {
   static const _newPasswordPath = 'new-password';
   static const newPassword = '$forgotPassword/$_newPasswordPath';
 
+  static const _addAdvertisementPath = 'add-advertisement';
+  static const addAdvertisement = '$advertisement/$_addAdvertisementPath';
+
   static const _advertisementDetailsPath = 'advertisement-details';
   static String advertisementDetails(String id) =>
       '$favorite/$_advertisementDetailsPath/$id';
@@ -58,16 +62,32 @@ final router = GoRouter(
       },
       branches: <StatefulShellBranch>[
         StatefulShellBranch(
+          initialLocation: RouteList.advertisement,
           routes: <RouteBase>[
             GoRoute(
-              path: RouteList.advertisement,
-              builder: (context, state) => AdvertisementScreen(
-                viewModel: AdvertisementListViewModel(
-                  advertisementRepository:
-                      AppContainer().repositoryScope.advertisementRepository,
-                ),
-              ),
-            ),
+                path: RouteList.advertisement,
+                builder: (context, state) => AdvertisementScreen(
+                      viewModel: AdvertisementListViewModel(
+                        advertisementRepository: AppContainer()
+                            .repositoryScope
+                            .advertisementRepository,
+                      ),
+                    ),
+                routes: [
+                  GoRoute(
+                    path: RouteList._addAdvertisementPath,
+                    builder: (context, state) => const AddAdvertisementScreen(),
+                  ),
+                  GoRoute(
+                      path: '${RouteList._advertisementDetailsPath}/:id',
+                      builder: (context, state) {
+                        final id = state.pathParameters['id'];
+
+                        return AdvertisementDetailsScreen(
+                          id: id!,
+                        );
+                      }),
+                ]),
           ],
         ),
 
@@ -83,6 +103,10 @@ final router = GoRouter(
                       ),
                     ),
                 routes: [
+                  GoRoute(
+                    path: RouteList._addAdvertisementPath,
+                    builder: (context, state) => const AddAdvertisementScreen(),
+                  ),
                   GoRoute(
                       path: '${RouteList._advertisementDetailsPath}/:id',
                       builder: (context, state) {

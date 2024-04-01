@@ -6,6 +6,7 @@ import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomBottomSheet extends StatefulWidget {
   const CustomBottomSheet({super.key});
@@ -52,6 +53,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
           ),
           BottomSheetTextButton(
             text: S.of(context).done,
+            onTap: context.pop,
           ),
         ],
       );
