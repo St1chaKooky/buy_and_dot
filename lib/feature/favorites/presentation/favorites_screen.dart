@@ -37,7 +37,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         ),
         floatingActionButton: FloatingActionButton.small(
           child: const Icon(Icons.add),
-          onPressed: () {},
+          onPressed: () => context.go(RouteList.addAdvertisement),
           //  () => context.go(RouteList.addAdvertisement),
         ),
         body: Padding(
@@ -68,7 +68,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget get _isNotEmptyPostsBuilder => Scaffold(
         floatingActionButton: FloatingActionButton.small(
           child: const Icon(Icons.add),
-          onPressed: () {},
+          onPressed: () => context.go(RouteList.addAdvertisement),
         ),
         appBar: MainAppBar(
           isMainScreen: false,

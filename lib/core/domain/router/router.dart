@@ -43,12 +43,12 @@ abstract class RouteList {
   static const _newPasswordPath = 'new-password';
   static const newPassword = '$forgotPassword/$_newPasswordPath';
 
-  // static const _addAdvertisementPath = 'add-advertisement';
-  // static const addAdvertisement = '$advertisement/$_addAdvertisementPath';
+  static const _addAdvertisementPath = 'add-advertisement';
+  static const addAdvertisement = '$advertisement/$_addAdvertisementPath';
 
-  // static const _advertisementDetailsPath = 'advertisement-details';
-  // static const advertisementDetails =
-  //     '$advertisement/$_advertisementDetailsPath/:id';
+  static const _advertisementDetailsPath = 'advertisement-details';
+  static String advertisementDetails(String id) =>
+      '$favorite/$_advertisementDetailsPath/$id';
 }
 
 // GoRouter configuration
@@ -74,19 +74,19 @@ final router = GoRouter(
                       ),
                     ),
                 routes: [
-                  // GoRoute(
-                  //   path: RouteList.addAdvertisement,
-                  //   builder: (context, state) => const AddAdvertisementScreen(),
-                  // ),
-                  // GoRoute(
-                  // path: RouteList.advertisementDetails,
-                  // builder: (context, state) {
-                  //   final id = state.pathParameters['id'];
+                  GoRoute(
+                    path: RouteList._addAdvertisementPath,
+                    builder: (context, state) => const AddAdvertisementScreen(),
+                  ),
+                  GoRoute(
+                      path: '${RouteList._advertisementDetailsPath}/:id',
+                      builder: (context, state) {
+                        final id = state.pathParameters['id'];
 
-                  //   return AdvertisementDetailsScreen(
-                  //     id: id!,
-                  //   );
-                  // }),
+                        return AdvertisementDetailsScreen(
+                          id: id!,
+                        );
+                      }),
                 ]),
           ],
         ),
@@ -103,19 +103,19 @@ final router = GoRouter(
                       ),
                     ),
                 routes: [
-                  // GoRoute(
-                  //   path: RouteList.addAdvertisement,
-                  //   builder: (context, state) => const AddAdvertisementScreen(),
-                  // ),
-                  // GoRoute(
-                  //     path: RouteList.advertisementDetails,
-                  //     builder: (context, state) {
-                  //       final id = state.pathParameters['id'];
+                  GoRoute(
+                    path: RouteList._addAdvertisementPath,
+                    builder: (context, state) => const AddAdvertisementScreen(),
+                  ),
+                  GoRoute(
+                      path: '${RouteList._advertisementDetailsPath}/:id',
+                      builder: (context, state) {
+                        final id = state.pathParameters['id'];
 
-                  //       return AdvertisementDetailsScreen(
-                  //         id: id!,
-                  //       );
-                  //     }),
+                        return AdvertisementDetailsScreen(
+                          id: id!,
+                        );
+                      }),
                 ]),
           ],
         ),

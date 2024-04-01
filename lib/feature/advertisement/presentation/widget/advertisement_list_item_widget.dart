@@ -25,9 +25,9 @@ class AdvertisementListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
-      // () => context
-      //     .go('${RouteList.advertisementDetails}/${advertisementListItem.id}'),
+      onTap: () => context.go(
+        RouteList.advertisementDetails(advertisementListItem.id),
+      ),
       child: Container(
         decoration: _cardDecoration(context),
         child: Column(
