@@ -22,8 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "YouCanComeBack": MessageLookupByLibrary.simpleMessage(
+            "Вы можете вернуться к ним позже"),
         "account": MessageLookupByLibrary.simpleMessage("Профиль"),
         "adPrice": MessageLookupByLibrary.simpleMessage("Цена объявления"),
+        "addAdsToFav": MessageLookupByLibrary.simpleMessage(
+            "Добавьте объявления в избранное"),
         "addCity": MessageLookupByLibrary.simpleMessage("Добавить город"),
         "advertisements": MessageLookupByLibrary.simpleMessage("Объявления"),
         "all": MessageLookupByLibrary.simpleMessage("Все"),

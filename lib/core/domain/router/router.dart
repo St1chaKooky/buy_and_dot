@@ -1,10 +1,10 @@
 import 'package:buy_and_dot/core/domain/container/app_container.dart';
 import 'package:buy_and_dot/feature/account/presentation/account_screen.dart';
-import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_screen.dart';
-import 'package:buy_and_dot/feature/advertisement_details/presentation/page/advertisement_details_screen.dart';
+import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/feature/auth/presentation/auth_screen.dart';
 import 'package:buy_and_dot/feature/auth/presentation/auth_view_model.dart';
+import 'package:buy_and_dot/feature/favorites/presentation/favorite_view_model.dart';
 import 'package:buy_and_dot/feature/favorites/presentation/favorites_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/enter_code/enter_code_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/enter_code/enter_code_view_model.dart';
@@ -43,7 +43,7 @@ abstract class RouteList {
 
   static const _advertisementDetailsPath = 'advertisement-details';
   static const advertisementDetails =
-      '$favorite/$_advertisementDetailsPath/:advertisementListItem/:isMineAdvertisement';
+      '$favorite/$_advertisementDetailsPath/:id';
 }
 
 // GoRouter configuration
@@ -74,22 +74,23 @@ final router = GoRouter(
           routes: <RouteBase>[
             GoRoute(
                 path: RouteList.favorite,
-                builder: (context, state) => const FavoritesScreen(),
+                builder: (context, state) => FavoritesScreen(
+                      viewModel: FavoriteListViewModel(
+                        advertisementRepository: AppContainer()
+                            .repositoryScope
+                            .advertisementRepository,
+                      ),
+                    ),
                 routes: [
                   // GoRoute(
-                  //   path: RouteList.advertisementDetails,
-                  //   builder: (context, state){
-                  //     final advertisementListItem = state.pathParameters['advertisementListItem'];
-                  //     final isMineAdvertisement = state.pathParameters["isMineAdvertisement"];
+                  //     path: RouteList.advertisementDetails,
+                  //     builder: (context, state) {
+                  //       final id = state.pathParameters['id'];
 
-                  //     return AdvertisementDetailsScreen(
-                  //     advertisementListItem:
-                  //         advertisementListItem,
-                  //     isMineAdvertisement:
-                  //         isMineAdvertisement,
-                  //   ),
-                  //   }
-                  // ),
+                  //       return AdvertisementDetailsScreen(
+                  //         id: id!,
+                  //       );
+                  //     }),
                 ]),
           ],
         ),

@@ -38,7 +38,9 @@
     "from" : "From",
     "before" : "Before",
     "notHaveAnyAds":"You don't have any ads yet",
-    "notHaveAnyAdsText": "Don't miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience"
+    "notHaveAnyAdsText": "Don't miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience",
+    "addAdsToFav": "Add ads to favorites",
+    "YouCanComeBack":"You can come back to them later"
 
 
 

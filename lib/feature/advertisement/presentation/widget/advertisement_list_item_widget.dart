@@ -1,16 +1,16 @@
+
 import 'package:buy_and_dot/feature/advertisement/domain/entity/advertisement_list_item.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 
 class AdvertisementListItemWidget extends StatelessWidget {
-  final bool isMineAdvertisement;
   final AdvertisementListItem advertisementListItem;
 
-  const AdvertisementListItemWidget(
-      {super.key,
-      required this.advertisementListItem,
-      required this.isMineAdvertisement});
+  const AdvertisementListItemWidget({
+    super.key,
+    required this.advertisementListItem,
+  });
 
   BoxDecoration _cardDecoration(BuildContext context) => BoxDecoration(
         color: ColorCollection.surface,
@@ -25,6 +25,7 @@ class AdvertisementListItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
+      // context.go('${RouteList.advertisementDetails}/${advertisementListItem}'),
       child: Container(
         decoration: _cardDecoration(context),
         child: Column(

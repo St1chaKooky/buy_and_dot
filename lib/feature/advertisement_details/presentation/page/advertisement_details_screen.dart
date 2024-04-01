@@ -1,14 +1,12 @@
-import 'package:buy_and_dot/feature/advertisement/domain/entity/advertisement_list_item.dart';
 import 'package:buy_and_dot/feature/advertisement_details/presentation/widget/app_bar.dart';
 import 'package:flutter/material.dart';
 
 class AdvertisementDetailsScreen extends StatefulWidget {
-  final bool isMineAdvertisement;
-  final AdvertisementListItem advertisementListItem;
-  const AdvertisementDetailsScreen(
-      {super.key,
-      required this.advertisementListItem,
-      required this.isMineAdvertisement});
+  final String id;
+  const AdvertisementDetailsScreen({
+    super.key,
+    required this.id,
+  });
 
   @override
   State<AdvertisementDetailsScreen> createState() =>
@@ -17,12 +15,16 @@ class AdvertisementDetailsScreen extends StatefulWidget {
 
 class _AdvertisementDetailsScreenState
     extends State<AdvertisementDetailsScreen> {
+  //пусть пока так
+  final int myId = 123;
+  final int unknownId = 123;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarAdvertisementDetails(
         context: context,
-        isMineAdvertisement: widget.isMineAdvertisement,
+        isMineAdvertisement: unknownId == myId,
       ),
     );
   }

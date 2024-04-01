@@ -1,4 +1,4 @@
-import 'package:buy_and_dot/feature/filter/domain/entity/locality.dart';
+import 'package:buy_and_dot/feature/main_filter/domain/entity/locality.dart';
 
 class AdvertisementCreationEntity {
   final String title;

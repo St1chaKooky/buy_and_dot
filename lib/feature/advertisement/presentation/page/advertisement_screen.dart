@@ -1,7 +1,7 @@
 import 'package:buy_and_dot/core/presentation/widget/app_bar/main_app_bar.dart';
-import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_list_page.dart';
-import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_list_view_model.dart';
-import 'package:buy_and_dot/feature/advertisement/presentation/page/my_advertisement_list_page.dart';
+import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_page.dart';
+import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_view_model.dart';
+import 'package:buy_and_dot/feature/advertisement/presentation/page/my_advertisement/my_advertisement_list_page.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/widget/navigation_drawer_widget.dart';
 
 import 'package:flutter/material.dart';

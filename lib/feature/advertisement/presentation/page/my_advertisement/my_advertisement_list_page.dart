@@ -1,5 +1,5 @@
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
-import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_list_view_model.dart';
+import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

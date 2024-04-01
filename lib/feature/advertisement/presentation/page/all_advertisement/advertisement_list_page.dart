@@ -1,4 +1,4 @@
-import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_list_view_model.dart';
+import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/widget/advertisement_list_item_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +29,6 @@ class _AdvertisementListPageState extends State<AdvertisementListPage> {
         padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 16),
         itemBuilder: (context, index) => AdvertisementListItemWidget(
           advertisementListItem: _viewModelMain.advertisementList.value[index],
-          isMineAdvertisement: false,
         ),
         separatorBuilder: (context, index) => const SizedBox(height: 8),
         itemCount: _viewModelMain.advertisementList.value.length,

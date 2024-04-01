@@ -449,6 +449,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Add ads to favorites`
+  String get addAdsToFav {
+    return Intl.message(
+      'Add ads to favorites',
+      name: 'addAdsToFav',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can come back to them later`
+  String get YouCanComeBack {
+    return Intl.message(
+      'You can come back to them later',
+      name: 'YouCanComeBack',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
