@@ -1,11 +1,14 @@
-import 'package:buy_and_dot/feature/add_advertisement/domain/entity/price_entity.dart';
+
+import 'package:buy_and_dot/feature/add_advertisement/domain/service/city/city_bloc.dart';
 import 'package:buy_and_dot/feature/add_advertisement/domain/service/currency/currency_bloc.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/app_bar.dart';
+import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/ccity_dropdown_menu.dart';
+import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/currency_dropdown_menu.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/price_input.dart';
 
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class AddAdvertisementScreen extends StatefulWidget {
   const AddAdvertisementScreen({super.key});
@@ -16,7 +19,9 @@ class AddAdvertisementScreen extends StatefulWidget {
 
 class _AddAdvertisementScreenState extends State<AddAdvertisementScreen> {
   TextEditingController textEditingController = TextEditingController();
-   final CurrencyBloc _appSettingsBloc = CurrencyBloc(CurrencyState(currency: 0));
+   final CurrencyBloc _currencyBloc = CurrencyBloc(CurrencyState(currency: 0));
+   final CityBloc _cityBloc = CityBloc(CityState(city: 0));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +36,6 @@ class _AddAdvertisementScreenState extends State<AddAdvertisementScreen> {
             children: [
               Text(
                 'Название',
-                // S.of(context).name,
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium!
@@ -41,17 +45,21 @@ class _AddAdvertisementScreenState extends State<AddAdvertisementScreen> {
               SizedBox(
                 height: 12,
               ),
-              Row(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                 Row(children: [
                 Container(
-                width: 100,
+                width: 60,
                 child: PriceInput(
                   textEditingController: textEditingController,
                   labelText: '0',
                 ),
               ),
-              ],),
+              MyCurrencyDropDownMenu(myBloc: _currencyBloc,),
 
+              ],),
+              MyCityDropdownMenu(cityBloc: _cityBloc,),
               ],)
               
               

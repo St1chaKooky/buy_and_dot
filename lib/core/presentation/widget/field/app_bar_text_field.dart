@@ -1,3 +1,4 @@
+
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/presentation/widget/icon/svg_custom_icon.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';

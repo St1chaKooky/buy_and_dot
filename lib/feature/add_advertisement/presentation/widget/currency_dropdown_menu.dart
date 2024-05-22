@@ -20,7 +20,7 @@ class MyCurrencyDropDownMenuState extends State<MyCurrencyDropDownMenu> {
     bloc: _myBloc,
         builder: (context, state) {
           return DropdownMenu<PriceEntity>(
-              width: 165,
+              width: 100,
               inputDecorationTheme: InputDecorationTheme(
                 floatingLabelStyle: Theme.of(context)
                     .textTheme
@@ -42,7 +42,7 @@ class MyCurrencyDropDownMenuState extends State<MyCurrencyDropDownMenu> {
               hintText: 
                 _myBloc.currentCurrency.name,
                 
-              textStyle: Theme.of(context).textTheme.bodyLarge,
+              textStyle: Theme.of(context).textTheme.labelLarge,
               onSelected: (value) {
                 if (value != null) {
                   _myBloc.add(ChangeLocalEvent(value));

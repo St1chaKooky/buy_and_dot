@@ -44,7 +44,7 @@ class My_CurrencyDropdownMenuState extends State<MyCityDropdownMenu> {
               hintText: 
                 _myBloc.currentCity.name,
                 
-              textStyle: Theme.of(context).textTheme.bodyLarge,
+              textStyle: Theme.of(context).textTheme.labelLarge,
               onSelected: (value) {
                 if (value != null) {
                   _myBloc.add(ChangeCityEvent(value));

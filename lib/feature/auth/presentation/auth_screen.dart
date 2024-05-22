@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/custom_app_bar.dart';
 import 'package:buy_and_dot/feature/auth/presentation/auth_view_model.dart';
 
@@ -6,7 +7,7 @@ import 'package:buy_and_dot/feature/auth/presentation/sign_up_page.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/domain/intl/generated/l10n.dart';
+
 
 class AuthScreen extends StatefulWidget {
   final AuthViewModel _viewModel;
