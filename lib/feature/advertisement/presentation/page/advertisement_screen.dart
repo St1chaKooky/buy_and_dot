@@ -32,8 +32,8 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
         drawer: NavigationDrawerWidget(),
         floatingActionButton: FloatingActionButton.small(
           child: const Icon(Icons.add),
-          onPressed: () {},
-          // () => context.go(RouteList.addAdvertisement),
+          onPressed: 
+          () => context.push(RouteList.addAdvertisement),
         ),
         appBar: MainAppBar(
           textEditingController: textFieldEditingController,
