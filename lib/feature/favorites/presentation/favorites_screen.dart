@@ -38,7 +38,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         ),
         floatingActionButton: FloatingActionButton.small(
           child: const Icon(Icons.add),
-          onPressed: () => context.go(RouteList.addAdvertisement),
+          onPressed: () => context.go(RouteList.addFavoriteAdvertisement),
           //  () => context.go(RouteList.addAdvertisement),
         ),
         body: Padding(

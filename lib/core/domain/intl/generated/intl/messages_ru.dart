@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "city": MessageLookupByLibrary.simpleMessage("Город"),
         "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Темная тема"),
+        "description": MessageLookupByLibrary.simpleMessage("Описание"),
         "done": MessageLookupByLibrary.simpleMessage("Готово"),
         "enterACode": MessageLookupByLibrary.simpleMessage("Введите код"),
         "enterTheCodeSentTo": MessageLookupByLibrary.simpleMessage(
@@ -50,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("Я согласен с"),
         "logIn": MessageLookupByLibrary.simpleMessage("Вход"),
         "my": MessageLookupByLibrary.simpleMessage("Мои"),
+        "name": MessageLookupByLibrary.simpleMessage("Название"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Новый пароль"),
         "notHaveAnyAds":
             MessageLookupByLibrary.simpleMessage("У вас пока нет объявлений"),

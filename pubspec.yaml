@@ -39,6 +39,7 @@ dependencies:
   json_annotation: ^4.8.1
   get_it: ^7.6.7
   like_button: ^2.0.5
+  image_picker: ^1.1.1
   flutter_localizations:
     sdk: flutter
 
@@ -103,6 +104,11 @@ flutter:
     - assets/svg/edit.svg
     - assets/svg/bigLike.svg
     - assets/svg/check.svg
+    - assets/svg/camera.svg
+    - assets/svg/picture.svg
+    - assets/svg/ellipsis.svg
+
+
 
 
 

@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "enterACode": MessageLookupByLibrary.simpleMessage("Enter a code"),
         "enterTheCodeSentTo":
@@ -51,11 +52,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("I agree with"),
         "logIn": MessageLookupByLibrary.simpleMessage("Login"),
         "my": MessageLookupByLibrary.simpleMessage("My"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "notHaveAnyAds":
-            MessageLookupByLibrary.simpleMessage("You don\'t have any ads yet"),
+            MessageLookupByLibrary.simpleMessage("You dont have any ads yet"),
         "notHaveAnyAdsText": MessageLookupByLibrary.simpleMessage(
-            "Don\'t miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience"),
+            "Dont miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordRecovery":
             MessageLookupByLibrary.simpleMessage("Password recovery"),

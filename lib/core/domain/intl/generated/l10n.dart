@@ -430,20 +430,20 @@ class S {
     );
   }
 
-  /// `You don't have any ads yet`
+  /// `You dont have any ads yet`
   String get notHaveAnyAds {
     return Intl.message(
-      'You don\'t have any ads yet',
+      'You dont have any ads yet',
       name: 'notHaveAnyAds',
       desc: '',
       args: [],
     );
   }
 
-  /// `Don't miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience`
+  /// `Dont miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience`
   String get notHaveAnyAdsText {
     return Intl.message(
-      'Don\'t miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience',
+      'Dont miss the opportunity! Create and publish your ad right now to offer products or services to a wide audience',
       name: 'notHaveAnyAdsText',
       desc: '',
       args: [],
@@ -475,6 +475,26 @@ class S {
     return Intl.message(
       'Reset',
       name: 'reset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
       desc: '',
       args: [],
     );

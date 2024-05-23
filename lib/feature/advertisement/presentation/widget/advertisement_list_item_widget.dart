@@ -19,7 +19,7 @@ class AdvertisementListItemWidget extends StatelessWidget {
           width: 1,
           color: ColorCollection.outlineVariant,
         ),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(0),
       );
 
   @override
@@ -31,7 +31,8 @@ class AdvertisementListItemWidget extends StatelessWidget {
       child: Container(
         decoration: _cardDecoration(context),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          
+          // mainAxisSize: MainAxisSize.min,
           children: [
             _previewBuilder(),
             _bodyAdvertisementItemBuilder(context),
@@ -83,7 +84,15 @@ class AdvertisementListItemWidget extends StatelessWidget {
       );
 
   Widget _previewBuilder() =>
-      const Placeholder(fallbackWidth: 360.0, fallbackHeight: 176.0);
+  Container(
+    width: 360,
+    height: 176,
+    child: Image.network(
+      fit: BoxFit.cover,
+                  'https://life-trip.ru/wp-content/uploads/2018/06/lanta-klong-nin.jpg',
+                  
+                ),);
+       
 
   Widget _contentBuilder(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,

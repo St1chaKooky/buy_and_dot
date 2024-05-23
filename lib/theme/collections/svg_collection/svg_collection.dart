@@ -24,4 +24,9 @@ abstract class SvgCollection {
   static const edit = 'assets/svg/edit.svg';
   static const bigLike = 'assets/svg/bigLike.svg';
   static const check = 'assets/svg/check.svg';
+  static const camera = 'assets/svg/camera.svg';
+  static const picture = 'assets/svg/picture.svg';
+  static const ellipsis = 'assets/svg/ellipsis.svg';
+
+
 }

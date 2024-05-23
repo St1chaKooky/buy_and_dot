@@ -31,5 +31,6 @@ class AdvertisementListViewModel {
         advertisementList.value.clear();
         break;
     }
+    print(advertisementList.value.length);
   }
 }

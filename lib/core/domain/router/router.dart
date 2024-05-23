@@ -1,6 +1,7 @@
 import 'package:buy_and_dot/core/domain/container/app_container.dart';
 import 'package:buy_and_dot/feature/account/presentation/account_screen.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/page/add_advertisement_scree.dart';
+import 'package:buy_and_dot/feature/add_advertisement/presentation/page/view_model_add_advertisement.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_screen.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/feature/advertisement_details/presentation/page/advertisement_details_screen.dart';
@@ -46,6 +47,9 @@ abstract class RouteList {
   static const _addAdvertisementPath = 'add-advertisement';
   static const addAdvertisement = '$advertisement/$_addAdvertisementPath';
 
+  static const _addFavoriteAdvertisementPath = 'addFavorite-advertisement';
+  static const addFavoriteAdvertisement = '$favorite/$_addFavoriteAdvertisementPath';
+
   static const _advertisementDetailsPath = 'advertisement-details';
   static String advertisementDetails(String id) =>
       '$favorite/$_advertisementDetailsPath/$id';
@@ -76,7 +80,8 @@ final router = GoRouter(
                 routes: [
                   GoRoute(
                     path: RouteList._addAdvertisementPath,
-                    builder: (context, state) => const AddAdvertisementScreen(),
+                    // ignore: prefer_const_constructors
+                    builder: (context, state) =>  AddAdvertisementScreen(viewModel: ViewModelAddAdvertisement(imagePickerRepository: AppContainer().repositoryScope.imagePickerRepository),),
                   ),
                   GoRoute(
                       path: '${RouteList._advertisementDetailsPath}/:id',
@@ -104,8 +109,8 @@ final router = GoRouter(
                     ),
                 routes: [
                   GoRoute(
-                    path: RouteList._addAdvertisementPath,
-                    builder: (context, state) => const AddAdvertisementScreen(),
+                    path: RouteList._addFavoriteAdvertisementPath,
+                    builder: (context, state) => AddAdvertisementScreen(viewModel: ViewModelAddAdvertisement(imagePickerRepository: AppContainer().repositoryScope.imagePickerRepository),),
                   ),
                   GoRoute(
                       path: '${RouteList._advertisementDetailsPath}/:id',

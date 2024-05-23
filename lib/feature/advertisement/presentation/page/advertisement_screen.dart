@@ -33,7 +33,7 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
         floatingActionButton: FloatingActionButton.small(
           child: const Icon(Icons.add),
           onPressed: 
-          () => context.push(RouteList.addAdvertisement),
+          () => context.go(RouteList.addAdvertisement),
         ),
         appBar: MainAppBar(
           textEditingController: textFieldEditingController,
