@@ -19,7 +19,23 @@ class AppBarAdvertisementDetails extends AppBar {
             automaticallyImplyLeading: true,
             actions: [
               isMineAdvertisement
-                  ? const LikeButton()
+                  ? LikeButton(
+            isLiked: false,
+            animationDuration: const Duration(milliseconds: 400),
+            size: 48,
+            likeBuilder: (isLiked) {
+              return Icon(
+                
+                isLiked
+                    ? Icons.favorite_outlined
+                    : Icons.favorite_border_outlined,
+                size: 26,
+                color: isLiked
+                    ? Theme.of(context).colorScheme.primary
+                    : Theme.of(context).colorScheme.outline,
+              );
+            },
+          )
                   : MyStandardIconButton(
                       iconFromCollection: SvgCollection.edit,
                       onTap: () {},

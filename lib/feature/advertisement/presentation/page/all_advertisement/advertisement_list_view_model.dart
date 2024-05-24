@@ -28,7 +28,6 @@ class AdvertisementListViewModel {
         //  advertisementList.value.addAll(data);
         break;
       case BadUseCaseResult<List<AdvertisementListItem>>():
-        advertisementList.value.clear();
         break;
     }
     print(advertisementList.value.length);

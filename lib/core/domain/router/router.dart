@@ -52,7 +52,11 @@ abstract class RouteList {
 
   static const _advertisementDetailsPath = 'advertisement-details';
   static String advertisementDetails(String id) =>
-      '$favorite/$_advertisementDetailsPath/$id';
+      '$advertisement/$_advertisementDetailsPath/$id';
+
+  static const _advertisementFavoriteDetailsPath = 'advertisement-details';
+  static String advertisementFavoriteDetails(String id) =>
+      '$favorite/$_advertisementFavoriteDetailsPath/$id';   
 }
 
 // GoRouter configuration
@@ -113,7 +117,7 @@ final router = GoRouter(
                     builder: (context, state) => AddAdvertisementScreen(viewModel: ViewModelAddAdvertisement(imagePickerRepository: AppContainer().repositoryScope.imagePickerRepository),),
                   ),
                   GoRoute(
-                      path: '${RouteList._advertisementDetailsPath}/:id',
+                      path: '${RouteList._advertisementFavoriteDetailsPath}/:id',
                       builder: (context, state) {
                         final id = state.pathParameters['id'];
 

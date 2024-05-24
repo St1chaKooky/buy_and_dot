@@ -1,4 +1,5 @@
 import 'package:buy_and_dot/feature/advertisement_details/presentation/widget/app_bar.dart';
+import 'package:buy_and_dot/feature/advertisement_details/presentation/widget/slider_widget.dart';
 import 'package:flutter/material.dart';
 
 class AdvertisementDetailsScreen extends StatefulWidget {
@@ -26,6 +27,7 @@ class _AdvertisementDetailsScreenState
         context: context,
         isMineAdvertisement: unknownId == myId,
       ),
+      body: SliderWidget(),
     );
   }
 }
