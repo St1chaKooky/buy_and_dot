@@ -62,4 +62,6 @@ class OtherColor {
   static const scrim = Color(0xFF000000);
   static const shadow = Color(0xFF000000);
   static const black = Color(0xFF000000);
+  static const lightOutline = Color(0xFF81737A);
+
 }

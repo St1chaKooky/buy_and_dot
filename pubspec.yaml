@@ -79,7 +79,7 @@ flutter:
 
     - assets/image/test.jpg
 
-
+    - assets/svg/crest.svg
     - assets/svg/eye.svg
     - assets/svg/eye_off.svg
     - assets/svg/leading.svg

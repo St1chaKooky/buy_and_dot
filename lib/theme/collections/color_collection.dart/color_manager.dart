@@ -53,4 +53,6 @@ class ColorCollection {
   static const scrim = OtherColor.scrim;
   static const shadow = OtherColor.shadow;
   static const black = OtherColor.black;
+  static const lightOutline = OtherColor.lightOutline;
+
 }

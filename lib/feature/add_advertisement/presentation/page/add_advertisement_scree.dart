@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
+import 'package:buy_and_dot/core/presentation/widget/icon/svg_custom_icon.dart';
 import 'package:buy_and_dot/feature/add_advertisement/domain/service/city/city_bloc.dart';
 import 'package:buy_and_dot/feature/add_advertisement/domain/service/currency/currency_bloc.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/page/view_model_add_advertisement.dart';
@@ -6,10 +9,13 @@ import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/app_ba
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/ccity_dropdown_menu.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/currency_dropdown_menu.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/custom_icon.dart';
+import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/image_advertisement_widget.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/price_input.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/title_advertisement_input.dart';
+import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
 class AddAdvertisementScreen extends StatefulWidget {
@@ -27,9 +33,9 @@ class _AddAdvertisementScreenState extends State<AddAdvertisementScreen> {
   final CurrencyBloc _currencyBloc = CurrencyBloc(CurrencyState(currency: 0));
   final CityBloc _cityBloc = CityBloc(CityState(city: 0));
   TextEditingController titleTextEditingController = TextEditingController();
-  TextEditingController descriptionTextEditingController =
-      TextEditingController();
+  TextEditingController descriptionTextEditingController = TextEditingController();
   ViewModelAddAdvertisement get _viewModel => widget._viewModel;
+  List<Widget> myImageList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,11 +93,26 @@ class _AddAdvertisementScreenState extends State<AddAdvertisementScreen> {
               keyboardType: TextInputType.name,
               maxLines: null,
             ),
+            const SizedBox(
+              height: 16,
+            ),
+            Container(
+              height: 125,
+              child: ValueListenableBuilder(
+                  valueListenable: _viewModel.isActiveImageList,
+                  builder: (context, value, child) => ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => ImageAdvertisementWidget(viewModel: _viewModel, indexImage: index,),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 12),
+                      itemCount: _viewModel.isActiveImageList.value.length)),
+            ),
+            
           ],
         ),
       );
   Widget get _bottomEditBuilder => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: SizedBox(
           width: double.infinity,
           height: 50,
@@ -105,7 +126,7 @@ class _AddAdvertisementScreenState extends State<AddAdvertisementScreen> {
                     valueListenable: _viewModel.isActiveImageList,
                     builder: (context, value, child) => InkWell(
                         onTap: _viewModel.getCamera,
-                        child: CustomIcon(
+                        child: const CustomIcon(
                           name: SvgCollection.camera,
                         )),
                   ),
@@ -113,17 +134,20 @@ class _AddAdvertisementScreenState extends State<AddAdvertisementScreen> {
                     valueListenable: _viewModel.isActiveImageList,
                     builder: (context, value, child) => InkWell(
                         onTap: _viewModel.getPhoto,
-                        child: CustomIcon(
+                        child: const CustomIcon(
                           name: SvgCollection.picture,
                         )),
                   ),
                 ],
               ),
-              const InkWell(
-                  onTap: null,
-                  child: CustomIcon(
-                    name: SvgCollection.ellipsis,
-                  )),
+              ValueListenableBuilder(
+                valueListenable: _viewModel.isActiveImageList,
+                builder: (context, value, child) => InkWell(
+                    onTap: () => _viewModel.getCamera,
+                    child: const CustomIcon(
+                      name: SvgCollection.ellipsis,
+                    )),
+              ),
             ],
           ),
         ),
