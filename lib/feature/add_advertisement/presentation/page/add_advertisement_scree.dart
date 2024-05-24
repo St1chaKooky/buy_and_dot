@@ -144,7 +144,7 @@ class _AddAdvertisementScreenState extends State<AddAdvertisementScreen> {
                 valueListenable: _viewModel.isActiveImageList,
                 builder: (context, value, child) => InkWell(
                     onTap: () => _viewModel.getCamera,
-                    child: const CustomIcon(
+                    child: CustomIcon(
                       name: SvgCollection.ellipsis,
                     )),
               ),
