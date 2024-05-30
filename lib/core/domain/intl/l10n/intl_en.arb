@@ -43,5 +43,9 @@
   "YouCanComeBack": "You can come back to them later",
   "reset": "Reset",
   "name": "Name",
-  "description": "Description"
+  "description": "Description",
+  "aboutTheApplication": "About the application",
+  "logOut": "Logout"
+
+
 }

@@ -19,15 +19,17 @@ class AdvertisementListItemWidget extends StatelessWidget {
           width: 1,
           color: ColorCollection.outlineVariant,
         ),
-        borderRadius: BorderRadius.circular(0),
+        borderRadius: BorderRadius.circular(12),
       );
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.go(
+      onTap: () {
+context.push(
         RouteList.advertisementDetails(advertisementListItem.id),
-      ),
+      );
+      } ,
       child: Container(
         decoration: _cardDecoration(context),
         child: Column(
@@ -85,13 +87,22 @@ class AdvertisementListItemWidget extends StatelessWidget {
 
   Widget _previewBuilder() =>
   Container(
-    width: 360,
+    clipBehavior: Clip.antiAlias, // Обрезка сглаживанием
+  decoration: const BoxDecoration(
+    borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(11.0), // Закругление верхнего левого угла
+      topRight: Radius.circular(11.0), // Закругление верхнего правого угла
+    ),
+  ),
+    width: double.infinity,
     height: 176,
-    child: Image.network(
-      fit: BoxFit.cover,
-                  'https://life-trip.ru/wp-content/uploads/2018/06/lanta-klong-nin.jpg',
-                  
-                ),);
+    child: ClipRRect(
+      child: Image.network(
+        fit: BoxFit.cover,
+                    'https://life-trip.ru/wp-content/uploads/2018/06/lanta-klong-nin.jpg',
+                    
+                  ),
+    ),);
        
 
   Widget _contentBuilder(BuildContext context) => Column(

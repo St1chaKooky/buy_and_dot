@@ -28,4 +28,6 @@ abstract class SvgCollection {
   static const picture = 'assets/svg/picture.svg';
   static const ellipsis = 'assets/svg/ellipsis.svg';
   static const crest = 'assets/svg/crest.svg';
+  static const email = 'assets/svg/email.svg';
+
 }

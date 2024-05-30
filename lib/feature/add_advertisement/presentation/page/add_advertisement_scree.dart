@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
-import 'package:buy_and_dot/core/presentation/widget/icon/svg_custom_icon.dart';
 import 'package:buy_and_dot/feature/add_advertisement/domain/service/city/city_bloc.dart';
 import 'package:buy_and_dot/feature/add_advertisement/domain/service/currency/currency_bloc.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/page/view_model_add_advertisement.dart';
@@ -12,7 +9,6 @@ import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/custom
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/image_advertisement_widget.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/price_input.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/widget/title_advertisement_input.dart';
-import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

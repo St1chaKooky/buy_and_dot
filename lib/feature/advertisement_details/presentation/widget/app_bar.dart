@@ -18,7 +18,7 @@ class AppBarAdvertisementDetails extends AppBar {
                 icon: const Icon(Icons.arrow_back_outlined)),
             automaticallyImplyLeading: true,
             actions: [
-              isMineAdvertisement
+              !isMineAdvertisement
                   ? LikeButton(
             isLiked: false,
             animationDuration: const Duration(milliseconds: 400),

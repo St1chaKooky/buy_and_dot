@@ -11,13 +11,13 @@ class ViewModelAddAdvertisement {
   Future<void> getPhoto() async {
     final result = await _imagePickerRepository.getPhoto();
     if (result != null) {
-    isActiveImageList.value = [...isActiveImageList.value, if (result != null) result];
+    isActiveImageList.value = [...isActiveImageList.value, result];
   }
   }
   Future<void> getCamera() async {
     final result = await _imagePickerRepository.getCamera();
     if (result != null) {
-    isActiveImageList.value = [...isActiveImageList.value, if (result != null) result];
+    isActiveImageList.value = [...isActiveImageList.value, result];
     print(isActiveImageList.value.length);
   }
   }

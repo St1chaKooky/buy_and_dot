@@ -1,3 +1,4 @@
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/presentation/widget/icon/svg_custom_icon.dart';
 import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
@@ -23,7 +24,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
         children: [
           SvgPicture.asset(SvgCollection.headline),
           _itemBuilder(
-            text: 'Настройки',
+            text: S.of(context).settings,
             icon: SvgCollection.settings,
             onTap: () {
               context.pop();
@@ -38,13 +39,13 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
             },
           ),
           _itemBuilder(
-              text: 'О приложении',
+              text: S.of(context).aboutTheApplication,
               icon: SvgCollection.signal,
               onTap: () {
                 context.pop();
               }),
           _itemBuilder(
-              text: 'Выйти',
+            text: S.of(context).logOut,
               icon: SvgCollection.goOut,
               onTap: () {
                 context.pop();

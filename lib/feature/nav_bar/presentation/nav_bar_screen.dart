@@ -8,9 +8,11 @@ import 'package:go_router/go_router.dart';
 
 class ScaffoldWithNavBar extends StatelessWidget {
   /// Constructs an [ScaffoldWithNavBar].
+  final bool showBottomBar;
   const ScaffoldWithNavBar({
     super.key,
     required this.navigationShell,
+    this.showBottomBar = true,
   });
 
   final StatefulNavigationShell navigationShell;
@@ -18,7 +20,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: showBottomBar ? null :  BottomNavigationBar(
         backgroundColor: ColorCollection.surfaceContainer,
         selectedItemColor: ColorCollection.onSurface,
         unselectedLabelStyle: Theme.of(context).textTheme.labelMedium!.copyWith(

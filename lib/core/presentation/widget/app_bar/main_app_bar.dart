@@ -37,7 +37,7 @@ class MainAppBar extends AppBar {
                     ],
                   )
                 : null,
-            title: MyTextField(
+            title: MyAppBarTextField(
               onPressed: onPressedIcon,
               isMainScreen: isMainScreen,
               textEditingController: textEditingController,

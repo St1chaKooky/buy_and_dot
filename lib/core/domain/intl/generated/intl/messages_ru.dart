@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "YouCanComeBack": MessageLookupByLibrary.simpleMessage(
             "Вы можете вернуться к ним позже"),
+        "aboutTheApplication":
+            MessageLookupByLibrary.simpleMessage("О приложении"),
         "account": MessageLookupByLibrary.simpleMessage("Профиль"),
         "adPrice": MessageLookupByLibrary.simpleMessage("Цена объявления"),
         "addAdsToFav": MessageLookupByLibrary.simpleMessage(
@@ -50,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "from": MessageLookupByLibrary.simpleMessage("От"),
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("Я согласен с"),
         "logIn": MessageLookupByLibrary.simpleMessage("Вход"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Выйти"),
         "my": MessageLookupByLibrary.simpleMessage("Мои"),
         "name": MessageLookupByLibrary.simpleMessage("Название"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Новый пароль"),

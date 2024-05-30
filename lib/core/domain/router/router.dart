@@ -1,10 +1,12 @@
 import 'package:buy_and_dot/core/domain/container/app_container.dart';
-import 'package:buy_and_dot/feature/account/presentation/account_screen.dart';
+import 'package:buy_and_dot/feature/account/presentation/page/account_screen.dart';
+import 'package:buy_and_dot/feature/account/presentation/page/edit_account_screen.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/page/add_advertisement_scree.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/page/view_model_add_advertisement.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_screen.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/feature/advertisement_details/presentation/page/advertisement_details_screen.dart';
+import 'package:buy_and_dot/feature/aunknow_account/presentation/page/unknow_account_screen.dart';
 import 'package:buy_and_dot/feature/auth/presentation/auth_screen.dart';
 import 'package:buy_and_dot/feature/auth/presentation/auth_view_model.dart';
 import 'package:buy_and_dot/feature/favorites/presentation/favorite_view_model.dart';
@@ -47,16 +49,23 @@ abstract class RouteList {
   static const _addAdvertisementPath = 'add-advertisement';
   static const addAdvertisement = '$advertisement/$_addAdvertisementPath';
 
+    static const _editAccountPath = 'editAccount';
+  static const editAccount = '$account/$_editAccountPath';
+
   static const _addFavoriteAdvertisementPath = 'addFavorite-advertisement';
-  static const addFavoriteAdvertisement = '$favorite/$_addFavoriteAdvertisementPath';
+  static const addFavoriteAdvertisement =
+      '$favorite/$_addFavoriteAdvertisementPath';
 
   static const _advertisementDetailsPath = 'advertisement-details';
   static String advertisementDetails(String id) =>
       '$advertisement/$_advertisementDetailsPath/$id';
+  static const _accountAdvertisementDetailsPath = 'account-advertisement-details';
+  static String accountAdvertisementDetails() =>
+      '$advertisement/$_advertisementDetailsPath/$_accountAdvertisementDetailsPath';
 
   static const _advertisementFavoriteDetailsPath = 'advertisement-details';
   static String advertisementFavoriteDetails(String id) =>
-      '$favorite/$_advertisementFavoriteDetailsPath/$id';   
+      '$favorite/$_advertisementFavoriteDetailsPath/$id';
 }
 
 // GoRouter configuration
@@ -66,7 +75,15 @@ final router = GoRouter(
     StatefulShellRoute.indexedStack(
       builder: (BuildContext context, GoRouterState state,
           StatefulNavigationShell navigationShell) {
-        return ScaffoldWithNavBar(navigationShell: navigationShell);
+            bool hasMultipleSlashes(String string) {
+  final parts = string.split('/'); 
+  return parts.length <= 2; 
+}
+
+        return ScaffoldWithNavBar(
+          navigationShell: navigationShell,
+          showBottomBar: !hasMultipleSlashes(state.fullPath!),
+        );
       },
       branches: <StatefulShellBranch>[
         StatefulShellBranch(
@@ -85,9 +102,17 @@ final router = GoRouter(
                   GoRoute(
                     path: RouteList._addAdvertisementPath,
                     // ignore: prefer_const_constructors
-                    builder: (context, state) =>  AddAdvertisementScreen(viewModel: ViewModelAddAdvertisement(imagePickerRepository: AppContainer().repositoryScope.imagePickerRepository),),
+                    builder: (context, state) => AddAdvertisementScreen(
+                      viewModel: ViewModelAddAdvertisement(
+                          imagePickerRepository: AppContainer()
+                              .repositoryScope
+                              .imagePickerRepository),
+                    ),
                   ),
                   GoRoute(
+                    routes: [
+                      GoRoute(path: RouteList._accountAdvertisementDetailsPath, builder: (context, state) => UnknowAccountScreen(),)
+                    ],
                       path: '${RouteList._advertisementDetailsPath}/:id',
                       builder: (context, state) {
                         final id = state.pathParameters['id'];
@@ -114,10 +139,16 @@ final router = GoRouter(
                 routes: [
                   GoRoute(
                     path: RouteList._addFavoriteAdvertisementPath,
-                    builder: (context, state) => AddAdvertisementScreen(viewModel: ViewModelAddAdvertisement(imagePickerRepository: AppContainer().repositoryScope.imagePickerRepository),),
+                    builder: (context, state) => AddAdvertisementScreen(
+                      viewModel: ViewModelAddAdvertisement(
+                          imagePickerRepository: AppContainer()
+                              .repositoryScope
+                              .imagePickerRepository),
+                    ),
                   ),
                   GoRoute(
-                      path: '${RouteList._advertisementFavoriteDetailsPath}/:id',
+                      path:
+                          '${RouteList._advertisementFavoriteDetailsPath}/:id',
                       builder: (context, state) {
                         final id = state.pathParameters['id'];
 
@@ -133,6 +164,9 @@ final router = GoRouter(
         StatefulShellBranch(
           routes: <RouteBase>[
             GoRoute(
+              routes: [
+                GoRoute(path: RouteList._editAccountPath,builder: (context, state) => const EditAccountScreen(),)
+              ],
               path: RouteList.account,
               builder: (context, state) => const AccountScreen(),
             ),

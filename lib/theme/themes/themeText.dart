@@ -51,4 +51,9 @@ const textTheme = TextTheme(
     fontWeight: FontWeight.w500,
     fontSize: 28,
   ),
+  headlineSmall: TextStyle(
+    fontFamily: 'Roboto-Regular',
+    fontWeight: FontWeight.w500,
+    fontSize: 24,
+  ),
 );

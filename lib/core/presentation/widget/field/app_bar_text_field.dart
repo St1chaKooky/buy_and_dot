@@ -5,12 +5,12 @@ import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manage
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
 
-class MyTextField extends StatefulWidget {
+class MyAppBarTextField extends StatefulWidget {
   final void Function()? onPressed;
   final bool isMainScreen;
 
   final TextEditingController textEditingController;
-  const MyTextField({
+  const MyAppBarTextField({
     this.onPressed,
     this.isMainScreen = true,
     super.key,
@@ -18,10 +18,10 @@ class MyTextField extends StatefulWidget {
   });
 
   @override
-  State<MyTextField> createState() => _MyTextFieldState();
+  State<MyAppBarTextField> createState() => _MyAppBarTextFieldState();
 }
 
-class _MyTextFieldState extends State<MyTextField> {
+class _MyAppBarTextFieldState extends State<MyAppBarTextField> {
   TextTheme get theme => Theme.of(context).textTheme;
   @override
   Widget build(BuildContext context) {

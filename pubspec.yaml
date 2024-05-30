@@ -81,6 +81,7 @@ flutter:
 
     - assets/image/test.jpg
 
+    - assets/svg/email.svg
     - assets/svg/crest.svg
     - assets/svg/eye.svg
     - assets/svg/eye_off.svg
