@@ -1,6 +1,9 @@
+import 'package:buy_and_dot/core/data/model/user_model.dart';
 import 'package:buy_and_dot/core/domain/container/app_container.dart';
+import 'package:buy_and_dot/feature/about_app/presentation/about_app.dart';
 import 'package:buy_and_dot/feature/account/presentation/page/account_screen.dart';
 import 'package:buy_and_dot/feature/account/presentation/page/edit_account_screen.dart';
+import 'package:buy_and_dot/feature/account/presentation/page/edit_account_view_modal.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/page/add_advertisement_scree.dart';
 import 'package:buy_and_dot/feature/add_advertisement/presentation/page/view_model_add_advertisement.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/advertisement_screen.dart';
@@ -17,6 +20,7 @@ import 'package:buy_and_dot/feature/forgot_password/presentation/new_password/ne
 import 'package:buy_and_dot/feature/forgot_password/presentation/new_password/new_password_view_model.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/password_recovery/password_recovery_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/password_recovery/password_recovery_view_model.dart';
+import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/filter_view_model.dart';
 import 'package:buy_and_dot/feature/nav_bar/presentation/nav_bar_screen.dart';
 import 'package:buy_and_dot/feature/splash/presentation/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -49,23 +53,24 @@ abstract class RouteList {
   static const _addAdvertisementPath = 'add-advertisement';
   static const addAdvertisement = '$advertisement/$_addAdvertisementPath';
 
-    static const _editAccountPath = 'editAccount';
+  static const _editAccountPath = 'editAccount';
   static const editAccount = '$account/$_editAccountPath';
 
   static const _addFavoriteAdvertisementPath = 'addFavorite-advertisement';
-  static const addFavoriteAdvertisement =
-      '$favorite/$_addFavoriteAdvertisementPath';
+  static const addFavoriteAdvertisement = '$favorite/$_addFavoriteAdvertisementPath';
+
+  static const _aboutAppPath ='aboutApp';
+  static const aboutApp ='$advertisement/$_aboutAppPath';
+
 
   static const _advertisementDetailsPath = 'advertisement-details';
-  static String advertisementDetails(String id) =>
-      '$advertisement/$_advertisementDetailsPath/$id';
+  static String advertisementDetails(String id) => '$advertisement/$_advertisementDetailsPath/$id';
+
   static const _accountAdvertisementDetailsPath = 'account-advertisement-details';
-  static String accountAdvertisementDetails() =>
-      '$advertisement/$_advertisementDetailsPath/$_accountAdvertisementDetailsPath';
+  static String accountAdvertisementDetails() => '$advertisement/$_advertisementDetailsPath/$_accountAdvertisementDetailsPath';
 
   static const _advertisementFavoriteDetailsPath = 'advertisement-details';
-  static String advertisementFavoriteDetails(String id) =>
-      '$favorite/$_advertisementFavoriteDetailsPath/$id';
+  static String advertisementFavoriteDetails(String id) =>'$favorite/$_advertisementFavoriteDetailsPath/$id';
 }
 
 // GoRouter configuration
@@ -96,9 +101,10 @@ final router = GoRouter(
                         advertisementRepository: AppContainer()
                             .repositoryScope
                             .advertisementRepository,
-                      ),
+                      ), filterViewModel:FilterViewModel(context),
                     ),
                 routes: [
+                  GoRoute(path: RouteList._aboutAppPath, builder: (context, state) => AboutAppScreen(),),
                   GoRoute(
                     path: RouteList._addAdvertisementPath,
                     // ignore: prefer_const_constructors
@@ -134,7 +140,7 @@ final router = GoRouter(
                         advertisementRepository: AppContainer()
                             .repositoryScope
                             .advertisementRepository,
-                      ),
+                      ), filterViewModel: FilterViewModel(context),
                     ),
                 routes: [
                   GoRoute(
@@ -165,7 +171,8 @@ final router = GoRouter(
           routes: <RouteBase>[
             GoRoute(
               routes: [
-                GoRoute(path: RouteList._editAccountPath,builder: (context, state) => const EditAccountScreen(),)
+                GoRoute(path: RouteList._editAccountPath,builder: (context, state) =>  EditAccountScreen(
+                  user: state.extra as UserModel, viewModel: ViewModelEditAccount(imagePickerRepository: AppContainer().repositoryScope.editAccountimagePickerRepository),),)
               ],
               path: RouteList.account,
               builder: (context, state) => const AccountScreen(),

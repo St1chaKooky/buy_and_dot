@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:buy_and_dot/feature/account/data/image_picker_repository_mocked.dart';
+import 'package:buy_and_dot/feature/account/repository/image_picker_repository.dart';
 import 'package:buy_and_dot/feature/add_advertisement/data/image_picker_repository/image_picker_mocked_reposiory.dart';
 import 'package:buy_and_dot/feature/add_advertisement/domain/repository/image_picker_repository.dart';
 import 'package:buy_and_dot/feature/advertisement/data/repository/advertisement_mocked_repository.dart';
@@ -28,6 +30,7 @@ class AppContainer {
   Future<bool> initDependencies() async {
     try {
       final ImagePickerRepository imagePickerRepository = ImagePickerMockedReposiory();
+      final EditAccountImagePickerRepository editAccountimagePickerRepository = EditAccountImagePickerMockedReposiory();
       final forgotPasswordRepo =
           ForgotPasswordMockedRepo(ForgetPasswordMockedDataSource());
       final authRepo = AuthMockedRepo(AuthMockedDataSource());
@@ -35,6 +38,7 @@ class AppContainer {
           AdvertisementMockedRepository();
 
       repositoryScope = RepositoryScope(
+        editAccountimagePickerRepository:editAccountimagePickerRepository,
         imagePickerRepository: imagePickerRepository,
           advertisementRepository: advertisementRepository,
           authRepository: authRepo,
@@ -61,11 +65,14 @@ class ServiceScope {
 }
 
 class RepositoryScope {
+  final EditAccountImagePickerRepository  editAccountimagePickerRepository;
   final ImagePickerRepository imagePickerRepository;
   final AdvertisementRepository advertisementRepository;
   final AuthMockedRepo authRepository;
   final ForgotPasswordRepo forgotPasswordRepo;
   RepositoryScope({
+
+    required this.editAccountimagePickerRepository,
     required this.advertisementRepository,
     required this.imagePickerRepository,
 

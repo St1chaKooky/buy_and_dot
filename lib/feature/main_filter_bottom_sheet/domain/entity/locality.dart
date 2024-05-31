@@ -10,7 +10,10 @@ abstract class Locality {
 
 enum LocalityList implements Locality {
   rybnitsa(_rybnitsa),
-  tiraspol(_tiraspol);
+  tiraspol(_tiraspol),
+  dubosary(_dubosary),
+  grigariopol(_grigariopol);
+
 
   const LocalityList(this.name);
 
@@ -21,3 +24,9 @@ enum LocalityList implements Locality {
 String _tiraspol(BuildContext context) => S.of(context).tiraspol;
 
 String _rybnitsa(BuildContext context) => S.of(context).rybnitsa;
+
+String _dubosary(BuildContext context) => S.of(context).dubosary;
+
+String _grigariopol(BuildContext context) => S.of(context).grigariopol;
+
+

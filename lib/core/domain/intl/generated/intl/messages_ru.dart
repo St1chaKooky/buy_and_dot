@@ -40,6 +40,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkTheme": MessageLookupByLibrary.simpleMessage("Темная тема"),
         "description": MessageLookupByLibrary.simpleMessage("Описание"),
         "done": MessageLookupByLibrary.simpleMessage("Готово"),
+        "dubosary": MessageLookupByLibrary.simpleMessage("Рыбница"),
+        "editAccount":
+            MessageLookupByLibrary.simpleMessage("Редактирование профиля"),
+        "email": MessageLookupByLibrary.simpleMessage("Почта"),
         "enterACode": MessageLookupByLibrary.simpleMessage("Введите код"),
         "enterTheCodeSentTo": MessageLookupByLibrary.simpleMessage(
             "Введите код, отправленный на"),
@@ -50,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
         "from": MessageLookupByLibrary.simpleMessage("От"),
+        "grigariopol": MessageLookupByLibrary.simpleMessage("Григориополь"),
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("Я согласен с"),
         "logIn": MessageLookupByLibrary.simpleMessage("Вход"),
         "logOut": MessageLookupByLibrary.simpleMessage("Выйти"),
@@ -78,10 +83,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Задайте новый пароль и подтвердите его для завершения сброса."),
         "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "signUp": MessageLookupByLibrary.simpleMessage("Регистрация"),
+        "surName": MessageLookupByLibrary.simpleMessage("Фамилия"),
         "termsOfUse": MessageLookupByLibrary.simpleMessage(
             "Правилами и условиями использования"),
         "tiraspol": MessageLookupByLibrary.simpleMessage("Тирасполь"),
         "toComeIn": MessageLookupByLibrary.simpleMessage("Войти"),
-        "toComeUp": MessageLookupByLibrary.simpleMessage("Зарегистрироваться")
+        "toComeUp": MessageLookupByLibrary.simpleMessage("Зарегистрироваться"),
+        "userName": MessageLookupByLibrary.simpleMessage("Имя")
       };
 }

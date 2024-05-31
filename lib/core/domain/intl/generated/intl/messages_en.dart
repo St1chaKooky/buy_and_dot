@@ -41,6 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
+        "dubosary": MessageLookupByLibrary.simpleMessage("Dubosary"),
+        "editAccount": MessageLookupByLibrary.simpleMessage("Edit Account"),
+        "email": MessageLookupByLibrary.simpleMessage("email"),
         "enterACode": MessageLookupByLibrary.simpleMessage("Enter a code"),
         "enterTheCodeSentTo":
             MessageLookupByLibrary.simpleMessage("Enter the code sent to"),
@@ -51,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password"),
         "from": MessageLookupByLibrary.simpleMessage("From"),
+        "grigariopol": MessageLookupByLibrary.simpleMessage("Grigariopol"),
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("I agree with"),
         "logIn": MessageLookupByLibrary.simpleMessage("Login"),
         "logOut": MessageLookupByLibrary.simpleMessage("Logout"),
@@ -79,10 +83,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Set a new password and confirm it to complete the reset."),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "signUp": MessageLookupByLibrary.simpleMessage("Signup"),
+        "surName": MessageLookupByLibrary.simpleMessage("surName"),
         "termsOfUse":
             MessageLookupByLibrary.simpleMessage("Terms and Conditions of Use"),
         "tiraspol": MessageLookupByLibrary.simpleMessage("Tiraspol"),
         "toComeIn": MessageLookupByLibrary.simpleMessage("Login"),
-        "toComeUp": MessageLookupByLibrary.simpleMessage("Signup")
+        "toComeUp": MessageLookupByLibrary.simpleMessage("Signup"),
+        "userName": MessageLookupByLibrary.simpleMessage("Name")
       };
 }

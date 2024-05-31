@@ -28,7 +28,7 @@ class AdvertisementMockedRepository implements AdvertisementRepository {
   @override
   Future<UseCaseResult<List<AdvertisementListItem>>> getList(
       AdvertisementListFilter filter) async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     try {
       return UseCaseResult.good(_mockedAdvList
           .where((element) {

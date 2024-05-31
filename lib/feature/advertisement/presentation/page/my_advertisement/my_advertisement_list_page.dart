@@ -23,6 +23,7 @@ class _MyAdvertisementListPageState extends State<MyAdvertisementListPage> {
   void initState() {
     super.initState();
     _viewModelMain.getAdvPage(0);
+    
   }
 
   @override

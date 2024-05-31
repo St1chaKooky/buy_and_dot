@@ -300,6 +300,26 @@ class S {
     );
   }
 
+  /// `Dubosary`
+  String get dubosary {
+    return Intl.message(
+      'Dubosary',
+      name: 'dubosary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grigariopol`
+  String get grigariopol {
+    return Intl.message(
+      'Grigariopol',
+      name: 'grigariopol',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `All`
   String get all {
     return Intl.message(
@@ -515,6 +535,46 @@ class S {
     return Intl.message(
       'Logout',
       name: 'logOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `surName`
+  String get surName {
+    return Intl.message(
+      'surName',
+      name: 'surName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `email`
+  String get email {
+    return Intl.message(
+      'email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Account`
+  String get editAccount {
+    return Intl.message(
+      'Edit Account',
+      name: 'editAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get userName {
+    return Intl.message(
+      'Name',
+      name: 'userName',
       desc: '',
       args: [],
     );

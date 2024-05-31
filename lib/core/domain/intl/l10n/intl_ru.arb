@@ -24,6 +24,8 @@
   "darkTheme": "Темная тема",
   "tiraspol": "Тирасполь",
   "rybnitsa": "Рыбница",
+  "dubosary": "Рыбница",
+  "grigariopol": "Григориополь",
   "all": "Все",
   "my": "Мои",
   "searchPost": "Поиск объявлений",
@@ -45,6 +47,9 @@
   "name": "Название",
   "description": "Описание",
   "aboutTheApplication": "О приложении",
-  "logOut":"Выйти"
-
+  "logOut": "Выйти",
+  "surName": "Фамилия",
+  "email": "Почта",
+  "editAccount": "Редактирование профиля",
+  "userName" : "Имя"
 }

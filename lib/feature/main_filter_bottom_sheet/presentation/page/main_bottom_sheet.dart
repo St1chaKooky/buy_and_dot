@@ -1,5 +1,6 @@
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/bottomSheet_text_button.dart';
+import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/filter_view_model.dart';
 import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/list_city_bottom_sheet.dart';
 import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/widget/bottom_sheet_text_field.dart';
 import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/widget/input_chip.dart';
@@ -8,82 +9,81 @@ import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manage
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:view_model_divider/view_model.dart';
 
-class MainBottomSheet extends StatefulWidget {
-  const MainBottomSheet({super.key});
+class MainBottomSheet extends BaseView<FilterViewModel> {
+  // final FilterViewModel _viewModel;
 
-  @override
-  State<MainBottomSheet> createState() => _MainBottomSheetState();
-}
+   MainBottomSheet({super.key}): super(vmFactory: (context) => FilterViewModel(context),) ;
 
-class _MainBottomSheetState extends State<MainBottomSheet> {
-  double get screenHeight => MediaQuery.of(context).size.height;
-  double get screenWidth => MediaQuery.of(context).size.width;
   final TextEditingController minPriceTextEditingController =
       TextEditingController();
   final TextEditingController maxPriceTextEditingController =
       TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(FilterViewModel vm) {
+    
+  double  screenHeight = MediaQuery.of(vm.context).size.height;
+  double  screenWidth = MediaQuery.of(vm.context).size.width;
     return Container(
         padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            _headerBuilder,
+            _headerBuilder(vm),
             const SizedBox(
               height: 14,
             ),
-            _cityFilterBuilder,
+            _cityFilterBuilder(vm),
             const SizedBox(
               height: 24,
             ),
-            _coutFilterBuilder,
-            SizedBox(height: MediaQuery.of(context).padding.bottom),
+            _coutFilterBuilder(vm),
+            SizedBox(height: MediaQuery.of(vm.context).padding.bottom),
           ],
         ));
   }
 
-  Widget get _headerBuilder => Row(
+  Widget _headerBuilder(FilterViewModel vm) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            S.of(context).filters,
-            style: Theme.of(context)
+            S.of(vm.context).filters,
+            style: Theme.of(vm.context)
                 .textTheme
                 .titleLarge!
                 .copyWith(color: ColorCollection.onSurfaceVar),
           ),
           BottomSheetTextButton(
-            text: S.of(context).apply,
-            onTap: context.pop,
+            text: S.of(vm.context).apply,
+            onTap: vm.context.pop,
           ),
         ],
       );
-  Widget get _cityFilterBuilder => Column(
+  Widget _cityFilterBuilder(FilterViewModel vm) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            S.of(context).city,
-            style: Theme.of(context).textTheme.titleMedium,
+            S.of(vm.context).city,
+            style: Theme.of(vm.context).textTheme.titleMedium,
           ),
           const SizedBox(
             height: 12,
           ),
           Container(
             height: 32,
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const SizedBox(
-                width: 8,
-              ),
-              scrollDirection: Axis.horizontal,
-              itemCount: 20,
-              itemBuilder: (context, index) => InputChipWidget(
-                text: 'Тирасполь',
-              ),
-            ),
+            child: ValueListenableBuilder(
+                valueListenable: vm.isActiveCityList,
+                builder: (context, value, child) => ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => InputChipWidget(
+                           text: vm.isActiveCityList.value[index],
+                        ),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 12),
+                    itemCount: vm.isActiveCityList.value.length)),
           ),
           const SizedBox(
             height: 10,
@@ -94,17 +94,17 @@ class _MainBottomSheetState extends State<MainBottomSheet> {
                 backgroundColor: ColorCollection.surfaceContainerLow,
                 showDragHandle: true,
                 enableDrag: false,
-                context: context,
-                builder: (context) => const ListCityBottomSheet()),
-            text: S.of(context).addCity,
+                context: vm.context,
+                builder: (context) =>  ListCityBottomSheet()),
+            text: S.of(vm.context).addCity,
           ),
         ],
       );
-  Widget get _coutFilterBuilder => Column(
+  Widget _coutFilterBuilder(FilterViewModel vm) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(S.of(context).adPrice,
-              style: Theme.of(context).textTheme.titleMedium),
+          Text(S.of(vm.context).adPrice,
+              style: Theme.of(vm.context).textTheme.titleMedium),
           const SizedBox(
             height: 12,
           ),
@@ -113,7 +113,7 @@ class _MainBottomSheetState extends State<MainBottomSheet> {
               Expanded(
                 child: BottomSheetTextField(
                   textEditingController: minPriceTextEditingController,
-                  labelText: S.of(context).from,
+                  labelText: S.of(vm.context).from,
                 ),
               ),
               const SizedBox(
@@ -122,7 +122,7 @@ class _MainBottomSheetState extends State<MainBottomSheet> {
               Expanded(
                 child: BottomSheetTextField(
                   textEditingController: maxPriceTextEditingController,
-                  labelText: S.of(context).before,
+                  labelText: S.of(vm.context).before,
                 ),
               ),
             ],

@@ -1,3 +1,4 @@
+
 import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/widget/advertisement_list_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,11 @@ class _AdvertisementListPageState extends State<AdvertisementListPage> {
     _viewModelMain.getAdvPage(0);
   }
 
+@override
+void didUpdateWidget(covariant AdvertisementListPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _viewModelMain.getAdvPage(0);
+  }
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(

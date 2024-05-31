@@ -1,4 +1,5 @@
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
+import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/core/presentation/widget/icon/svg_custom_icon.dart';
 import 'package:buy_and_dot/feature/settings/presintation/custom_bottom_sheet.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
@@ -42,7 +43,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               text: S.of(context).aboutTheApplication,
               icon: SvgCollection.signal,
               onTap: () {
-                context.pop();
+                context.push(RouteList.aboutApp);
               }),
           _itemBuilder(
             text: S.of(context).logOut,

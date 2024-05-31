@@ -4,15 +4,17 @@ import 'package:buy_and_dot/core/domain/router/router.dart';
 import 'package:buy_and_dot/core/presentation/widget/app_bar/main_app_bar.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_page.dart';
 import 'package:buy_and_dot/feature/favorites/presentation/favorite_view_model.dart';
+import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/filter_view_model.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class FavoritesScreen extends StatefulWidget {
+  final FilterViewModel _filterViewModel;
   final FavoriteListViewModel _viewModel;
-  const FavoritesScreen({super.key, required FavoriteListViewModel viewModel})
-      : _viewModel = viewModel;
+  const FavoritesScreen({super.key, required FavoriteListViewModel viewModel, required FilterViewModel filterViewModel})
+      : _viewModel = viewModel, _filterViewModel = filterViewModel;
 
   @override
   State<FavoritesScreen> createState() => _FavoritesScreenState();
@@ -21,6 +23,7 @@ class FavoritesScreen extends StatefulWidget {
 class _FavoritesScreenState extends State<FavoritesScreen> {
   TextEditingController textFieldEditingController = TextEditingController();
   FavoriteListViewModel get _viewModel => widget._viewModel;
+  FilterViewModel get _filterViewModel => widget._filterViewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -43,26 +46,29 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                  width: 120,
-                  height: 120,
-                  SvgCollection.bigLike,
-                  fit: BoxFit.scaleDown),
-              const SizedBox(height: 16),
-              Text(
-                textAlign: TextAlign.center,
-                S.of(context).addAdsToFav,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const SizedBox(height: 16),
-              Text(
-                S.of(context).YouCanComeBack,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ],
+          child: Container(
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                    width: 120,
+                    height: 120,
+                    SvgCollection.bigLike,
+                    fit: BoxFit.scaleDown),
+                const SizedBox(height: 16),
+                Text(
+                  textAlign: TextAlign.center,
+                  S.of(context).addAdsToFav,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  S.of(context).YouCanComeBack,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -72,6 +78,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           onPressed: () => context.go(RouteList.addAdvertisement),
         ),
         appBar: MainAppBar(
+          viewModel: _filterViewModel,
           isMainScreen: false,
           textEditingController: textFieldEditingController,
           context: context,

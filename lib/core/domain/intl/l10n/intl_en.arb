@@ -24,6 +24,9 @@
   "darkTheme": "Dark theme",
   "tiraspol": "Tiraspol",
   "rybnitsa": "Rybnitsa",
+  "dubosary": "Dubosary",
+  "grigariopol": "Grigariopol",
+
   "all": "All",
   "my": "My",
   "searchPost": "Search advertisements",
@@ -45,7 +48,9 @@
   "name": "Name",
   "description": "Description",
   "aboutTheApplication": "About the application",
-  "logOut": "Logout"
-
-
+  "logOut": "Logout",
+  "surName": "surName",
+  "email": "email",
+  "editAccount": "Edit Account",
+  "userName" : "Name"
 }

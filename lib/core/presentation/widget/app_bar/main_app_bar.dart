@@ -2,18 +2,22 @@
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/presentation/widget/field/app_bar_text_field.dart';
 import 'package:buy_and_dot/core/presentation/widget/icon_button/standard_icon_button.dart';
+import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/filter_view_model.dart';
 import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/main_bottom_sheet.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:buy_and_dot/theme/collections/svg_collection/svg_collection.dart';
 import 'package:flutter/material.dart';
 
 class MainAppBar extends AppBar {
+  final FilterViewModel viewModel;
   final void Function()? onPressedIcon;
   final bool isMainScreen;
   final TextEditingController textEditingController;
 
   MainAppBar({
+    
     this.onPressedIcon,
+    required this.viewModel,
     required this.textEditingController,
     super.key,
     this.isMainScreen = true,
@@ -37,7 +41,7 @@ class MainAppBar extends AppBar {
                     ],
                   )
                 : null,
-            title: MyAppBarTextField(
+            title: MyTextField(
               onPressed: onPressedIcon,
               isMainScreen: isMainScreen,
               textEditingController: textEditingController,
@@ -53,7 +57,7 @@ class MainAppBar extends AppBar {
                     showDragHandle: true,
                     enableDrag: false,
                     context: context,
-                    builder: (context) => const MainBottomSheet()),
+                    builder: (context) =>  MainBottomSheet()),
                 isSvgIcon: true,
               ),
             ]);

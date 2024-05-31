@@ -1,4 +1,6 @@
 
+import 'package:buy_and_dot/core/data/model/user_model.dart';
+import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/feature/account/presentation/widget/app_bar.dart';
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +13,11 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
+  final UserModel user = UserModel(name: 'Георгий', email: 'examples@yourdomain.com', phoneNamber: '+ 373 777 2 54 97', surName: 'Васильков');
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AccaountAppBar(context: context,),
+      appBar: AccaountAppBar(context: context, userData: user,),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
         child: Column(
@@ -49,7 +52,7 @@ class _AccountScreenState extends State<AccountScreen> {
                         fit: BoxFit.cover)),
               ),
               const SizedBox(height: 8,),
-              Text('Григорий васильков'),
+              Text('${user.name} ${user.surName}',style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 16,),
               Container(width: double.infinity,height: 1,color: ColorCollection.outlineVariant,),
         ],
@@ -59,10 +62,10 @@ class _AccountScreenState extends State<AccountScreen> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text('E-mail',style: Theme.of(context).textTheme.labelMedium!.copyWith(
+      Text(S.of(context).email,style: Theme.of(context).textTheme.labelMedium!.copyWith(
         color: ColorCollection.onSurfaceVar
       ),),
-      Text('g.vasilkov@yandex.ru',style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+      Text(user.email,style: Theme.of(context).textTheme.bodyLarge!.copyWith(
         color: ColorCollection.onSurface
       ),),
     ],
@@ -72,10 +75,10 @@ class _AccountScreenState extends State<AccountScreen> {
     mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text('Телефон',style: Theme.of(context).textTheme.labelMedium!.copyWith(
+      Text(S.of(context).phone,style: Theme.of(context).textTheme.labelMedium!.copyWith(
         color: ColorCollection.onSurfaceVar
       ),),
-      Text('+ 373 777 2 54 97',style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+      Text(user.phoneNamber,style: Theme.of(context).textTheme.bodyLarge!.copyWith(
         color: ColorCollection.onSurface
       ),),
     ],
