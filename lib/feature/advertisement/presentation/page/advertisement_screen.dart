@@ -4,17 +4,16 @@ import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertis
 import 'package:buy_and_dot/feature/advertisement/presentation/page/all_advertisement/advertisement_list_view_model.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/page/my_advertisement/my_advertisement_list_page.dart';
 import 'package:buy_and_dot/feature/advertisement/presentation/widget/navigation_drawer_widget.dart';
-import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/filter_view_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AdvertisementScreen extends StatefulWidget {
-  final FilterViewModel _filterViewModel;
+
   final AdvertisementListViewModel _viewModel;
   const AdvertisementScreen(
-      {super.key, required AdvertisementListViewModel viewModel, required FilterViewModel filterViewModel})
-      : _viewModel = viewModel, _filterViewModel = filterViewModel;
+      {super.key, required AdvertisementListViewModel viewModel})
+      : _viewModel = viewModel;
 
   @override
   State<AdvertisementScreen> createState() => _AdvertisementScreenState();
@@ -23,7 +22,7 @@ class AdvertisementScreen extends StatefulWidget {
 class _AdvertisementScreenState extends State<AdvertisementScreen> {
   TextEditingController textFieldEditingController = TextEditingController();
   AdvertisementListViewModel get _viewModel => widget._viewModel;
-  FilterViewModel get _filterViewModel => widget._filterViewModel;
+
 
 
   TextTheme get theme => Theme.of(context).textTheme;
@@ -41,7 +40,7 @@ class _AdvertisementScreenState extends State<AdvertisementScreen> {
         ),
         appBar: MainAppBar(
           textEditingController: textFieldEditingController,
-          context: context, viewModel: _filterViewModel,
+          context: context,
         ),
         body: TabBarView(
           children: [

@@ -1,6 +1,7 @@
 import 'package:buy_and_dot/core/domain/intl/generated/l10n.dart';
 import 'package:buy_and_dot/core/presentation/widget/button/bottomSheet_text_button.dart';
-import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/filter_view_model.dart';
+import 'package:buy_and_dot/feature/main_filter_bottom_sheet/domain/entity/locality.dart';
+import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/domain/bloc/city_filter_bloc.dart';
 import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/list_city_bottom_sheet.dart';
 import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/widget/bottom_sheet_text_field.dart';
 import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/widget/input_chip.dart';
@@ -8,82 +9,105 @@ import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/widget
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:view_model_divider/view_model.dart';
 
-class MainBottomSheet extends BaseView<FilterViewModel> {
-  // final FilterViewModel _viewModel;
+class MainBottomSheet extends StatefulWidget {
+  final CityFilterBloc mainFilterBloc;
 
-   MainBottomSheet({super.key}): super(vmFactory: (context) => FilterViewModel(context),) ;
+  const MainBottomSheet({super.key, required this.mainFilterBloc});
+  @override
+  State<MainBottomSheet> createState() => _MainBottomSheetState();
+}
+
+class _MainBottomSheetState extends State<MainBottomSheet> {
+  CityFilterBloc get mainFilterBloc => widget.mainFilterBloc;
 
   final TextEditingController minPriceTextEditingController =
       TextEditingController();
   final TextEditingController maxPriceTextEditingController =
       TextEditingController();
 
+
+  
   @override
-  Widget build(FilterViewModel vm) {
-    
-  double  screenHeight = MediaQuery.of(vm.context).size.height;
-  double  screenWidth = MediaQuery.of(vm.context).size.width;
+  Widget build(BuildContext context) {
     return Container(
         padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            _headerBuilder(vm),
+            _headerBuilder(context),
             const SizedBox(
               height: 14,
             ),
-            _cityFilterBuilder(vm),
+            _cityFilterBuilder(context),
             const SizedBox(
               height: 24,
             ),
-            _coutFilterBuilder(vm),
-            SizedBox(height: MediaQuery.of(vm.context).padding.bottom),
+            _coutFilterBuilder(context),
+            SizedBox(height: MediaQuery.of(context).padding.bottom),
           ],
         ));
   }
 
-  Widget _headerBuilder(FilterViewModel vm) => Row(
+  Widget _headerBuilder(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            S.of(vm.context).filters,
-            style: Theme.of(vm.context)
+            S.of(context).filters,
+            style: Theme.of(context)
                 .textTheme
                 .titleLarge!
                 .copyWith(color: ColorCollection.onSurfaceVar),
           ),
           BottomSheetTextButton(
-            text: S.of(vm.context).apply,
-            onTap: vm.context.pop,
+            text: S.of(context).apply,
+            onTap: context.pop,
           ),
         ],
       );
-  Widget _cityFilterBuilder(FilterViewModel vm) => Column(
+  Widget _cityFilterBuilder(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            S.of(vm.context).city,
-            style: Theme.of(vm.context).textTheme.titleMedium,
+            S.of(context).city,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(
             height: 12,
           ),
-          Container(
-            height: 32,
-            child: ValueListenableBuilder(
-                valueListenable: vm.isActiveCityList,
-                builder: (context, value, child) => ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => InputChipWidget(
-                           text: vm.isActiveCityList.value[index],
-                        ),
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(width: 12),
-                    itemCount: vm.isActiveCityList.value.length)),
+          Column(
+            children: [
+              SizedBox(
+                height: 35,
+                child: BlocBuilder<CityFilterBloc, CityFilterState>(
+                  bloc: mainFilterBloc,
+                  builder: (context, state) {
+                    return ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => state.localityActivityMap[
+                                    LocalityList.values[index]]! ? InputChipWidget(
+                        onTap: () {
+                          
+                            
+                                 state.localityActivityMap[
+                                    LocalityList.values[index]] = false;
+                          mainFilterBloc.add(ChangeCityFilter(
+                                    state.localityActivityMap));
+                         
+                        },
+                        text: LocalityList.values[index].name(context), 
+                      ): SizedBox(),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 12),
+                      itemCount: LocalityList.values.length,
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
           const SizedBox(
             height: 10,
@@ -94,17 +118,19 @@ class MainBottomSheet extends BaseView<FilterViewModel> {
                 backgroundColor: ColorCollection.surfaceContainerLow,
                 showDragHandle: true,
                 enableDrag: false,
-                context: vm.context,
-                builder: (context) =>  ListCityBottomSheet()),
-            text: S.of(vm.context).addCity,
+                context: context,
+                builder: (context) => ListCityBottomSheet(
+                      mainFilterBloc: mainFilterBloc,
+                    )),
+            text: S.of(context).addCity,
           ),
         ],
       );
-  Widget _coutFilterBuilder(FilterViewModel vm) => Column(
+  Widget _coutFilterBuilder(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(S.of(vm.context).adPrice,
-              style: Theme.of(vm.context).textTheme.titleMedium),
+          Text(S.of(context).adPrice,
+              style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(
             height: 12,
           ),
@@ -113,7 +139,7 @@ class MainBottomSheet extends BaseView<FilterViewModel> {
               Expanded(
                 child: BottomSheetTextField(
                   textEditingController: minPriceTextEditingController,
-                  labelText: S.of(vm.context).from,
+                  labelText: S.of(context).from,
                 ),
               ),
               const SizedBox(
@@ -122,7 +148,7 @@ class MainBottomSheet extends BaseView<FilterViewModel> {
               Expanded(
                 child: BottomSheetTextField(
                   textEditingController: maxPriceTextEditingController,
-                  labelText: S.of(vm.context).before,
+                  labelText: S.of(context).before,
                 ),
               ),
             ],

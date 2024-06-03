@@ -20,7 +20,6 @@ import 'package:buy_and_dot/feature/forgot_password/presentation/new_password/ne
 import 'package:buy_and_dot/feature/forgot_password/presentation/new_password/new_password_view_model.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/password_recovery/password_recovery_screen.dart';
 import 'package:buy_and_dot/feature/forgot_password/presentation/password_recovery/password_recovery_view_model.dart';
-import 'package:buy_and_dot/feature/main_filter_bottom_sheet/presentation/page/filter_view_model.dart';
 import 'package:buy_and_dot/feature/nav_bar/presentation/nav_bar_screen.dart';
 import 'package:buy_and_dot/feature/splash/presentation/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -101,7 +100,7 @@ final router = GoRouter(
                         advertisementRepository: AppContainer()
                             .repositoryScope
                             .advertisementRepository,
-                      ), filterViewModel:FilterViewModel(context),
+                      ),
                     ),
                 routes: [
                   GoRoute(path: RouteList._aboutAppPath, builder: (context, state) => AboutAppScreen(),),
@@ -140,7 +139,7 @@ final router = GoRouter(
                         advertisementRepository: AppContainer()
                             .repositoryScope
                             .advertisementRepository,
-                      ), filterViewModel: FilterViewModel(context),
+                      ),
                     ),
                 routes: [
                   GoRoute(

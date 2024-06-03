@@ -40,7 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkTheme": MessageLookupByLibrary.simpleMessage("Темная тема"),
         "description": MessageLookupByLibrary.simpleMessage("Описание"),
         "done": MessageLookupByLibrary.simpleMessage("Готово"),
-        "dubosary": MessageLookupByLibrary.simpleMessage("Рыбница"),
+        "dubosary": MessageLookupByLibrary.simpleMessage("Дубосары"),
         "editAccount":
             MessageLookupByLibrary.simpleMessage("Редактирование профиля"),
         "email": MessageLookupByLibrary.simpleMessage("Почта"),
@@ -54,7 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
         "from": MessageLookupByLibrary.simpleMessage("От"),
-        "grigariopol": MessageLookupByLibrary.simpleMessage("Григориополь"),
+        "grigariopol": MessageLookupByLibrary.simpleMessage("Григорипка"),
         "iAgreeWith": MessageLookupByLibrary.simpleMessage("Я согласен с"),
         "logIn": MessageLookupByLibrary.simpleMessage("Вход"),
         "logOut": MessageLookupByLibrary.simpleMessage("Выйти"),

@@ -10,7 +10,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   AppContainer.init();
-  runApp(MyApp(
+  runApp(
+    
+    MyApp(
     appSettingsBloc: AppSettingsBloc(const AppSettingsState(locale: 0)),
   ));
 }

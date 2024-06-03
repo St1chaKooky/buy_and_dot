@@ -1,9 +1,11 @@
 import 'package:buy_and_dot/theme/collections/color_collection.dart/color_manager.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class InputChipWidget extends StatelessWidget {
+  void Function() onTap;
   final String text;
-  const InputChipWidget({super.key, required this.text});
+   InputChipWidget({super.key, required this.text, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class InputChipWidget extends StatelessWidget {
               width: 18.0,
               child: IconButton(
                   padding: EdgeInsets.zero,
-                  onPressed: () {},
+                  onPressed: onTap,
                   icon: const Icon(size: 18, Icons.close)),
             )
           ],
