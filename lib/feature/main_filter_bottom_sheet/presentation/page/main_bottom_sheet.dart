@@ -85,7 +85,7 @@ class _MainBottomSheetState extends State<MainBottomSheet> {
                 child: BlocBuilder<CityFilterBloc, CityFilterState>(
                   bloc: mainFilterBloc,
                   builder: (context, state) {
-                    return ListView.separated(
+                    return ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => state.localityActivityMap[
                                     LocalityList.values[index]]! ? InputChipWidget(
@@ -99,9 +99,8 @@ class _MainBottomSheetState extends State<MainBottomSheet> {
                          
                         },
                         text: LocalityList.values[index].name(context), 
-                      ): SizedBox(),
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(width: 12),
+                      ): SizedBox(width: 0,),
+                      
                       itemCount: LocalityList.values.length,
                     );
                   },

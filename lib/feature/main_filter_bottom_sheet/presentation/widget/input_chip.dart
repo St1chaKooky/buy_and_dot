@@ -10,6 +10,7 @@ class InputChipWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(right: 10),
       padding: const EdgeInsets.symmetric(vertical: 6).copyWith(left: 12),
       width: 117,
       height: 32,

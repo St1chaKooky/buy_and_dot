@@ -12,8 +12,7 @@ enum LocalityList implements Locality {
   rybnitsa(_rybnitsa),
   tiraspol(_tiraspol),
   dubosary(_dubosary),
-  grigariopol(_grigariopol),
-  test(_test);
+  grigariopol(_grigariopol);
 
 
   const LocalityList(this.name);
@@ -21,8 +20,6 @@ enum LocalityList implements Locality {
   @override
   final String Function(BuildContext context) name;
 }
-
-String _test(BuildContext context) => 'test';
 
 String _tiraspol(BuildContext context) => S.of(context).tiraspol;
 
