@@ -45,11 +45,10 @@ class _AdvertisementDetailsScreenState
           const SizedBox(
             height: 17,
           ),
-          Container(
-            width: double.infinity,
-            height: 1,
-            color: ColorCollection.outlineVariant,
-          ),
+          const Divider (
+                height: 1,
+                color:ColorCollection.outlineVariant,
+              ),
           const SizedBox(
             height: 16,
           ),

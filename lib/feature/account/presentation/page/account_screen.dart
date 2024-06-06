@@ -54,7 +54,11 @@ class _AccountScreenState extends State<AccountScreen> {
               const SizedBox(height: 8,),
               Text('${user.name} ${user.surName}',style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 16,),
-              Container(width: double.infinity,height: 1,color: ColorCollection.outlineVariant,),
+              const Divider (
+                height: 1,
+                color:ColorCollection.outlineVariant,
+              ),
+              
         ],
       ),
     );

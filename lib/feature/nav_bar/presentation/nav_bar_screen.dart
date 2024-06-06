@@ -21,6 +21,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: showBottomBar ? null :  BottomNavigationBar(
+        
         backgroundColor: ColorCollection.surfaceContainer,
         selectedItemColor: ColorCollection.onSurface,
         unselectedLabelStyle: Theme.of(context).textTheme.labelMedium!.copyWith(
@@ -45,7 +46,9 @@ class ScaffoldWithNavBar extends StatelessWidget {
           BottomNavigationBarItem(
             activeIcon:
                 const CustomIconSvg(assetName: SvgCollection.accountSelect),
-            icon: const CustomIconSvg(assetName: SvgCollection.account),
+            icon: const Badge(
+              label: Text('10'),
+              child: CustomIconSvg(assetName: SvgCollection.account)),
             label: S.of(context).account,
           ),
         ],
